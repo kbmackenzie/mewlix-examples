@@ -1,0 +1,7 @@
+yarn ball utils.position
+
+from std.graphic takes Vector2
+
+=^.x.^= center(width, height)
+  bring new Vector2((128 - width) / 2, (128 - height) / 2)
+meowmeow
