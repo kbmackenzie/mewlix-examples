@@ -1,0 +1,12 @@
+name: animation-tutorial
+description: |
+  A simple animation tutorial for Mewlix.
+mode: graphic
+entrypoint: main
+port: auto
+sources:
+- src/
+assets:
+- assets/
+specialImports: {}
+flags: []

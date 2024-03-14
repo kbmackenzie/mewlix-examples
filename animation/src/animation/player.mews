@@ -1,0 +1,42 @@
+yarn ball animation.player
+
+takes std.graphic
+
+clowder AnimationPlayer
+  =^.x.^= wake(frames, frame_rate)
+    assert not std.empty(frames)
+    assert frame_rate > 0
+
+    home.frames = frames
+    home.frame_rate = frame_rate
+
+    home.timer = 0.0
+    home.frame_stack = knock over frames
+    home.current_frame = peek frames
+  meowmeow
+
+  =^.x.^= next_frame()
+    peek if std.empty(home.frame_stack)
+      home.frame_stack = home.frames
+    meowmeow
+
+    home.timer = 0.0
+    home.current_frame = peek home.frame_stack
+    home.frame_stack = knock over home.frame_stack
+  meowmeow
+
+  =^.x.^= draw(x, y)
+    home.timer = home.timer + graphic.delta()
+
+    peek if home.timer >= (1 / home.frame_rate)
+      home.next_frame()
+    meowmeow
+
+    graphic.draw(home.current_frame, x, y)
+  meowmeow
+
+  =^.x.^= set_frame_rate(frame_rate)
+    assert frame_rate > 0
+    home.frame_rate = frame_rate
+  meowmeow
+meowmeow

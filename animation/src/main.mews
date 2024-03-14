@@ -1,0 +1,15 @@
+yarn ball main
+
+takes std.graphic
+from animation.frames takes frame_keys
+from animation.player takes AnimationPlayer
+
+mew frame_rate = 4
+mew anim = new AnimationPlayer(frame_keys, frame_rate)
+
+=^.x.^= game_loop()
+  graphic.paint("#6e6e6e")
+  anim.draw((128 - 32) / 2, (128 - 32) / 2)
+meowmeow
+
+graphic.init(game_loop)
