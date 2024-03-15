@@ -1,12 +1,12 @@
 yarn ball main
 
 takes std.graphic
-from animation.frames takes frame_keys
-from animation.player takes AnimationPlayer
 from utils.position takes center
+from animation.player takes AnimationPlayer
+from cat_walk takes cat_frames
 
 mew frame_rate = 4
-mew anim = new AnimationPlayer(frame_keys, frame_rate)
+mew anim = new AnimationPlayer(cat_frames, frame_rate)
 
 =^.x.^= game_loop()
   graphic.paint("#6e6e6e")
