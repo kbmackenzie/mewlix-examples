@@ -1,14 +1,8 @@
 yarn ball animation.frames
 
-from std.graphic takes spritesheet, Rectangle
+=^.x.^= load_frames(sheet, frame_boxes)
+  spritesheet(sheet, frame_boxes)
+  bring std.map(frame_boxes, =^*x*^= (x) => x.key)
+meowmeow
 
-mew image_path = "assets/cat-walk.png"
-mew frames = [
-  =^-x-^= [ key: "cat-walk-1", rect: new Rectangle(0,  0, 32, 32) ],
-  =^-x-^= [ key: "cat-walk-2", rect: new Rectangle(32, 0, 32, 32) ],
-  =^-x-^= [ key: "cat-walk-3", rect: new Rectangle(64, 0, 32, 32) ],
-  =^-x-^= [ key: "cat-walk-4", rect: new Rectangle(96, 0, 32, 32) ],
-]
-spritesheet(image_path, frames)
 
-mew frame_keys = std.map(frames, =^*x*^= (x) => x.key)
