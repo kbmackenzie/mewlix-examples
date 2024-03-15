@@ -1,0 +1,25 @@
+yarn ball ui.button
+
+takes std.graphic
+
+clowder Button
+  =^.x.^= wake(rect, callback)
+    home.rect = rect
+    home.callback = callback
+  meowmeow
+
+  =^.x.^= is_clicked()
+    bring graphic.mouse_click() and home.rect.contains(graphic.mouse_position())
+  meowmeow
+
+  =^.x.^= update()
+    peek if home.is_clicked()
+      home.callback()
+    meowmeow
+  meowmeow
+
+  =^.x.^= set_position(x, y)
+    home.rect.x = x
+    home.rect.y = y
+  meowmeow
+meowmeow
