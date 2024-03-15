@@ -2,6 +2,25 @@ yarn ball utils.position
 
 from std.graphic takes Vector2
 
+-- We know the canvas is *always* 128 x 128 pixels.
+-- Those magic numbers can be safely used in these functions.
+
+-- Get (x, y) positions for centering an object in the canvas.
 =^.x.^= center(width, height)
   bring new Vector2((128 - width) / 2, (128 - height) / 2)
+meowmeow
+
+-- Assuming 8 rows and 8 columns--the standard way to divide the canvas.
+-- 1. A single row would be 16 pixels tall.
+-- 2. A single column would be 16 pixels wide.
+-- We can use these magic numbers in these functions:
+
+-- Get y position for the start of a row:
+=^.x.^= row(num)
+  bring 16 * num
+meowmeow
+
+-- Get x position for the start of a column:
+=^.x.^= column(num)
+  bring 16 * num
 meowmeow
