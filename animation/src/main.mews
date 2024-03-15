@@ -4,6 +4,7 @@ takes std.graphic
 from utils.position takes center
 from animation.player takes AnimationPlayer
 from cat_walk takes cat_frames
+from buttons takes plus, minus
 
 mew frame_rate = 4
 mew anim = new AnimationPlayer(cat_frames, frame_rate)

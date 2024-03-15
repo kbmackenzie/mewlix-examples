@@ -1,0 +1,11 @@
+yarn ball buttons
+
+from std.graphic takes spritesheet, Rectangle
+
+mew plus  = "plus-button"
+mew minus = "minus-button"
+
+spritesheet("assets/plus-minus.png", [
+  =^-x-^= [ key: plus,  rect: new Rectangle(0,  0, 16, 16) ],
+  =^-x-^= [ key: minus, rect: new Rectangle(16, 0, 16, 16) ],
+])
