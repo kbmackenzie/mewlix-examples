@@ -6,5 +6,3 @@ from std.graphic takes spritesheet
   spritesheet(sheet, frame_boxes)
   bring std.map(frame_boxes, =^*x*^= (x) => x.key)
 meowmeow
-
-
