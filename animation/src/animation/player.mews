@@ -7,6 +7,10 @@ clowder AnimationPlayer
     assert not std.empty(frames)
     assert frame_rate > 0
 
+    -- Reverse to ensure frames will play
+    -- in the expected order. c:
+    frames = std.reverse(frames)
+
     home.frames = frames
     home.frame_rate = frame_rate
 
