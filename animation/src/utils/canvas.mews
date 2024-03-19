@@ -1,0 +1,6 @@
+yarn ball utils.canvas
+
+-- Canvas width + height constants. They will *never* change.
+-- We should always define them for readability, however!
+mew width  = 128
+mew height = 128
