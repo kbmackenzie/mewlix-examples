@@ -1,19 +1,20 @@
 yarn ball main
 
 takes std.graphic
+takes mewly_anim
 from utils.position takes center
 from animation.player takes AnimationPlayer
-from cat_walk takes cat_frames
-from buttons takes plus, minus
 
-mew frame_rate = 4
-mew anim = new AnimationPlayer(cat_frames, frame_rate)
+mew anim = new AnimationPlayer(mewly_anim.frames, mewly_anim.frame_rate)
+
+=^.x.^= draw_anim()
+  mew pos = center(mewly_anim.width, mewly_anim.height)
+  anim.draw(pos.x, pos.y)
+meowmeow
 
 =^.x.^= game_loop()
   graphic.paint("#6e6e6e")
-
-  mew pos = center(32, 32)
-  anim.draw(pos.x, pos.y)
+  draw_anim()
 meowmeow
 
 graphic.init(game_loop)
