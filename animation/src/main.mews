@@ -2,9 +2,13 @@ yarn ball main
 
 takes std.graphic
 takes mewly_anim
-from utils.position takes center
+takes utils.canvas
+from utils.position takes center, row
 from animation.player takes AnimationPlayer
 
+------------------------------------------------------------------------
+-- Animation:
+------------------------------------------------------------------------
 mew anim = new AnimationPlayer(mewly_anim.frames, mewly_anim.frame_rate)
 
 =^.x.^= draw_anim()
@@ -12,9 +16,30 @@ mew anim = new AnimationPlayer(mewly_anim.frames, mewly_anim.frame_rate)
   anim.draw(pos.x, pos.y)
 meowmeow
 
+------------------------------------------------------------------------
+-- Text:
+------------------------------------------------------------------------
+mew text_options = =^-x-^= [
+  size: 12,
+  color: "#fff",
+  align: "center",
+  base: "middle",
+]
+
+=^.x.^= draw_text()
+  mew x = canvas.width / 2
+  mew y = row(1)
+  graphic.write("animation example", x, y, text_options)
+meowmeow
+
+------------------------------------------------------------------------
+-- Game loop:
+------------------------------------------------------------------------
 =^.x.^= game_loop()
   graphic.paint("#6e6e6e")
   draw_anim()
+  draw_text()
 meowmeow
 
+graphic.thumbnail(game_loop)
 graphic.init(game_loop)
