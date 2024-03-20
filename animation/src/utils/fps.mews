@@ -1,0 +1,40 @@
+yarn ball utils.fps
+
+takes std.graphic
+
+-- Draw FPS (usually in the corner of the canvas).
+-- Good for debugging purposes!
+clowder FpsCounter
+  =^.x.^= wake()
+    home.timer = 0.0
+    home.frames = 0
+    home.fps    = 0
+  meowmeow
+
+  =^.x.^= tick() -- Should be called every frame.
+    home.timer  = home.timer + graphic.delta()
+    home.frames = home.frames + 1
+
+    peek if home.timer >= 1
+      home.fps = home.frames
+      home.frames = 0
+      home.timer = 0.0
+    meowmeow
+  meowmeow
+
+  =^.x.^= get_fps()
+    bring home.fps
+  meowmeow
+
+  =^.x.^= draw(x, y, options)
+    peek if not x; x = 0; meowmeow
+    peek if not y; y = 0; meowmeow
+
+    mew message = std.purr(home.get_fps())
+    graphic.write(message, x, y, options)
+  meowmeow
+
+  =^.x.^= to_string()
+    bring std.purr(home.get_fps())
+  meowmeow
+meowmeow
