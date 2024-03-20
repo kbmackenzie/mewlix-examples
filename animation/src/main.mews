@@ -5,6 +5,7 @@ takes mewly_anim
 takes utils.canvas
 from utils.position takes center, row
 from animation.player takes AnimationPlayer
+from utils.fps takes FpsCounter
 
 ------------------------------------------------------------------------
 -- Animation:
@@ -33,12 +34,26 @@ mew text_options = =^-x-^= [
 meowmeow
 
 ------------------------------------------------------------------------
+-- FPS:
+------------------------------------------------------------------------
+mew fps = new FpsCounter()
+mew fps_text_options = =^-x-^= [
+  color: "#fff"
+]
+
+=^.x.^= draw_fps()
+  fps.tick()
+  fps.draw(1, 0, fps_text_options)
+meowmeow
+
+------------------------------------------------------------------------
 -- Game loop:
 ------------------------------------------------------------------------
 =^.x.^= game_loop()
   graphic.paint("#6e6e6e")
   draw_anim()
   draw_text()
+  draw_fps()
 meowmeow
 
 graphic.thumbnail(game_loop)
