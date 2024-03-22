@@ -18,32 +18,32 @@ mew anim = new AnimationPlayer(mewly_anim.frames, mewly_anim.frame_rate)
 meowmeow
 
 ------------------------------------------------------------------------
--- Text:
+-- Title:
 ------------------------------------------------------------------------
-mew text_options = =^-x-^= [
+mew title_options = =^-x-^= [
   size: 12,
   color: "#fff",
-  align: "center",
-  base: "middle",
 ]
+mew title_string = "animation example"
 
 =^.x.^= draw_text()
-  mew x = canvas.width / 2
-  mew y = row(1)
-  graphic.write("animation example", x, y, text_options)
+  mew metrics = graphic.measure_text(title_string, title_options)
+  mew x = (canvas.width - metrics.width) / 2
+  mew y = row(1) - (metrics.height / 2)
+  graphic.write(title_string, x, y, title_options)
 meowmeow
 
 ------------------------------------------------------------------------
 -- FPS:
 ------------------------------------------------------------------------
 mew fps = new FpsCounter()
-mew fps_text_options = =^-x-^= [
+mew fps_options = =^-x-^= [
   color: "#fff"
 ]
 
 =^.x.^= draw_fps()
   fps.tick()
-  fps.draw(1, 0, fps_text_options)
+  fps.draw(1, 0, fps_options)
 meowmeow
 
 ------------------------------------------------------------------------
