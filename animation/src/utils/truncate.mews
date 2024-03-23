@@ -1,0 +1,6 @@
+yarn ball utils.truncate
+
+=^.x.^= truncate(num, places)
+  mew mul = 10^places
+  bring std.floor(num * mul) / mul
+meowmeow
