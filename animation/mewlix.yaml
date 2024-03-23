@@ -1,6 +1,6 @@
-name: animation-tutorial
+name: animation-example
 description: |
-  A simple animation tutorial for Mewlix.
+  A simple animation example.
 mode: graphic
 entrypoint: main
 port: auto
