@@ -20,6 +20,11 @@ mew anim = new AnimationPlayer(mewly.frames, mewly.frame_rate)
   anim.draw(pos.x, pos.y)
 meowmeow
 
+=^.x.^= set_anim_speed(percentage)
+  mew new_frame_rate = std.floor(mewly.frame_rate * (percentage / 100))
+  anim.set_frame_rate(new_frame_rate)
+meowmeow
+
 ------------------------------------------------------------------------
 -- Title:
 ------------------------------------------------------------------------
@@ -44,6 +49,7 @@ meowmeow
 =^.x.^= draw_controls()
   speed_controls.update()
   speed_controls.draw()
+  set_anim_speed(speed_controls.speed)
 meowmeow
 
 ------------------------------------------------------------------------
