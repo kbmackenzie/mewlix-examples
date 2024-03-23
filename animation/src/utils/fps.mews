@@ -29,10 +29,6 @@ clowder FpsCounter
   =^.x.^= draw(x, y, options)
     peek if not x; x = 0; meowmeow
     peek if not y; y = 0; meowmeow
-    graphic.write(home, x, y, options)
-  meowmeow
-
-  =^.x.^= to_string()
-    bring std.purr(home.get_fps())
+    graphic.write(home.get_fps(), x, y, options)
   meowmeow
 meowmeow
