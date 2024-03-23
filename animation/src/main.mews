@@ -4,7 +4,9 @@ takes std.graphic
 takes mewly
 takes palette
 takes utils.canvas
-from utils.position takes center, row
+takes utils.position
+takes speed_controls
+from std.graphic takes Rectangle
 from animation.player takes AnimationPlayer
 from utils.fps takes FpsCounter
 
@@ -14,7 +16,7 @@ from utils.fps takes FpsCounter
 mew anim = new AnimationPlayer(mewly.frames, mewly.frame_rate)
 
 =^.x.^= draw_anim()
-  mew pos = center(mewly.width, mewly.height)
+  mew pos = position.center(mewly.width, mewly.height)
   anim.draw(pos.x, pos.y)
 meowmeow
 
@@ -32,8 +34,16 @@ mew title_options = =^-x-^= [
   mew text_size = graphic.measure_text(title_string, title_options)
 
   mew x = (canvas.width - text_size.width) / 2
-  mew y = row(1)
+  mew y = position.row(1) - text_size.height / 2
   graphic.write(title_string, x, y, title_options)
+meowmeow
+
+------------------------------------------------------------------------
+-- Controls:
+------------------------------------------------------------------------
+=^.x.^= draw_controls()
+  speed_controls.update()
+  speed_controls.draw()
 meowmeow
 
 ------------------------------------------------------------------------
@@ -57,6 +67,7 @@ meowmeow
   graphic.paint(palette.dark_purple)
   draw_anim()
   draw_text()
+  draw_controls()
   draw_fps()
 meowmeow
 
