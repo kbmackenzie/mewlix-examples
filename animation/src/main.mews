@@ -2,6 +2,7 @@ yarn ball main
 
 takes std.graphic
 takes mewly
+takes palette
 takes utils.canvas
 from utils.position takes center, row
 from animation.player takes AnimationPlayer
@@ -20,11 +21,12 @@ meowmeow
 ------------------------------------------------------------------------
 -- Title:
 ------------------------------------------------------------------------
+mew title_string = "animation example"
+
 mew title_options = =^-x-^= [
   size: 12,
   color: "#fff",
 ]
-mew title_string = "animation example"
 
 =^.x.^= draw_text()
   mew metrics = graphic.measure_text(title_string, title_options)
@@ -37,6 +39,7 @@ meowmeow
 -- FPS:
 ------------------------------------------------------------------------
 mew fps = new FpsCounter()
+
 mew fps_options = =^-x-^= [
   color: "#fff"
 ]
@@ -50,7 +53,7 @@ meowmeow
 -- Game loop:
 ------------------------------------------------------------------------
 =^.x.^= game_loop()
-  graphic.paint("#6e6e6e")
+  graphic.paint(palette.dark_purple)
   draw_anim()
   draw_text()
   draw_fps()
