@@ -24,14 +24,15 @@ meowmeow
 mew title_string = "animation example"
 
 mew title_options = =^-x-^= [
-  size: 12,
-  color: "#fff",
+  size: 14,
+  color: palette.light_pink,
 ]
 
 =^.x.^= draw_text()
-  mew metrics = graphic.measure_text(title_string, title_options)
-  mew x = (canvas.width - metrics.width) / 2
-  mew y = row(1) - (metrics.height / 2)
+  mew text_size = graphic.measure_text(title_string, title_options)
+
+  mew x = (canvas.width - text_size.width) / 2
+  mew y = row(1)
   graphic.write(title_string, x, y, title_options)
 meowmeow
 
@@ -41,7 +42,7 @@ meowmeow
 mew fps = new FpsCounter()
 
 mew fps_options = =^-x-^= [
-  color: "#fff"
+  color: palette.cream,
 ]
 
 =^.x.^= draw_fps()
