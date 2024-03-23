@@ -28,10 +28,10 @@ meowmeow
 ------------------------------------------------------------------------
 -- Title:
 ------------------------------------------------------------------------
-mew title_string = "animation example"
+mew title_string = "set animation speed"
 
 mew title_options = =^-x-^= [
-  size: 14,
+  size: 12,
   color: palette.light_pink,
 ]
 
