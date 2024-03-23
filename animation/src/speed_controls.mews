@@ -19,14 +19,13 @@ meowmeow
 -- Positioning:
 ------------------------------------------------------------------------
 =^.x.^= get_rects()
-  mew counter_width = 64
-  mew margin = 2
+  mew counter_width = 32
 
-  mew total_width  = (pm.width * 2) + (margin * 2) + counter_width
+  mew total_width  = (pm.width * 2) + counter_width
   mew total_height = pm.height
 
   mew start_x = position.center(total_width, total_height).x
-  mew start_y = position.row(7) - pm.height / 2
+  mew start_y = position.row(6)
 
   bring =^-x-^= [
     plus: new Rectangle(
@@ -37,14 +36,14 @@ meowmeow
     ),
 
     counter: new Rectangle(
-      start_x + pm.width + margin,
+      start_x + pm.width,
       start_y,
       counter_width,
-      pm.height,
+      total_height,
     ),
 
     minus: new Rectangle(
-      start_x + pm.width + counter_width + (margin * 2),
+      start_x + pm.width + counter_width,
       start_y,
       pm.width,
       pm.height,
