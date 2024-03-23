@@ -8,8 +8,12 @@ clowder Button
     home.callback = callback
   meowmeow
 
+  =^.x.^= is_hovered()
+    bring home.rect.contains(graphic.mouse_position())
+  meowmeow
+
   =^.x.^= is_clicked()
-    bring graphic.mouse_click() and home.rect.contains(graphic.mouse_position())
+    bring graphic.mouse_click() and home.is_hovered()
   meowmeow
 
   =^.x.^= update()
