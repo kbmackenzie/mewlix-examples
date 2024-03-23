@@ -11,15 +11,19 @@ from ui.button takes Button
 
 mew speed = 100
 
+=^.x.^= max(a, b)
+  bring a > b ? a : b
+meowmeow
+
 =^.x.^= change_speed(modifier)
-  speed = speed + modifier
+  speed = max(20, speed + modifier)
 meowmeow
 
 ------------------------------------------------------------------------
 -- Positioning:
 ------------------------------------------------------------------------
 =^.x.^= get_rects()
-  mew counter_width = 32
+  mew counter_width = 48
 
   mew total_width  = (pm.width * 2) + counter_width
   mew total_height = pm.height
@@ -28,7 +32,7 @@ meowmeow
   mew start_y = position.row(6)
 
   bring =^-x-^= [
-    plus: new Rectangle(
+    minus: new Rectangle(
       start_x,
       start_y,
       pm.width,
@@ -42,7 +46,7 @@ meowmeow
       total_height,
     ),
 
-    minus: new Rectangle(
+    plus: new Rectangle(
       start_x + pm.width + counter_width,
       start_y,
       pm.width,
