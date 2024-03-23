@@ -71,7 +71,7 @@ mew counter = new TextBox(
   std.purr(speed),
   =^-x-^= [
     size: 16,
-    color: palette.bright_pink,
+    color: palette.cream,
   ]
 )
 
@@ -107,5 +107,5 @@ meowmeow
 =^.x.^= update()
   plus_button.update()
   minus_button.update()
-  counter.set_message(std.purr(speed))
+  counter.set_message(std.purr(speed) .. "%")
 meowmeow
