@@ -1,4 +1,4 @@
-yarn ball mewly_anim
+yarn ball mewly
 
 from std.graphic takes Rectangle
 from animation.frames takes load_frames

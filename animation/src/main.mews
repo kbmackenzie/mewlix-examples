@@ -1,7 +1,7 @@
 yarn ball main
 
 takes std.graphic
-takes mewly_anim
+takes mewly
 takes utils.canvas
 from utils.position takes center, row
 from animation.player takes AnimationPlayer
@@ -10,10 +10,10 @@ from utils.fps takes FpsCounter
 ------------------------------------------------------------------------
 -- Animation:
 ------------------------------------------------------------------------
-mew anim = new AnimationPlayer(mewly_anim.frames, mewly_anim.frame_rate)
+mew anim = new AnimationPlayer(mewly.frames, mewly.frame_rate)
 
 =^.x.^= draw_anim()
-  mew pos = center(mewly_anim.width, mewly_anim.height)
+  mew pos = center(mewly.width, mewly.height)
   anim.draw(pos.x, pos.y)
 meowmeow
 
