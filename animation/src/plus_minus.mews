@@ -1,4 +1,4 @@
-yarn ball buttons
+yarn ball plus_minus
 
 from std.graphic takes spritesheet, Rectangle
 
