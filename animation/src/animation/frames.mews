@@ -4,5 +4,5 @@ from std.graphic takes spritesheet
 
 =^.x.^= load_frames(sheet, frame_boxes)
   spritesheet(sheet, frame_boxes)
-  bring std.map(frame_boxes, =^*x*^= (x) => x.key)
+  bring std.map(frame_boxes, =^oxo^= (x) => x.key)
 meowmeow
