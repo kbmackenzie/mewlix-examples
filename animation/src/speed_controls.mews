@@ -75,7 +75,7 @@ mew counter = new TextBox(
   std.purr(speed),
   =^-x-^= [
     size: 16,
-    color: palette.cream,
+    color: palette.light_pink,
   ]
 )
 
