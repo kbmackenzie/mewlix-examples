@@ -1,0 +1,112 @@
+yarn ball speed_controls
+
+takes std.graphic
+takes palette
+takes utils.canvas
+takes utils.position
+takes plus_minus as pm
+from std.graphic takes Rectangle
+from ui.text takes TextBox
+from ui.button takes Button
+
+mew speed = 100
+
+=^.x.^= change_speed(modifier)
+  speed = speed + modifier
+meowmeow
+
+------------------------------------------------------------------------
+-- Positioning:
+------------------------------------------------------------------------
+=^.x.^= get_rects()
+  mew counter_width = 64
+  mew margin = 2
+
+  mew total_width  = (pm.width * 2) + (margin * 2) + counter_width
+  mew total_height = pm.height
+
+  mew start_x = position.center(total_width, total_height).x
+  mew start_y = position.row(7) - pm.height / 2
+
+  bring =^-x-^= [
+    plus: new Rectangle(
+      start_x,
+      start_y,
+      pm.width,
+      pm.height,
+    ),
+
+    counter: new Rectangle(
+      start_x + pm.width + margin,
+      start_y,
+      counter_width,
+      pm.height,
+    ),
+
+    minus: new Rectangle(
+      start_x + pm.width + counter_width + (margin * 2),
+      start_y,
+      pm.width,
+      pm.height,
+    ),
+  ]
+meowmeow
+
+mew rects = get_rects()
+
+-------------------------------
+-- Controls:
+-------------------------------
+mew plus_button = new Button(
+  rects.plus,
+  =^oxo^= () => change_speed(20),
+)
+
+mew minus_button = new Button(
+  rects.minus,
+  =^oxo^= () => change_speed(-20),
+)
+
+mew counter = new TextBox(
+  rects.counter,
+  std.purr(speed),
+  =^-x-^= [
+    size: 16,
+    color: palette.cream,
+  ]
+)
+
+=^.x.^= draw_plus()
+  mew sprite = pm.plus.normal
+
+  peek if plus_button.is_hovered()
+    sprite = pm.plus.hovered
+  meowmeow
+  
+  graphic.draw(sprite, plus_button.rect.x, plus_button.rect.y)
+meowmeow
+
+=^.x.^= draw_minus()
+  mew sprite = pm.minus.normal
+
+  peek if minus_button.is_hovered()
+    sprite = pm.minus.hovered
+  meowmeow
+
+  graphic.draw(sprite, minus_button.rect.x, minus_button.rect.y)
+meowmeow
+
+-------------------------------
+-- Drawing + Updating:
+-------------------------------
+=^.x.^= draw()
+  draw_plus()
+  draw_minus()
+  counter.draw()
+meowmeow
+
+=^.x.^= update()
+  plus_button.update()
+  minus_button.update()
+  counter.set_message(std.purr(speed))
+meowmeow
