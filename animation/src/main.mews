@@ -34,7 +34,7 @@ mew title_options = =^-x-^= [
   mew text_size = graphic.measure_text(title_string, title_options)
 
   mew x = (canvas.width - text_size.width) / 2
-  mew y = position.row(1) - text_size.height / 2
+  mew y = position.row(1)
   graphic.write(title_string, x, y, title_options)
 meowmeow
 
