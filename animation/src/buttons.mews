@@ -2,10 +2,19 @@ yarn ball buttons
 
 from std.graphic takes spritesheet, Rectangle
 
-mew plus  = "plus-button"
-mew minus = "minus-button"
+mew plus_sprite = =^-x-^= [
+  normal:  "plus-sprite",
+  hovered: "plus-sprite-hovered",
+]
+
+mew minus_sprite = =^-x-^= [
+  normal:  "minus-sprite",
+  hovered: "minus-sprite-hovered",
+]
 
 spritesheet("assets/plus-minus.png", [
-  =^-x-^= [ key: plus,  rect: new Rectangle(0,  0, 16, 16) ],
-  =^-x-^= [ key: minus, rect: new Rectangle(16, 0, 16, 16) ],
+  =^-x-^= [ key: plus_sprite.normal,    rect: new Rectangle( 0,  0,  16, 16) ],
+  =^-x-^= [ key: plus_sprite.hovered,   rect: new Rectangle(16,  0,  16, 16) ],
+  =^-x-^= [ key: minus_sprite.normal,   rect: new Rectangle( 0, 16,  16, 16) ],
+  =^-x-^= [ key: minus_sprite.hovered,  rect: new Rectangle(16, 16,  16, 16) ],
 ])
