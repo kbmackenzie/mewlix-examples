@@ -11,12 +11,8 @@ from ui.button takes Button
 
 mew speed = 100
 
-=^.x.^= max(a, b)
-  bring a > b ? a : b
-meowmeow
-
 =^.x.^= change_speed(modifier)
-  speed = max(20, speed + modifier)
+  speed = std.max(20, speed + modifier)
 meowmeow
 
 ------------------------------------------------------------------------
