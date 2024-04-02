@@ -1,4 +1,4 @@
-yarn ball utils.str
+yarn ball utils.string
 
 mew head = =^oxo^= (str) => std.poke(str, 0)
 mew tail = =^oxo^= (str) => std.tear(str, 1, str...?)
