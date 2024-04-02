@@ -1,0 +1,13 @@
+yarn ball utils.enumerate
+
+=^.x.^= enumerate(xs)
+  mew counter = 0
+  mew output = =^-x-^= []
+
+  it's raining xs!! catch a x!!
+    output[x] = counter
+    counter = counter + 1
+  meowmeow
+
+  bring output
+meowmeow

@@ -1,0 +1,8 @@
+yarn ball main
+
+from brainfuck.parser takes parse
+
+stare while true
+  mew input = listen
+  meow parse(input)
+meowmeow

@@ -1,0 +1,12 @@
+yarn ball utils.str
+
+mew head = =^oxo^= (str) => std.poke(str, 0)
+mew tail = =^oxo^= (str) => std.tear(str, 1, str...?)
+
+=^.x.^= drop_while(predicate, str)
+  mew output = str
+  stare while predicate(head(output))
+    output = tail(output)
+  meowmeow
+  bring output
+meowmeow
