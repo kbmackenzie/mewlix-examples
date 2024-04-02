@@ -4,9 +4,11 @@ mew head = =^oxo^= (str) => std.poke(str, 0)
 mew tail = =^oxo^= (str) => std.tear(str, 1, str...?)
 
 =^.x.^= drop_while(predicate, str)
-  mew output = str
-  stare while predicate(head(output))
-    output = tail(output)
+  mew index = 0
+
+  stare while predicate(std.poke(str, index))
+    index = index + 1
   meowmeow
-  bring output
+
+  bring std.tear(str, index, str...?)
 meowmeow
