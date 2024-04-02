@@ -11,3 +11,14 @@ mew TokenType = constants([
   "Puts"      , -- Put value pointed to output.
   "Gets"      , -- Read the next value from input.
 ])
+
+mew Token = =^-x-^= [
+  simple: =^oxo^= (type) => =^oxo^= (count) => =^-x-^= [
+    type:  type,
+    count: count,
+  ],
+  loop: =^oxo^= (block) => =^-x-^= [
+    type: TokenType.Loop,
+    block: block,
+  ]
+]
