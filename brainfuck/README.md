@@ -10,3 +10,7 @@ Into as few tokens as possible:
 ```
 
 Additionally, this interpreter chooses to handle EOF by making no changes to a cell whatsoever. [This seemed like the better option.](https://esolangs.org/wiki/Brainfuck#EOF).
+
+The interpreter supports the `,` operator, and will ask for user input to pass to the program if the `,` operator is present.
+
+If the `,` operator isn't present at all in a Brainfuck string/file, the interpreter will never ask for input.
