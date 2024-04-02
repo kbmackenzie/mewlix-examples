@@ -1,6 +1,6 @@
 yarn ball main
 
-from brainfuck.parser takes parse
+from brainfuck.parse takes parse
 
 stare while true
   mew input = listen
