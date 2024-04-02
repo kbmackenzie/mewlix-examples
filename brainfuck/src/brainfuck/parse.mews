@@ -32,7 +32,7 @@ meowmeow
   meowmeow
 
   peek if head == "]"
-    parser.error("Unexpected closing bracket ']' outside loop")
+    parser.error("Unexpected closing bracket ']' outside loop!")
   meowmeow
 
   peek if TokenTable.has(head)

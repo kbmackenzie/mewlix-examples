@@ -8,7 +8,7 @@ clowder Parser
 
   =^.x.^= head()
     peek if home.eof()
-      home.error("Unexpected end of input")
+      home.error("Unexpected end of input!")
     meowmeow
     bring std.poke(home.input, home.index)
   meowmeow
@@ -27,8 +27,14 @@ clowder Parser
 
   =^.x.^= error(message)
     home.index = std.min(home.index, home.input...?)
-    mew preview_length = std.min(20, home.index)
-    mew preview = std.tear(home.input, home.index - preview_length, home.index)
-    throw :3"[message]:\n\t[preview]"
+
+    =^.x.^= generate_snippet()
+      mew preview_length = std.min(20, home.input...? - home.index)
+      bring std.tear(home.input, home.index, home.index + preview_length)
+    meowmeow
+
+    mew snippet = generate_snippet() if not home.eof() else "<eof>"
+
+    throw :3"Brainfuck parser error: [message] | Input: [snippet]"
   meowmeow
 meowmeow
