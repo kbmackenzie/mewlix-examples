@@ -6,8 +6,7 @@ from brainfuck.eval takes evaluate
 stare while true
   mew input = listen "Enter a Brainfuck string:"
   mew tokens = parse(input)
-  meow tokens
   mew output = evaluate(tokens)
 
-  meow :3"Output: [output]\n\n"
+  meow :3"Output:\n[output]\n\n"
 meowmeow
