@@ -2,35 +2,36 @@ yarn ball brainfuck.eval
 
 from brainfuck.ast takes TokenType
 from brainfuck.env takes Environment
+from utils.func takes sequence
 
-~( ^.x.^)>
-mew TokenTable = std.table()        \
-  .add("<", TokenType.MoveLeft)     \
-  .add(">", TokenType.MoveRight)    \
-  .add("+", TokenType.Increment)    \
-  .add("-", TokenType.Decrement)    \
-  .add(".", TokenType.Puts)         \
-  .add(",", TokenType.Gets)
-<(^.x.^ )~
-
-mew Instructions = std.table()                                                            \
-  .add(TokenType.MoveLeft  , =^oxo^= (env, token) => env.move(-token.count)   )           \
-  .add(TokenType.MoveRight , =^oxo^= (env, token) => env.move(token.count)    )           \
-  .add(TokenType.Increment , =^oxo^= (env, token) => env.modify(token.count)  )           \
-  .add(TokenType.Decrement , =^oxo^= (env, token) => env.modify(-token.count) )           \
-  .add(TokenType.Loop      , =^oxo^= (env, token) => evaluate_all(token.block, env))      \
-  .add(TokenType.Puts      , =^oxo^= (env, token) => env.look() |> todo |> std.meowf)     \
-  .add(TokenType.Gets      , =^oxo^= (env, token) => env.pop_input() |> todo |> env.set)
+mew Instructions = std.table()                                                                \
+  .add(TokenType.MoveLeft  , =^oxo^= (env, token) => env.move(-token.count)   )               \
+  .add(TokenType.MoveRight , =^oxo^= (env, token) => env.move(token.count)    )               \
+  .add(TokenType.Increment , =^oxo^= (env, token) => env.modify(token.count)  )               \
+  .add(TokenType.Decrement , =^oxo^= (env, token) => env.modify(-token.count) )               \
+  .add(TokenType.Loop      , =^oxo^= (env, token) => evaluate(token.block, env))
 
 =^.x.^= evaluate(tokens, env_arg)
   mew env = env_arg or new Environment()
   it's raining tokens!! catch a token!!
     evaluate_token(token, env)
+    std.log(env.look())
   meowmeow
+  bring env.get_output()
 meowmeow
 
 =^.x.^= evaluate_token(token, env)
-  peek if Instructions.has(token.type)
+  peek if token.type == TokenType.Puts
+    sequence(
+      =^oxo^= () => env.look() |> std.char |> env.puts,
+      token.count,
+    )
+  or if token.type == TokenType.Gets
+    sequence(
+      =^oxo^= () => env.gets() |> std.bap  |> env.set,
+      token.count,
+    )
+  or if Instructions.has(token.type)
     Instructions.get(token.type)(env, token)
   otherwise
     throw :3"Unrecognized instruction type: [token.type]"
