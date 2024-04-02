@@ -1,4 +1,4 @@
-yarn ball brainfuck.ast.tokentype
+yarn ball brainfuck.ast
 
 from utils.constants takes constants
 
