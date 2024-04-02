@@ -1,0 +1,9 @@
+yarn ball brainfuck.eval
+
+from brainfuck.ast takes TokenType
+
+=^.x.^= evaluate()
+meowmeow
+
+=^.x.^= evaluate_token(token, state)
+meowmeow
