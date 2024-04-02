@@ -1,5 +1,5 @@
 name: brainfuck
-description: |
+description: |-
   A Brainfuck interpreter written in Mewlix.
 
   Brainfuck is an esoteric programming language. Read more about it here:
