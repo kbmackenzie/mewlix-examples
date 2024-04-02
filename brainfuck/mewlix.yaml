@@ -2,8 +2,7 @@ name: brainfuck
 description: |-
   A Brainfuck interpreter written in Mewlix.
 
-  Brainfuck is an esoteric programming language. Read more about it here:
-  https://en.wikipedia.org/wiki/Brainfuck
+  Brainfuck is an esoteric programming language. Read more about it [here](https://en.wikipedia.org/wiki/Brainfuck).
 mode: console
 entrypoint: main
 port: auto
