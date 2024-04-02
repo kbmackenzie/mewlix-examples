@@ -2,7 +2,7 @@ yarn ball brainfuck.parser
 
 clowder Parser
   =^.x.^= wake(input)
-    home.input
+    home.input = input
     home.index = 0
   meowmeow
 
