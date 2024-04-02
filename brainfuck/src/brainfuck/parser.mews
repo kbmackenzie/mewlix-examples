@@ -7,7 +7,9 @@ clowder Parser
   meowmeow
 
   =^.x.^= head()
-    assert home.index >= 0
+    peek if home.eof()
+      home.error("Unexpected end of input")
+    meowmeow
     bring std.poke(home.input, home.index)
   meowmeow
 
@@ -15,9 +17,18 @@ clowder Parser
     increment = increment or 1
     assert increment >= 1
     home.index = home.index + increment
+    assert home.index <= home.input...?
   meowmeow
 
   =^.x.^= eof()
+    assert home.index >= 0
     bring home.index >= home.input...?
+  meowmeow
+
+  =^.x.^= error(message)
+    home.index = std.min(home.index, home.input...?)
+    mew preview_length = std.min(20, home.index)
+    mew preview = std.tear(home.input, home.index - preview_length, home.index)
+    throw :3"[message]:\n\t[preview]"
   meowmeow
 meowmeow
