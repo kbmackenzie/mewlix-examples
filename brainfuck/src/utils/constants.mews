@@ -1,0 +1,11 @@
+yarn ball utils.constants
+
+=^.x.^= constants(keys)
+  mew output = =^-x-^= []
+
+  it's raining keys!! catch a key!!
+    output[key] = key
+  meowmeow
+
+  bring output
+meowmeow
