@@ -1,12 +1,23 @@
 yarn ball brainfuck.parser
 
-from brainfuck.ast takes TokenType, Token
-from utils.string takes head, tail
+clowder Parser
+  =^.x.^= wake(input)
+    home.input
+    home.index = 0
+  meowmeow
 
-mew TokenTable = std.table()        \
-  .add("<", TokenType.MoveLeft)     \
-  .add(">", TokenType.MoveRight)    \
-  .add("+", TokenType.Increment)    \
-  .add("-", TokenType.Decrement)    \
-  .add(".", TokenType.Puts)         \
-  .add(",", TokenType.Gets)
+  =^.x.^= head()
+    assert home.index >= 0
+    bring std.poke(home.input, home.index)
+  meowmeow
+
+  =^.x.^= advance(increment)
+    increment = increment or 1
+    assert increment >= 1
+    home.index = home.index + increment
+  meowmeow
+
+  =^.x.^= eof()
+    bring home.index >= home.input...?
+  meowmeow
+meowmeow

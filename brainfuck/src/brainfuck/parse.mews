@@ -1,0 +1,11 @@
+yarn ball brainfuck.parse
+
+from brainfuck.ast takes Token
+
+mew TokenTable = std.table()    \
+  .add("<", Token.MoveLeft)     \
+  .add(">", Token.MoveRight)    \
+  .add("+", Token.Increment)    \
+  .add("-", Token.Decrement)    \
+  .add(".", Token.Puts)         \
+  .add(",", Token.Gets)
