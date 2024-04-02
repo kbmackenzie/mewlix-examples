@@ -1,0 +1,31 @@
+yarn ball brainfuck.ast
+
+from utils.constants takes constants
+
+mew TokenType = constants([
+  "MoveLeft"  , -- Increments pointer.
+  "MoveRight" , -- Decrements pointer.
+  "Increment" , -- Increments value pointed to.
+  "Decrement" , -- Decrements value pointed to.
+  "Loop"      , -- Loop block.
+  "Puts"      , -- Put value pointed to output.
+  "Gets"      , -- Read the next value from input.
+])
+
+mew instruction = =^oxo^= (type) => =^oxo^= (count) => =^-x-^= [
+  type: type,
+  count: count,
+]
+
+mew Token = =^-x-^= [
+  MoveLeft:  instruction(TokenType.MoveLeft),
+  MoveRight: instruction(TokenType.MoveRight),
+  Increment: instruction(TokenType.Increment),
+  Decrement: instruction(TokenType.Decrement),
+  Puts:      instruction(TokenType.Puts),
+  Gets:      instruction(TokenType.Gets),
+  Loop:      =^oxo^= (block) => =^-x-^= [
+    type: TokenType.Loop,
+    block: block
+  ],
+]
