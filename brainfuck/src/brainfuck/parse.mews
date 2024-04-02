@@ -19,7 +19,7 @@ mew TokenTable = std.table()        \
     tokens = consume_token(tokens, parser)
   meowmeow
 
-  bring tokens
+  bring std.reverse(tokens)
 meowmeow
 
 =^.x.^= consume_token(tokens, parser)
@@ -58,5 +58,5 @@ meowmeow
   meowmeow
 
   parser.advance()
-  bring tokens
+  bring std.reverse(tokens)
 meowmeow
