@@ -13,7 +13,7 @@ mew TokenType = constants([
 ])
 
 mew Token = =^-x-^= [
-  simple: =^oxo^= (count) => =^oxo^= (type) => =^-x-^= [
+  simple: =^oxo^= (type) => =^oxo^= (count) => =^-x-^= [
     type:  type,
     count: count,
   ],
