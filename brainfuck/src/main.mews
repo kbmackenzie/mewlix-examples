@@ -4,6 +4,7 @@ takes std.console
 from brainfuck.parse takes parse
 from brainfuck.eval takes evaluate
 
+console.name("brainfuck")
 console.accepted_files([".txt", ".b", ".bf"])
 
 stare while true
