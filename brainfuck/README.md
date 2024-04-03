@@ -11,7 +11,7 @@ Into as few tokens as possible:
 [=^-x-^= [ type: "Increment", count: 4 ], =^-x-^= [ type: "Decrement", count: 4 ]]
 ```
 
-As Mewlix does not have indexable arrays, a [table](https://github.com/KBMackenzie/mewlix/wiki/std#stdtable) is used in its place.
+As Mewlix does not have indexable arrays, a [table](https://github.com/KBMackenzie/mewlix/wiki/std#stdtable) is used to represent the byte array. The value for each *'cell'* wraps around: Incrementing a cell above 255 will cause it to wrap around to 0, and vice versa.
 
 Additionally, this interpreter chooses to handle EOF by making no changes to a cell whatsoever. [This seemed like the better option.](https://esolangs.org/wiki/Brainfuck#EOF).
 
