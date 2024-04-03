@@ -1,8 +1,0 @@
-yarn ball utils.func
-
-=^.x.^= sequence(func, count)
-  stare while count > 0
-    func()
-    count = count - 1
-  meowmeow
-meowmeow
