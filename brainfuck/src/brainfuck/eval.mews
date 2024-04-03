@@ -2,14 +2,15 @@ yarn ball brainfuck.eval
 
 from brainfuck.ast takes TokenType
 from brainfuck.env takes Environment
-from utils.func takes sequence
 
 mew Instructions = std.table()                                                                \
   .add(TokenType.MoveLeft  , =^oxo^= (env, token) => env.move(-token.count)   )               \
   .add(TokenType.MoveRight , =^oxo^= (env, token) => env.move(token.count)    )               \
   .add(TokenType.Increment , =^oxo^= (env, token) => env.modify(token.count)  )               \
   .add(TokenType.Decrement , =^oxo^= (env, token) => env.modify(-token.count) )               \
-  .add(TokenType.Loop      , =^oxo^= (env, token) => evaluate_loop(token.block, env))         \
+  .add(TokenType.Puts      , =^oxo^= (env, token) => puts(env, token.count)   )               \
+  .add(TokenType.Gets      , =^oxo^= (env, token) => gets(env, token.count)   )               \
+  .add(TokenType.Loop      , =^oxo^= (env, token) => loop(token.block, env)   )
 
 =^.x.^= evaluate(tokens, env_arg)
   mew env = env_arg or new Environment()
@@ -19,29 +20,30 @@ mew Instructions = std.table()                                                  
   bring env.get_output()
 meowmeow
 
-=^.x.^= evaluate_loop(tokens, env)
+=^.x.^= puts(env, count)
+  stare while count > 0
+    env.puts()
+    count = count - 1
+  meowmeow
+meowmeow
+
+=^.x.^= gets(env, count)
+  stare while count > 0
+    env.gets()
+    count = count - 1
+  meowmeow
+meowmeow
+
+=^.x.^= loop(tokens, env)
   stare while env.look() > 0
     evaluate(tokens, env)
   meowmeow
 meowmeow
 
 =^.x.^= evaluate_token(token, env)
-  peek if token.type == TokenType.Puts
-    sequence(
-      =^oxo^= () => env.look() |> std.char |> env.puts,
-      token.count,
-    )
-
-  or if token.type == TokenType.Gets
-    sequence(
-      =^oxo^= () => env.gets() |> std.bap  |> env.set,
-      token.count,
-    )
-
-  or if Instructions.has(token.type)
-    Instructions.get(token.type)(env, token)
-
-  otherwise
-    throw :3"Unrecognized instruction type: [token.type]"
+  peek if Instructions.has(token.type)
+    bring Instructions.get(token.type)(env, token)
   meowmeow
+
+  throw :3"Unrecognized instruction: [token.type]"
 meowmeow
