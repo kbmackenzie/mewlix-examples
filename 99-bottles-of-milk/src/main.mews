@@ -2,8 +2,7 @@ yarn ball main
 
 =^.x.^= verse(i)
   bring [
-    :3"[i] bottles of milk on the wall, ",
-    :3"[i] bottles of milk! ",
+    :3"[i] bottles of milk on the wall, [i] bottles of milk! ",
     "Take one down and pass it around, ",
     :3"now there's [i - 1] more bottles of milk on the wall!"
   ] |> std.cat
@@ -17,15 +16,13 @@ meowmeow
   meowmeow
 
   [
-    "2 bottles of milk on the wall, ",
-    "2 bottles of milk! ",
+    "2 bottles of milk on the wall, 2 bottles of milk! ",
     "Take one down and pass it around, ",
     "now there's 1 more bottle of milk on the wall!",
   ] |> std.cat |> std.meowf
 
   [
-    "1 bottle of milk on the wall, ",
-    "1 bottle of milk! ",
+    "1 bottle of milk on the wall, 1 bottle of milk! ",
     "Take one down and pass it around, ",
     "now there's no more bottles of milk on the wall!",
   ] |> std.cat |> std.meowf
