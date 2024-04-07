@@ -39,7 +39,7 @@ meowmeow
     mew token = TokenTable.get(head) |> Token.simple
 
     mew count = 1
-    stare while parser.head() == head
+    stare while not parser.eof() and parser.head() == head
       parser.advance()
       count = count + 1
     meowmeow
