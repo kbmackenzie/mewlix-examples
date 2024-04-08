@@ -6,6 +6,14 @@ from ui.text takes TextBox
 takes std.graphic
 takes palette
 
+~( ^.x.^)>
+The speed controls will consist of:
+  - A 'plus' button for increasing speed.
+  - A 'minus' button for decreasing speed.
+  - A text box to display the current speed.
+
+To start off, let's define constants for our sprites:
+<(^.x.^ )~
 mew sprite_width  = 16
 mew sprite_height = 16
 
@@ -19,6 +27,7 @@ mew minus = =^-x-^= [
   hovered: "minus-sprite-hovered",
 ]
 
+~( ^.x.^)> And let us load our sprites: <(^.x.^ )~
 spritesheet("assets/plus-minus.png", [
   =^-x-^= [ key: plus.normal,    rect: new Rectangle( 0,  0,  16, 16) ],
   =^-x-^= [ key: plus.hovered,   rect: new Rectangle(16,  0,  16, 16) ],
@@ -26,12 +35,27 @@ spritesheet("assets/plus-minus.png", [
   =^-x-^= [ key: minus.hovered,  rect: new Rectangle(16, 16,  16, 16) ],
 ])
 
+~( ^.x.^)>
+After that, we can begin working on our controls' state.
+
+We will store our speed in percentages:
+  100% is the normal speed.
+  50% is half as fast.
+  200% is twice as fast.
+
+We don't want our speed to ever go below 1%.
+
+Let's define a variable to hold our speed value, and a 'setter' function for safely setting our speed value:
+<(^.x.^ )~
 mew speed = 100
 
 =^.x.^= change_speed(value)
   bring speed = std.max(20, speed + value)
 meowmeow
 
+~( ^.x.^)>
+After that, we can begin constructing our controls:
+<(^.x.^ )~
 mew controls = =^-x-^= [
   plus: new Button(
     new Rectangle(0, 0, sprite_width, sprite_height),
