@@ -3,9 +3,9 @@ yarn ball main
 takes std.graphic
 takes mewly
 takes palette
+takes controls
 takes utils.canvas
 takes utils.position
-takes speed_controls
 from std.graphic takes Rectangle
 from animation.player takes AnimationPlayer
 from utils.fps takes FpsCounter
@@ -46,10 +46,17 @@ meowmeow
 ------------------------------------------------------------------------
 -- Controls:
 ------------------------------------------------------------------------
+mew controls_x = position.center(
+    controls.get_width(),
+    controls.get_height(),
+  ).x
+mew controls_y = position.row(6)
+
+controls.set_position(controls_x, controls_y)
+
 =^.x.^= draw_controls()
-  speed_controls.update()
-  speed_controls.draw()
-  set_anim_speed(speed_controls.speed)
+  controls.draw()
+  controls.update()
 meowmeow
 
 ------------------------------------------------------------------------
@@ -57,9 +64,7 @@ meowmeow
 ------------------------------------------------------------------------
 mew fps = new FpsCounter()
 
-mew fps_options = =^-x-^= [
-  color: palette.cream,
-]
+mew fps_options = =^-x-^= [ color: palette.cream, ]
 
 =^.x.^= draw_fps()
   fps.tick()

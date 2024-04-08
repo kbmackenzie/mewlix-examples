@@ -1,0 +1,89 @@
+yarn ball controls
+
+from std.graphic takes spritesheet, Rectangle
+from ui.button takes Button
+from ui.text takes TextBox
+takes std.graphic
+takes palette
+
+mew sprite_width  = 16
+mew sprite_height = 16
+
+mew plus = =^-x-^= [
+  normal:  "plus-sprite",
+  hovered: "plus-sprite-hovered",
+]
+
+mew minus = =^-x-^= [
+  normal:  "minus-sprite",
+  hovered: "minus-sprite-hovered",
+]
+
+spritesheet("assets/plus-minus.png", [
+  =^-x-^= [ key: plus.normal,    rect: new Rectangle( 0,  0,  16, 16) ],
+  =^-x-^= [ key: plus.hovered,   rect: new Rectangle(16,  0,  16, 16) ],
+  =^-x-^= [ key: minus.normal,   rect: new Rectangle( 0, 16,  16, 16) ],
+  =^-x-^= [ key: minus.hovered,  rect: new Rectangle(16, 16,  16, 16) ],
+])
+
+mew speed = 100
+
+=^.x.^= change_speed(value)
+  bring speed = std.max(20, speed + value)
+meowmeow
+
+mew controls = =^-x-^= [
+  plus: new Button(
+    new Rectangle(0, 0, sprite_width, sprite_height),
+    =^oxo^= () => change_speed(20),
+  ),
+  minus: new Button(
+    new Rectangle(0, 0, sprite_width, sprite_height),
+    =^oxo^= () => change_speed(-20),
+  ),
+  display: new TextBox(
+    new Rectangle(0, 0, 48, sprite_width),
+    std.purr(speed),
+    =^-x-^= [ size: 16, color: palette.light_pink ]
+  ),
+]
+
+=^.x.^= get_width()
+  bring controls.plus.rect.width  \
+    + controls.display.rect.width \
+    + controls.minus.rect.width   \
+meowmeow
+
+=^.x.^= get_height()
+  bring sprite_height
+meowmeow
+
+=^.x.^= set_position(x, y)
+  controls.minus.rect.x = x
+  controls.minus.rect.y = y
+  -- Advance forward:
+  x = x + controls.minus.rect.width
+
+  controls.display.rect.x = x
+  controls.display.rect.y = y
+  -- Advance forward:
+  x = x + controls.display.rect.width
+
+  controls.plus.rect.x = x
+  controls.plus.rect.y = y
+meowmeow
+
+=^.x.^= draw()
+  mew plus_sprite  = plus.hovered if controls.plus.is_hovered() else plus.normal
+  mew minus_sprite = minus.hovered if controls.minus.is_hovered() else minus.normal
+
+  graphic.draw(plus_sprite, controls.plus.rect.x, controls.plus.rect.y)
+  graphic.draw(minus_sprite, controls.minus.rect.x, controls.minus.rect.y)
+  controls.display.draw()
+meowmeow
+
+=^.x.^= update()
+  controls.plus.update()
+  controls.minus.update()
+  controls.display.set_message(:3"[speed]%")
+meowmeow
