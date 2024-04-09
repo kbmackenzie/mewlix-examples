@@ -5,12 +5,11 @@ from brainfuck.parse takes parse
 from brainfuck.eval takes evaluate
 
 console.name("brainfuck")
-console.accepted_files([".txt", ".b", ".bf"])
+console.accepted_files([".b", ".bf"])
 
 stare while true
   mew input = listen "Enter a Brainfuck string (or upload a *.b file):"
   mew tokens = parse(input)
   mew output = evaluate(tokens)
-
-  meow :3"\[ Output: \]\n[output]\n\n"
+  meow :3"\[Output:\]\n[output]\n\n"
 meowmeow
