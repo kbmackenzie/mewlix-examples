@@ -2,6 +2,19 @@ yarn ball ui.button
 
 takes std.graphic
 
+~( ^.x.^)> 
+A clowder defining the behavior of a button.
+
+Its constructor accepts:
+  1. A Rectangle box defining its position + dimensions.
+  2. A function to call when the button is clicked.
+
+It contains the following methods:
+  update():     Should be called every frame.
+  is_hovered(): Returns true if the button is being hovered.
+  is_clicked(): Returns true if the button has been clicked.
+<(^.x.^ )~
+
 clowder Button
   =^.x.^= wake(rect, callback)
     home.rect = rect

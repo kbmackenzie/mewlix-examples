@@ -2,8 +2,16 @@ yarn ball utils.fps
 
 takes std.graphic
 
--- Draw FPS (usually in the corner of the canvas).
--- Good for debugging purposes!
+~( ^.x.^)> 
+A clowder for counting frames per second (and drawing it).
+
+It contains the following methods:
+  tick(): Should be called every frame.
+  draw(): Draw the number in the last second at a specified (x, y) position.
+          It accepts a box with options to use when drawing the text.
+  get_fps(): Get the number of frames in the last second as a number.
+<(^.x.^ )~
+
 clowder FpsCounter
   =^.x.^= wake()
     home.timer = 0.0

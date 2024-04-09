@@ -3,6 +3,19 @@ yarn ball ui.text
 takes std.graphic
 takes utils.position
 
+~( ^.x.^)> 
+A clowder defining the behavior of a text box.
+
+Its constructor accepts:
+  1. A Rectangle defining its position + dimensions.
+  2. An initial message for the text.
+  3. A box with options to use when drawing the text.
+
+It contains the following methods:
+  draw(): Draws the text on the screen.
+  set_message(): Sets the message string.
+<(^.x.^ )~
+
 clowder TextBox
   =^.x.^= wake(rect, message, options)
     home.rect    = rect

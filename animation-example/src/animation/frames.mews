@@ -2,6 +2,17 @@ yarn ball animation.frames
 
 from std.graphic takes spritesheet
 
+~( ^.x.^)>
+Load frames from a spritesheet and receive a shelf with keys for each frame.
+
+It accepts the following argumments:
+  1. The path to a spritesheet.
+  2. A shelf of boxes holding the key and dimensions for each frame.
+  (See the 'mewly.mews' source file for an example.)
+
+It returns a shelf with keys for each frame, in the same order.
+<(^.x.^ )~
+
 =^.x.^= load_frames(sheet, frame_boxes)
   spritesheet(sheet, frame_boxes)
   bring std.map(=^oxo^= (x) => x.key, frame_boxes)

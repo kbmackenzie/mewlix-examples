@@ -2,6 +2,18 @@ yarn ball animation.player
 
 takes std.graphic
 
+~( ^.x.^)> 
+A clowder designed for easily playing looping frame animations.
+
+Its constructor accepts:
+  1. A shelf of sprite keys. The last frame should be at the *top* of the shelf.
+  2. The frame rate for the animation.
+
+It contains the following methods:
+  draw(): Draw the animation and update the animation state.
+  set_frame_rate(): Change the frame rate for the animation.
+<(^.x.^ )~
+
 clowder AnimationPlayer
   =^.x.^= wake(frames, frame_rate)
     assert not std.empty(frames)
@@ -19,7 +31,7 @@ clowder AnimationPlayer
     home.current_frame = peek frames
   meowmeow
 
-  =^.x.^= next_frame()
+  =^.x.^= _next_frame()
     peek if std.empty(home.frame_stack)
       home.frame_stack = home.frames
     meowmeow
@@ -33,7 +45,7 @@ clowder AnimationPlayer
     home.timer = home.timer + graphic.delta()
 
     peek if home.timer >= (1 / home.frame_rate)
-      home.next_frame()
+      home._next_frame()
     meowmeow
 
     graphic.draw(home.current_frame, x, y)
