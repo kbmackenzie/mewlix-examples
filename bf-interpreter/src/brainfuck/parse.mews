@@ -1,8 +1,70 @@
 yarn ball brainfuck.parse
 
-from brainfuck.ast takes TokenType, Token
+from brainfuck.ast takes MoveLeft, MoveRight, Increment, Decrement, Puts, Gets, Loop
 from brainfuck.parser takes Parser
 
+mew token_table = std.table()                 \
+  .add("<", =^oxo^= (c) => new MoveLeft(c))   \
+  .add(">", =^oxo^= (c) => new MoveRight(c))  \
+  .add("+", =^oxo^= (c) => new Increment(c))  \
+  .add("-", =^oxo^= (c) => new Decrement(c))  \
+  .add(".", =^oxo^= (c) => new Puts(c))       \
+  .add(",", =^oxo^= (c) => new Gets(c))
+
+=^.x.^= parse(input)
+  mew parser = new Parser(input)
+  mew tokens = []
+
+  stare while not parser.eof()
+    tokens = consume_token(parser, tokens)
+  meowmeow
+
+  bring std.reverse(tokens)
+meowmeow
+
+=^.x.^= consume_token(parser, tokens)
+  mew head = parser.head()
+  parser.advance()
+
+  peek if token_table.has(head)
+    mew count = 1
+    stare while not parser.eof() and parser.head() == head
+      parser.advance()
+      count = count + 1
+    meowmeow
+
+    mew token = token_table.get(head)(count)
+    bring token push tokens
+  meowmeow
+
+  peek if head == "["
+    mew token = consume_loop(parser)
+    bring token push tokens
+  meowmeow
+
+  peek if head == "]"
+    parser.error("Unmatched ']' found in string!")
+  meowmeow
+
+  bring tokens
+meowmeow
+
+=^.x.^= consume_loop(parser)
+  mew tokens = []
+
+  stare while not parser.eof()
+    peek if parser.head() == "]"
+      parser.advance()
+      bring new Loop(std.reverse(tokens))
+    meowmeow
+
+    tokens = consume_token(parser, tokens)
+  meowmeow
+
+  parser.error("Unclosed loop!")
+meowmeow
+
+~( ^.x.^)>
 mew TokenTable = std.table()        \
   .add("<", TokenType.MoveLeft)     \
   .add(">", TokenType.MoveRight)    \
@@ -60,3 +122,4 @@ meowmeow
   parser.advance()
   bring std.reverse(tokens)
 meowmeow
+<(^.x.^ )~
