@@ -54,7 +54,12 @@ mew speed = 100
 meowmeow
 
 ~( ^.x.^)>
-After that, we can begin constructing our controls:
+After that, we can begin constructing our controls.
+
+We will use some UI utility clowders here.
+The 'takes' statements at the top should tell you where they came from!
+
+Let's define a box to hold the two buttons and the text box:
 <(^.x.^ )~
 mew controls = =^-x-^= [
   plus: new Button(
@@ -72,6 +77,8 @@ mew controls = =^-x-^= [
   ),
 ]
 
+~( ^.x.^)> And now, let's define a couple functions to operate on them! <(^.x.^ )~
+
 =^.x.^= get_width()
   bring controls.plus.rect.width  \
     + controls.display.rect.width \
@@ -85,13 +92,11 @@ meowmeow
 =^.x.^= set_position(x, y)
   controls.minus.rect.x = x
   controls.minus.rect.y = y
-  -- Advance forward:
-  x = x + controls.minus.rect.width
+  x = x + controls.minus.rect.width   -- Move forward.
 
   controls.display.rect.x = x
   controls.display.rect.y = y
-  -- Advance forward:
-  x = x + controls.display.rect.width
+  x = x + controls.display.rect.width -- Move forward.
 
   controls.plus.rect.x = x
   controls.plus.rect.y = y

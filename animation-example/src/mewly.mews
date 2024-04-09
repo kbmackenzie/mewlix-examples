@@ -3,6 +3,8 @@ yarn ball mewly
 from std.graphic takes Rectangle
 from animation.frames takes load_frames
 
+~( ^.x.^)> Let's load the frames for the animation! <(^.x.^ )~
+
 mew width  = 96
 mew height = 64
 mew frame_rate = 12
