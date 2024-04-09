@@ -3,7 +3,7 @@ yarn ball brainfuck.ast
 from utils.constants takes constants
 
 clowder Token
-  =^.x.^= eval(_)
+  =^.x.^= evaluate(_)
     throw "Not implemented!"
   meowmeow
 meowmeow
@@ -16,53 +16,53 @@ clowder RepeatToken is Token
 meowmeow
 
 clowder MoveLeft is RepeatToken
-  =^.x.^= eval(state)
+  =^.x.^= evaluate(state)
     state.move(-home.count)
   meowmeow
 meowmeow
 
 clowder MoveRight is RepeatToken
-  =^.x.^= eval(state)
+  =^.x.^= evaluate(state)
     state.move(home.count)
   meowmeow
 meowmeow
 
 clowder Increment is RepeatToken
-  =^.x.^= eval(state)
+  =^.x.^= evaluate(state)
     state.add(home.count)
   meowmeow
 meowmeow
 
 clowder Decrement is RepeatToken
-  =^.x.^= eval(state)
+  =^.x.^= evaluate(state)
     state.add(-home.count)
   meowmeow
 meowmeow
 
 clowder Puts is RepeatToken
-  =^.x.^= eval(state)
+  =^.x.^= evaluate(state)
     state.puts(home.count)
   meowmeow
 meowmeow
 
 clowder Gets is RepeatToken
-  =^.x.^= eval(state)
+  =^.x.^= evaluate(state)
     state.gets(home.count)
   meowmeow
 meowmeow
 
 clowder Loop is Token
-  =^.x.^= wake(block)
-    home.block = block
+  =^.x.^= wake(tokens)
+    home.tokens = tokens
   meowmeow
 
   =^.x.^= run(state)
-    it's raining home.block!! catch a token!!
-      token.eval(state)
+    it's raining home.tokens!! catch a token!!
+      token.evaluate(state)
     meowmeow
   meowmeow
 
-  =^.x.^= eval(state)
+  =^.x.^= evaluate(state)
     stare while state.look() != 0
       home.run(state)
     meowmeow
