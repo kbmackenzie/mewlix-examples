@@ -2,23 +2,69 @@ yarn ball brainfuck.ast
 
 from utils.constants takes constants
 
-mew TokenType = constants([
-  "MoveLeft"  , -- Increments pointer.
-  "MoveRight" , -- Decrements pointer.
-  "Increment" , -- Increments value pointed to.
-  "Decrement" , -- Decrements value pointed to.
-  "Loop"      , -- Loop block.
-  "Puts"      , -- Put value pointed to output.
-  "Gets"      , -- Read the next value from input.
-])
+clowder Token
+  =^.x.^= eval(_)
+    throw "Not implemented!"
+  meowmeow
+meowmeow
 
-mew Token = =^-x-^= [
-  simple: =^oxo^= (type) => =^oxo^= (count) => =^-x-^= [
-    type:  type,
-    count: count,
-  ],
-  loop: =^oxo^= (block) => =^-x-^= [
-    type: TokenType.Loop,
-    block: block,
-  ]
-]
+clowder RepeatToken is Token
+  =^.x.^= wake(count)
+    assert count >= 1
+    home.count = count
+  meowmeow
+meowmeow
+
+clowder MoveLeft is RepeatToken
+  =^.x.^= eval(state)
+    state.move(-home.count)
+  meowmeow
+meowmeow
+
+clowder MoveRight is RepeatToken
+  =^.x.^= eval(state)
+    state.move(home.count)
+  meowmeow
+meowmeow
+
+clowder Increment is RepeatToken
+  =^.x.^= eval(state)
+    state.add(home.count)
+  meowmeow
+meowmeow
+
+clowder Decrement is RepeatToken
+  =^.x.^= eval(state)
+    state.add(-home.count)
+  meowmeow
+meowmeow
+
+clowder Puts is RepeatToken
+  =^.x.^= eval(state)
+    state.puts(home.count)
+  meowmeow
+meowmeow
+
+clowder Gets is RepeatToken
+  =^.x.^= eval(state)
+    state.gets(home.count)
+  meowmeow
+meowmeow
+
+clowder Loop is Token
+  =^.x.^= wake(block)
+    home.block = block
+  meowmeow
+
+  =^.x.^= run(state)
+    it's raining home.block!! catch a token!!
+      token.eval(state)
+    meowmeow
+  meowmeow
+
+  =^.x.^= eval(state)
+    stare while state.look() != 0
+      home.run(state)
+    meowmeow
+  meowmeow
+meowmeow
