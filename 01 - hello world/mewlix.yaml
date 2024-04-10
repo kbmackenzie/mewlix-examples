@@ -1,0 +1,10 @@
+name: hello world
+description: ''
+mode: console
+entrypoint: main
+port: auto
+sources:
+- main.mews
+assets: []
+specialImports: {}
+flags: []
