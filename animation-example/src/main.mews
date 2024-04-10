@@ -63,7 +63,6 @@ meowmeow
 -- FPS:
 ------------------------------------------------------------------------
 mew fps = new FpsCounter()
-
 mew fps_options = =^-x-^= [ color: palette.cream, ]
 
 =^.x.^= draw_fps()
