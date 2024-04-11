@@ -10,7 +10,6 @@ console.accepted_files([".b", ".bf"])
 stare while true
   mew input = listen "Enter a Brainfuck string (or upload a *.b file):"
   mew tokens = parse(input)
-  meow tokens
   mew output = evaluate(tokens)
   meow :3"\[Output:\]\n[output]\n\n"
 ~meow
