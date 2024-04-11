@@ -22,7 +22,6 @@ We can use these magic numbers in these functions:
 <(^.x.^ )~
 
 -- Get y position for the start of a row:
-<(^.x.^ )~
 =^.x.^= row(num)
   bring 16 * num
 ~meow
