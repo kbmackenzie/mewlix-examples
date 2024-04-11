@@ -1,18 +1,28 @@
-yarn ball brainfuck.env
+yarn ball brainfuck.state
 
 from std.curry takes map
 
-clowder Environment
+clowder Input
+  =^.x.^= wake(input)
+    home.input = input
+    home.index = 0
+  ~meow
+
+  =^.x.^= get()
+    mew head = std.poke(home.input, home.index)
+    home.index = home.index + 1
+    bring head
+  ~meow
+~meow
+
+clowder State
   =^.x.^= wake()
     home.cells    = std.table()
     home.pointer  = 0
-
-    -- We will store the output in this clowder and print it once a script has finished running,
-    -- Though this is ill-advised, it performs better than DOM manipulation on every '.'.
     home.output   = ""
   ~meow
 
-  =^.x.^= look()
+  =^.x.^= peek()
     bring home.cells.get(home.pointer) or 0
   ~meow
 
@@ -34,16 +44,11 @@ clowder Environment
 
   =^.x.^= gets()
     look if home.input == nothing
-      home.input = =^-x-^= [
-        string: listen "Enter input to be read by the program:",
-        index: 0,
-      ]
+      home.input = new Input(listen "Enter input to be read by the program:")
     ~meow
 
-    mew char = std.poke(home.input.string, home.input.index)
-
+    mew char = home.input.get()
     look if char != nothing
-      home.input.index = home.input.index + 1
       home.set(std.bap(char))
     ~meow
   ~meow

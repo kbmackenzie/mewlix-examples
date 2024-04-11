@@ -1,12 +1,11 @@
 yarn ball brainfuck.eval
 
-from brainfuck.env takes Environment
+from brainfuck.state takes State
 
 =^.x.^= evaluate(tokens)
-  mew state = new Environment()
+  mew state = new State()
   it's raining tokens!! catch a token!!
     token.evaluate(state)
   ~meow
-
   bring state.get_output()
 ~meow
