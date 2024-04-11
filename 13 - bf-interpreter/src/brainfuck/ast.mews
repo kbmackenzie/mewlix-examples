@@ -61,7 +61,7 @@ clowder Loop is Token
   ~meow
 
   =^.x.^= evaluate(state)
-    stare while state.look() != 0
+    stare while state.peek() != 0
       home.run(state)
     ~meow
   ~meow

@@ -31,7 +31,7 @@ clowder State
   ~meow
 
   =^.x.^= add(value)
-    home.cells.add(home.pointer, (home.look() + value) % 256)
+    home.cells.add(home.pointer, (home.peek() + value) % 256)
   ~meow
 
   =^.x.^= set(value)
@@ -39,7 +39,7 @@ clowder State
   ~meow
 
   =^.x.^= puts()
-    home.output = home.output .. std.char(home.look())
+    home.output = home.output .. std.char(home.peek())
   ~meow
 
   =^.x.^= gets()
