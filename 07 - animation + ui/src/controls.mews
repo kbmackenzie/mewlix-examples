@@ -51,7 +51,7 @@ mew speed = 100
 
 =^.x.^= change_speed(value)
   bring speed = std.max(20, speed + value)
-meowmeow
+~meow
 
 ~( ^.x.^)>
 After that, we can begin constructing our controls.
@@ -83,11 +83,11 @@ mew controls = =^-x-^= [
   bring controls.plus.rect.width  \
     + controls.display.rect.width \
     + controls.minus.rect.width   \
-meowmeow
+~meow
 
 =^.x.^= get_height()
   bring sprite_height
-meowmeow
+~meow
 
 =^.x.^= set_position(x, y)
   controls.minus.rect.x = x
@@ -100,7 +100,7 @@ meowmeow
 
   controls.plus.rect.x = x
   controls.plus.rect.y = y
-meowmeow
+~meow
 
 =^.x.^= draw()
   mew plus_sprite  = plus.hovered if controls.plus.is_hovered() else plus.normal
@@ -109,10 +109,10 @@ meowmeow
   graphic.draw(plus_sprite, controls.plus.rect.x, controls.plus.rect.y)
   graphic.draw(minus_sprite, controls.minus.rect.x, controls.minus.rect.y)
   controls.display.draw()
-meowmeow
+~meow
 
 =^.x.^= update()
   controls.plus.update()
   controls.minus.update()
   controls.display.set_message(:3"[speed]%")
-meowmeow
+~meow

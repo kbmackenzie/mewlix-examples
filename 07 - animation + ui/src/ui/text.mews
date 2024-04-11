@@ -21,7 +21,7 @@ clowder TextBox
     home.rect    = rect
     home.message = message
     home.options = options
-  meowmeow
+  ~meow
 
   =^.x.^= draw()
     mew text_size = graphic.measure_text(home.message, home.options)
@@ -30,9 +30,9 @@ clowder TextBox
     mew text_y = home.rect.y + ((home.rect.height - text_size.height) / 2)
 
     graphic.write(home.message, text_x, text_y, home.options)
-  meowmeow
+  ~meow
 
   =^.x.^= set_message(message)
     home.message = message
-  meowmeow
-meowmeow
+  ~meow
+~meow

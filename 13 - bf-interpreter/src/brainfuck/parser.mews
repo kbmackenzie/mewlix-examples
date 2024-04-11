@@ -4,25 +4,25 @@ clowder Parser
   =^.x.^= wake(input)
     home.input = input
     home.index = 0
-  meowmeow
+  ~meow
 
   =^.x.^= head()
-    peek if home.eof()
+    look if home.eof()
       home.error("Unexpected end of input!")
-    meowmeow
+    ~meow
 
     bring std.poke(home.input, home.index)
-  meowmeow
+  ~meow
 
   =^.x.^= advance()
     home.index = home.index + 1
     assert home.index <= home.input...?
-  meowmeow
+  ~meow
 
   =^.x.^= eof()
     assert home.index >= 0
     bring home.index >= home.input...?
-  meowmeow
+  ~meow
 
   =^.x.^= error(message)
     home.index = std.min(home.index, home.input...?)
@@ -30,10 +30,10 @@ clowder Parser
     =^.x.^= generate_snippet()
       mew preview_length = std.min(20, home.input...? - home.index)
       bring std.tear(home.input, home.index, home.index + preview_length)
-    meowmeow
+    ~meow
 
     mew snippet = "<eof>" if home.eof() else generate_snippet()
 
     throw :3"Brainfuck parser error: [message] | Input: [snippet]"
-  meowmeow
-meowmeow
+  ~meow
+~meow

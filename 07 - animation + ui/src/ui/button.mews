@@ -19,24 +19,24 @@ clowder Button
   =^.x.^= wake(rect, callback)
     home.rect = rect
     home.callback = callback
-  meowmeow
+  ~meow
 
   =^.x.^= is_hovered()
     bring home.rect.contains(graphic.mouse_position())
-  meowmeow
+  ~meow
 
   =^.x.^= is_clicked()
     bring graphic.mouse_click() and home.is_hovered()
-  meowmeow
+  ~meow
 
   =^.x.^= update()
-    peek if home.is_clicked()
+    look if home.is_clicked()
       home.callback()
-    meowmeow
-  meowmeow
+    ~meow
+  ~meow
 
   =^.x.^= set_position(x, y)
     home.rect.x = x
     home.rect.y = y
-  meowmeow
-meowmeow
+  ~meow
+~meow

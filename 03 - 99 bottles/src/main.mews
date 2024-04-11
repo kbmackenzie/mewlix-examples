@@ -6,14 +6,14 @@ yarn ball main
     "Take one down and pass it around, ",
     :3"now there's [i - 1] more bottles of milk on the wall!"
   ] |> std.cat
-meowmeow
+~meow
 
 =^.x.^= sing()
   mew bottles = std.count(99, 3)
 
   it's raining bottles!! catch a bottle!!
     meow verse(bottle)
-  meowmeow
+  ~meow
 
   [
     "2 bottles of milk on the wall, 2 bottles of milk! ",
@@ -26,6 +26,6 @@ meowmeow
     "Take one down and pass it around, ",
     "now there's no more bottles of milk on the wall!",
   ] |> std.cat |> std.meowf
-meowmeow
+~meow
 
 sing()

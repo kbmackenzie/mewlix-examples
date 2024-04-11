@@ -28,31 +28,31 @@ clowder AnimationPlayer
 
     home.timer = 0.0
     home.frame_stack = knock over frames
-    home.current_frame = peek frames
-  meowmeow
+    home.current_frame = paw at frames
+  ~meow
 
   =^.x.^= _next_frame()
-    peek if std.empty(home.frame_stack)
+    look if std.empty(home.frame_stack)
       home.frame_stack = home.frames
-    meowmeow
+    ~meow
 
     home.timer = 0.0
-    home.current_frame = peek home.frame_stack
+    home.current_frame = paw at home.frame_stack
     home.frame_stack = knock over home.frame_stack
-  meowmeow
+  ~meow
 
   =^.x.^= draw(x, y)
     home.timer = home.timer + graphic.delta()
 
-    peek if home.timer >= (1 / home.frame_rate)
+    look if home.timer >= (1 / home.frame_rate)
       home._next_frame()
-    meowmeow
+    ~meow
 
     graphic.draw(home.current_frame, x, y)
-  meowmeow
+  ~meow
 
   =^.x.^= set_frame_rate(frame_rate)
     assert frame_rate > 0
     home.frame_rate = frame_rate
-  meowmeow
-meowmeow
+  ~meow
+~meow

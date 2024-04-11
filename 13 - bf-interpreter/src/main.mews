@@ -13,4 +13,4 @@ stare while true
   meow tokens
   mew output = evaluate(tokens)
   meow :3"\[Output:\]\n[output]\n\n"
-meowmeow
+~meow

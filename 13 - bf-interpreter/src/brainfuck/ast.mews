@@ -5,66 +5,66 @@ from utils.constants takes constants
 clowder Token
   =^.x.^= evaluate(_)
     throw "Not implemented!"
-  meowmeow
-meowmeow
+  ~meow
+~meow
 
 clowder RepeatToken is Token
   =^.x.^= wake(count)
     assert count >= 1
     home.count = count
-  meowmeow
-meowmeow
+  ~meow
+~meow
 
 clowder MoveLeft is RepeatToken
   =^.x.^= evaluate(state)
     state.move(-home.count)
-  meowmeow
-meowmeow
+  ~meow
+~meow
 
 clowder MoveRight is RepeatToken
   =^.x.^= evaluate(state)
     state.move(home.count)
-  meowmeow
-meowmeow
+  ~meow
+~meow
 
 clowder Increment is RepeatToken
   =^.x.^= evaluate(state)
     state.add(home.count)
-  meowmeow
-meowmeow
+  ~meow
+~meow
 
 clowder Decrement is RepeatToken
   =^.x.^= evaluate(state)
     state.add(-home.count)
-  meowmeow
-meowmeow
+  ~meow
+~meow
 
 clowder Puts is RepeatToken
   =^.x.^= evaluate(state)
     state.puts(home.count)
-  meowmeow
-meowmeow
+  ~meow
+~meow
 
 clowder Gets is RepeatToken
   =^.x.^= evaluate(state)
     state.gets(home.count)
-  meowmeow
-meowmeow
+  ~meow
+~meow
 
 clowder Loop is Token
   =^.x.^= wake(tokens)
     home.tokens = tokens
-  meowmeow
+  ~meow
 
   =^.x.^= run(state)
     it's raining home.tokens!! catch a token!!
       token.evaluate(state)
-    meowmeow
-  meowmeow
+    ~meow
+  ~meow
 
   =^.x.^= evaluate(state)
     stare while state.look() != 0
       home.run(state)
-    meowmeow
-  meowmeow
-meowmeow
+    ~meow
+  ~meow
+~meow

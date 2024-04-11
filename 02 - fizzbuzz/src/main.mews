@@ -11,21 +11,21 @@ https://leetcode.com/problems/fizz-buzz/
   it's raining nums!!!!!! catch a num!!!!!!
     mew message = ""
 
-    peek if num % 3 == 0
+    look if num % 3 == 0
       message = message .. "fizz"
-    meowmeow
+    ~meow
 
-    peek if num % 5 == 0
+    look if num % 5 == 0
       message = message .. "buzz"
-    meowmeow
+    ~meow
 
-    peek if std.empty(message)
+    look if std.empty(message)
       message = std.purr(num)
-    meowmeow
+    ~meow
     
     meow message
-  meowmeow
-meowmeow
+  ~meow
+~meow
 
 -- Set project name in the console:
 takes std.console

@@ -12,7 +12,7 @@ Those magic numbers can be safely used in these functions.
 -- Get (x, y) positions for centering an object in the canvas.
 =^.x.^= center(width, height)
   bring new Vector2((128 - width) / 2, (128 - height) / 2)
-meowmeow
+~meow
 
 ~( ^.x.^)> 
 Assuming 8 rows and 8 columns--the standard way to divide the canvas.
@@ -25,9 +25,9 @@ We can use these magic numbers in these functions:
 <(^.x.^ )~
 =^.x.^= row(num)
   bring 16 * num
-meowmeow
+~meow
 
 -- Get x position for the start of a column:
 =^.x.^= column(num)
   bring 16 * num
-meowmeow
+~meow
