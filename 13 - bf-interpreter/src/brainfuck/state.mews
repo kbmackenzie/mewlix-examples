@@ -1,7 +1,5 @@
 yarn ball brainfuck.state
 
-from std.curry takes map
-
 clowder Input
   =^.x.^= wake(input)
     home.input = input
