@@ -8,7 +8,7 @@ https://leetcode.com/problems/fizz-buzz/
 =^.x.^= fizzbuzz(max)
   mew nums = std.count(1, max)
 
-  it's raining nums!!!!!! catch a num!!!!!!
+  chase after num in nums!!!!!!!!!
     mew message = ""
 
     look if num % 3 == 0

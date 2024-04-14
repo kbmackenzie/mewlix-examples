@@ -4,7 +4,7 @@ from brainfuck.state takes State
 
 =^.x.^= evaluate(tokens)
   mew state = new State()
-  it's raining tokens!! catch a token!!
+  chase after token in tokens!!!!!!!
     token.evaluate(state)
   ~meow
   bring state.get_output()
