@@ -23,7 +23,7 @@ mew token_table!!! = std.table()              \
 ~meow
 
 =^.x.^= consume_token(parser, tokens)
-  mew head = parser.head()
+  mew head! = parser.head()
   parser.advance()
 
   look if token_table.has(head)
@@ -33,12 +33,12 @@ mew token_table!!! = std.table()              \
       count = count + 1
     ~meow
 
-    mew token = token_table.get(head)(count)
+    mew token! = token_table.get(head)(count)
     bring token push tokens
   ~meow
 
   look if head == "["
-    mew token = consume_loop(parser)
+    mew token! = consume_loop(parser)
     bring token push tokens
   ~meow
 

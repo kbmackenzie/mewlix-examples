@@ -3,7 +3,7 @@ yarn ball brainfuck.eval
 from brainfuck.state takes State
 
 =^.x.^= evaluate(tokens)
-  mew state = new State()
+  mew state! = new State()
   chase after token in tokens!!!!!!!
     token.evaluate(state)
   ~meow
