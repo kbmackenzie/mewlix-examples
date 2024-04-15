@@ -3,7 +3,7 @@ yarn ball brainfuck.parse
 from brainfuck.ast takes MoveLeft, MoveRight, Increment, Decrement, Puts, Gets, Loop
 from brainfuck.parser takes Parser
 
-mew token_table = std.table()                 \
+mew token_table!!! = std.table()              \
   .add("<", =^oxo^= (c) => new MoveLeft(c))   \
   .add(">", =^oxo^= (c) => new MoveRight(c))  \
   .add("+", =^oxo^= (c) => new Increment(c))  \
