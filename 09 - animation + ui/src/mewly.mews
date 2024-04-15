@@ -5,11 +5,11 @@ from animation.frames takes load_frames
 
 ~( ^.x.^)> Let's load the frames for the animation! <(^.x.^ )~
 
-mew width  = 96
-mew height = 64
-mew frame_rate = 12
+mew width!  = 96
+mew height! = 64
+mew frame_rate! = 12
 
-mew frames = load_frames("assets/mewly-run.png", [
+mew frames!!! = load_frames("assets/mewly-run.png", [
   =^-x-^= [ key: "mewly-run-0", rect: new Rectangle(0,   0, 96, 64) ],
   =^-x-^= [ key: "mewly-run-1", rect: new Rectangle(96,  0, 96, 64) ],
   =^-x-^= [ key: "mewly-run-2", rect: new Rectangle(0 , 64, 96, 64) ],

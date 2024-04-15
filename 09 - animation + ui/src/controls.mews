@@ -14,15 +14,15 @@ The speed controls will consist of:
 
 To start off, let's define constants for our sprites:
 <(^.x.^ )~
-mew sprite_width  = 16
-mew sprite_height = 16
+mew sprite_width!!!  = 16
+mew sprite_height!!! = 16
 
-mew plus = =^-x-^= [
+mew plus!!! = =^-x-^= [
   normal:  "plus-sprite",
   hovered: "plus-sprite-hovered",
 ]
 
-mew minus = =^-x-^= [
+mew minus!! = =^-x-^= [
   normal:  "minus-sprite",
   hovered: "minus-sprite-hovered",
 ]
@@ -50,7 +50,7 @@ Let's define a variable to hold our speed value, and a 'setter' function for saf
 mew speed = 100
 
 =^.x.^= change_speed(value)
-  bring speed = std.max(20, speed + value)
+  speed = std.max(20, speed + value)
 ~meow
 
 ~( ^.x.^)>
@@ -61,7 +61,7 @@ The 'takes' statements at the top should tell you where they came from!
 
 Let's define a box to hold the two buttons and the text box:
 <(^.x.^ )~
-mew controls = =^-x-^= [
+mew controls!!! = =^-x-^= [
   plus: new Button(
     new Rectangle(0, 0, sprite_width, sprite_height),
     =^oxo^= () => change_speed(20),

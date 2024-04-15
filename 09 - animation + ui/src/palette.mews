@@ -2,7 +2,7 @@ yarn ball palette
 
 ~( ^.x.^)> Color constants, for the color palette being used. <(^.x.^ )~
 
-mew cream       = "#ffffdb"
-mew light_pink  = "#ffc5bb"
-mew bright_pink = "#ff99a1"
-mew dark_purple = "#a06689"
+mew cream!       = "#ffffdb"
+mew light_pink!  = "#ffc5bb"
+mew bright_pink! = "#ff99a1"
+mew dark_purple! = "#a06689"
