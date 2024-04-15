@@ -56,6 +56,7 @@ controls.set_position(controls_x, controls_y)
 =^.x.^= draw_controls()
   controls.draw()
   controls.update()
+  set_anim_speed(controls.speed)
 ~meow
 
 ------------------------------------------------------------------------
