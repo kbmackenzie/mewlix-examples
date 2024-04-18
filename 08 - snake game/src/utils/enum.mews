@@ -1,0 +1,31 @@
+yarn ball utils.enum
+
+~( ^.x.^)> 
+An utility function for creating enum-like boxes.
+
+It expects a shelf of strings: one for each enum value.
+Each string becomes a property in a box, and is assigned an integer value.
+
+This function is heavily inspired by TypeScript's enums:
+https://www.typescriptlang.org/docs/handbook/enums.html#reverse-mappings
+
+[ Example ]
+After defining an enum like this:
+  example_enum = create_enum(["foo", "bar"])
+
+We can get an integer from a key:
+  example_enum["foo"] -- 0
+
+And a key from an integer:
+  example_enum[1] -- "bar"
+<(^.x.^ )~
+=^.x.^= create_enum(keys)
+  mew output! = =^-x-^= []
+  mew count = keys...? - 1
+  chase after key in keys!!!!!!
+    output[key]   = count
+    output[count] = key
+    count = count - 1
+  ~meow
+  bring output
+~meow
