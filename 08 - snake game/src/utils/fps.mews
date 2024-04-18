@@ -1,0 +1,42 @@
+yarn ball utils.fps
+
+takes std.graphic
+
+~( ^.x.^)> 
+A clowder for counting frames per second (and drawing it).
+
+It contains the following methods:
+  tick(): Should be called every frame.
+  draw(): Draw the number in the last second at a specified (x, y) position.
+          It accepts a box with options to use when drawing the text.
+  get_fps(): Get the number of frames in the last second as a number.
+<(^.x.^ )~
+
+clowder FpsCounter
+  =^.x.^= wake()
+    home.timer = 0.0
+    home.frames = 0
+    home.fps    = 0
+  ~meow
+
+  =^.x.^= tick() -- Should be called every frame.
+    home.timer  = home.timer + graphic.delta()
+    home.frames = home.frames + 1
+
+    look if home.timer >= 1
+      home.fps = home.frames
+      home.frames = 0
+      home.timer = 0.0
+    ~meow
+  ~meow
+
+  =^.x.^= get_fps()
+    bring home.fps
+  ~meow
+
+  =^.x.^= draw(x, y, options)
+    look if not x; x = 0; ~meow
+    look if not y; y = 0; ~meow
+    graphic.write(home.get_fps(), x, y, options)
+  ~meow
+~meow

@@ -1,0 +1,241 @@
+yarn ball main
+
+from std.graphic takes Rectangle, Vector2, Color, key_pressed, key_down, keys
+takes std.graphic
+from utils.fps takes FpsCounter
+takes utils.canvas
+takes utils.position
+
+~( ^.x.^)> 
+The map for our game will be made up of 8 x 8 pixel squares.
+We can define a few useful constants based on this:
+<(^.x.^ )~
+mew square_side!!! = 8
+mew rows!!!    = canvas.height // square_side
+mew columns!!! = canvas.width  // square_side
+
+~( ^.x.^)> 
+An enum-like box representing all possible directions
+the snake is able to move in.
+<(^.x.^ )~
+mew direction!!! = =^-x-^= [
+  up:    "up",
+  down:  "down",
+  left:  "left",
+  right: "right",
+]
+
+~( ^.x.^)> 
+Vector constants for movement based on direction.
+We will use this when moving the snake.
+<(^.x.^ )~
+mew movement!!! = =^-x-^= [
+  up:    new Vector2( 0, -8),
+  down:  new Vector2( 0,  8),
+  left:  new Vector2(-8,  0),
+  right: new Vector2( 8,  0),
+]
+
+-----------------------------------------
+-- Logic:
+-----------------------------------------
+
+~( ^.x.^)> 
+And now, we can begin defining a few pure functions that will help us with our game's logic.
+No I/O, no side effects. Pure utility functions only.
+
+We can begin with an utility function for 'moving' a Rectangle, which always generates a new Rectangle, avoiding any side effects.
+When our snake goes off screen, we want it to come out on the other side. For that, we'll use the modulo (%) operator.
+<(^.x.^ )~
+=^.x.^= move_rect(rect, move)
+  bring new Rectangle(
+    (rect.x + move.x) % canvas.width,
+    (rect.y + move.y) % canvas.height,
+    rect.width,
+    rect.height,
+  )
+~meow
+
+~( ^.x.^)> 
+Choose a random square in our map. This will be used for:
+  - Generating food.
+  - Choosing the starting position for the snake.
+
+We don't want to change any squares touching the corners.
+Thus, we follow these rules for choosing (x, y) positions:
+  0 < x < columns - 1
+  0 < y < rows - 1
+<(^.x.^ )~
+=^.x.^= random_position()
+  bring new Rectangle(
+    std.random_int(1, columns - 2) * square_side,
+    std.random_int(1, rows - 2) * square_side,
+    square_side,
+    square_side,
+  )
+~meow
+
+~( ^.x.^)> 
+We will represent our snake as a shelf of Rectangle boxes.
+We will represent our food as a Rectangle box.
+
+Based on that, we can define:
+  1. A pure function for 'growing' our snake.
+  2. Pure functions for checking the snake's collision with food and with itself.
+<(^.x.^ )~
+=^.x.^= grow_snake(snake, new_head, got_food)
+  mew body! = snake if got_food else std.remove(snake, -1)
+  bring new_head push body
+~meow
+
+=^.x.^= is_game_over(snake)
+  mew head! = paw at snake
+
+  mew is_colliding! = =^oxo^= (x)
+    => head.collides(x)
+
+  bring std.any(is_colliding, knock over snake)
+~meow
+
+=^.x.^= has_gotten_food(snake, food)
+  bring (paw at snake).collides(food)
+~meow
+
+-----------------------------------------
+-- Movement
+-----------------------------------------
+
+~( ^.x.^)> 
+Now, we can begin thinking about direction and movement.
+
+We don't want the player to start a new game facing the wrong direction inches away from the edge of the map and die within the first few seconds of the game.
+To get around that, we can make the snake always face away from the nearest corner at the start of the game:
+<(^.x.^ )~
+=^.x.^= start_direction(pos)
+  bring direction.up if pos.y > (canvas.width / 2) else direction.down
+~meow
+
+~( ^.x.^)> 
+It's time to slowly move into the world of I/O.
+A procedure for listening to keyboard input and changing direction based on the keys pressed.
+
+Note: We're choosing not to allow *backwards movement*, because it's certainly never what the player intended.
+<(^.x.^ )~
+=^.x.^= get_direction(current)
+  look if key_down(keys.up)    and current != direction.down;  bring direction.up;    ~meow
+  look if key_down(keys.down)  and current != direction.up;    bring direction.down;  ~meow
+  look if key_down(keys.left)  and current != direction.right; bring direction.left;  ~meow
+  look if key_down(keys.right) and current != direction.left;  bring direction.right; ~meow
+  bring current
+~meow
+
+-----------------------------------------
+-- Drawing
+-----------------------------------------
+
+~( ^.x.^)> 
+We must now break out of the world of pure functions. It's time to draw!
+
+Let's define procedures for drawing each element in our world:
+  - The snake.
+  - The food.
+<(^.x.^ )~
+
+=^.x.^= draw_snake(snake)
+  chase after square in snake!!!
+    graphic.rect(square, new Color(0, 0, 0))
+  ~meow
+~meow
+
+=^.x.^= draw_food(food)
+  graphic.rect(food, new Color(0, 255, 0))
+~meow
+
+-----------------------------------------
+-- Gamea Loop 
+-----------------------------------------
+~( ^.x.^)>
+We can now start thinking about game state!
+All our mutable game state and our 'scene' structure will live below.
+<(^.x.^ )~
+
+=^.x.^= init_state()
+  mew state! = =^-x-^= [
+    snake: [random_position()],
+    food: random_position(),
+  ]
+  state.direction = start_direction(paw at state.snake)
+  bring state
+~meow
+
+mew state = init_state()
+mew tick = 0.0
+
+~( ^.x.^)> 
+We'll also initialize a little FPS counter for convenience:
+<(^.x.^ )~
+mew fps! = new FpsCounter()
+mew fps_opts! = =^-x-^= []
+
+~( ^.x.^)> 
+And we'll define how fast our snake should move--or rather, how long our game loop should wait before updating the snake's position.
+I think 4 squares per second is a good movement speed--so let's define the wait time in seconds:
+<(^.x.^ )~
+mew wait_time = 1 / 4
+
+
+~( ^.x.^)>
+With this, we can begin defining procedures for each 'scene' in our game:
+  - snake_game: The main game.
+  - game_over:  The 'game over' screen for when the snake bites itself.
+<(^.x.^ )~
+mew current_scene = "snake_game"
+
+=^.x.^= snake_game()
+  tick = tick + graphic.delta()
+
+  draw_food(state.food)
+  draw_snake(state.snake)
+  state.direction = get_direction(state.direction)
+
+  look if tick > wait_time
+    tick = 0
+    mew got_food! = has_gotten_food(state.snake, state.food)
+
+    look if got_food
+      state.food = random_position()
+    ~meow
+
+    mew head! = move_rect(paw at state.snake, movement[state.direction])
+    state.snake = grow_snake(state.snake, head, got_food)
+
+    look if is_game_over(state.snake)
+      current_scene = "game_over"
+    ~meow
+  ~meow
+
+  fps.tick()
+  fps.draw(1, 0, fps_opts)
+~meow
+
+=^.x.^= game_over()
+  draw_food(state.food)
+  draw_snake(state.snake)
+  graphic.paint(new Color(255, 0, 0, 50))
+
+  look if key_pressed(keys.space)
+    state = init_state()
+    current_scene = "snake_game"
+  ~meow
+~meow
+
+-- Game loop:
+mew scenes! = =^-x-^= []
+scenes["snake_game"] = snake_game
+scenes["game_over"]  = game_over
+
+=^.x.^= game_loop()
+  scenes[current_scene]()
+~meow
+
+graphic.init(game_loop)
