@@ -82,7 +82,7 @@ mew controls!!! = =^-x-^= [
 =^.x.^= get_width()
   bring controls.plus.rect.width  \
     + controls.display.rect.width \
-    + controls.minus.rect.width   \
+    + controls.minus.rect.width
 ~meow
 
 =^.x.^= get_height()
