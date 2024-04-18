@@ -1,10 +1,11 @@
 yarn ball main
 
 from std.graphic takes Rectangle, Vector2, Color, key_pressed, key_down, keys
-takes std.graphic               -- The standard library's graphic template functions!
-takes utils.canvas              -- Canvas size constants.
-takes utils.position            -- Functions for positioning elements.
-from utils.fps takes FpsCounter -- A little utility clowder for FPS counters.
+takes std.graphic                 -- The standard library's graphic template functions!
+takes utils.canvas                -- Canvas size constants.
+takes utils.position              -- Functions for positioning elements.
+from utils.fps takes FpsCounter   -- A little utility clowder for FPS counters.
+from utils.enum takes create_enum -- Utility function for creating enum-like boxes.
 
 ~( ^.x.^)> 
 The map for our game will be made up of 8 x 8 pixel squares.
@@ -15,19 +16,17 @@ mew rows!!!    = canvas.height // square_side
 mew columns!!! = canvas.width  // square_side
 
 ~( ^.x.^)> 
-An enum-like box representing all possible directions
-the snake is able to move in.
+An enum-like box representing all possible directions the snake is able to move in.
 <(^.x.^ )~
-mew direction!!! = =^-x-^= [
-  up:    "up",
-  down:  "down",
-  left:  "left",
-  right: "right",
-]
+mew direction!!! = create_enum([
+  "up",
+  "down",
+  "left",
+  "right",
+])
 
 ~( ^.x.^)> 
-Vector constants for movement based on direction.
-We will use this when moving the snake.
+Vector2 constants defining movement based on direction. We will use this when moving the snake.
 <(^.x.^ )~
 mew movement!!! = =^-x-^= [
   up:    new Vector2( 0, -8),
@@ -206,7 +205,10 @@ mew current_scene = "snake_game"
       state.food = random_position()
     ~meow
 
-    mew head! = move_rect(paw at state.snake, movement[state.direction])
+    -- Convert direction enum value from a number to a string key:
+    mew direction_key! = direction[state.direction]
+
+    mew head! = move_rect(paw at state.snake, movement[direction_key])
     state.snake = grow_snake(state.snake, head, got_food)
 
     look if is_game_over(state.snake)
