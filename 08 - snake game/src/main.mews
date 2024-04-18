@@ -195,6 +195,7 @@ mew current_scene = "snake_game"
 
   draw_food(state.food)
   draw_snake(state.snake)
+
   state.direction = get_direction(state.direction)
 
   look if tick > wait_time
@@ -208,8 +209,8 @@ mew current_scene = "snake_game"
     -- Convert direction enum value from a number to a string key:
     mew direction_key! = direction[state.direction]
 
-    mew head! = move_rect(paw at state.snake, movement[direction_key])
-    state.snake = grow_snake(state.snake, head, got_food)
+    mew new_head! = move_rect(paw at state.snake, movement[direction_key])
+    state.snake = grow_snake(state.snake, new_head, got_food)
 
     look if is_game_over(state.snake)
       current_scene = "game_over"
