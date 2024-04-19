@@ -186,10 +186,14 @@ mew wait_time = 1 / 4
 With this, we can begin defining procedures for each 'scene' in our game:
   - snake_game: The main game.
   - game_over:  The 'game over' screen for when the snake bites itself.
+
+Let us define our scene table!
 <(^.x.^ )~
+
+mew SceneTable! = =^-x-^= []
 mew current_scene = "snake_game"
 
-=^.x.^= snake_game()
+=^.x.^= [SceneTable["snake_game"]]()
   tick = tick + graphic.delta()
 
   draw_food(state.food)
@@ -218,7 +222,7 @@ mew current_scene = "snake_game"
   fps.draw(1, 0, fps_opts)
 ~meow
 
-=^.x.^= game_over()
+=^.x.^= [SceneTable["game_over"]]()
   draw_food(state.food)
   draw_snake(state.snake)
   graphic.paint(new Color(255, 0, 0, 50))
@@ -229,15 +233,8 @@ mew current_scene = "snake_game"
   ~meow
 ~meow
 
-~( ^.x.^)> 
-And now we can define our scene table and our game loop function...
-<(^.x.^ )~
-mew scenes! = =^-x-^= []
-scenes["snake_game"] = snake_game
-scenes["game_over"]  = game_over
-
 =^.x.^= game_loop()
-  scenes[current_scene]()
+  SceneTable[current_scene]()
 ~meow
 
 ~( ^.x.^)> 
