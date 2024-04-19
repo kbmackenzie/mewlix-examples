@@ -5,7 +5,6 @@ takes std.graphic                 -- The standard library's graphic template fun
 takes utils.canvas                -- Canvas size constants.
 takes utils.position              -- Functions for positioning elements.
 from utils.fps takes FpsCounter   -- A little utility clowder for FPS counters.
-from utils.enum takes create_enum -- Utility function for creating enum-like boxes.
 
 ~( ^.x.^)> 
 The map for our game will be made up of 8 x 8 pixel squares.
@@ -16,23 +15,23 @@ mew rows!!!    = canvas.height // square_side
 mew columns!!! = canvas.width  // square_side
 
 ~( ^.x.^)> 
-An enum-like box representing all possible directions the snake is able to move in.
+An enum representing all possible directions the snake is able to move in.
 <(^.x.^ )~
-mew direction!!! = create_enum([
-  "up",
-  "down",
-  "left",
-  "right",
-])
+cat tree Direction
+  Up
+  Down
+  Left
+  Right
+~meow
 
 ~( ^.x.^)> 
 Vector2 constants defining movement based on direction. We will use this when moving the snake.
 <(^.x.^ )~
-mew movement!!! = =^-x-^= [
-  up:    new Vector2( 0, -8),
-  down:  new Vector2( 0,  8),
-  left:  new Vector2(-8,  0),
-  right: new Vector2( 8,  0),
+mew Movement!!! = =^-x-^= [
+  Up:    new Vector2( 0, -8),
+  Down:  new Vector2( 0,  8),
+  Left:  new Vector2(-8,  0),
+  Right: new Vector2( 8,  0),
 ]
 
 -----------------------------------------
@@ -111,7 +110,7 @@ For convenience, let's define a function for choosing a good starting direction 
 The snake should always face away from the nearest corner at the start:
 <(^.x.^ )~
 =^.x.^= start_direction(pos)
-  bring direction.up if pos.y > (canvas.width / 2) else direction.down
+  bring Direction.Up if pos.y > (canvas.width / 2) else Direction.Down
 ~meow
 
 ~( ^.x.^)> 
@@ -121,10 +120,10 @@ A procedure for listening to keyboard input and changing direction based on the 
 Note: We're choosing not to allow *backwards movement*, because it's certainly never what the player intended.
 <(^.x.^ )~
 =^.x.^= get_direction(current)
-  look if key_down(keys.up)    and current != direction.down;  bring direction.up;    ~meow
-  look if key_down(keys.down)  and current != direction.up;    bring direction.down;  ~meow
-  look if key_down(keys.left)  and current != direction.right; bring direction.left;  ~meow
-  look if key_down(keys.right) and current != direction.left;  bring direction.right; ~meow
+  look if key_down(keys.up)    and current != Direction.Down;  bring Direction.Up;    ~meow
+  look if key_down(keys.down)  and current != Direction.Up;    bring Direction.Down;  ~meow
+  look if key_down(keys.left)  and current != Direction.Right; bring Direction.Left;  ~meow
+  look if key_down(keys.right) and current != Direction.Left;  bring Direction.Right; ~meow
   bring current
 ~meow
 
@@ -206,10 +205,8 @@ mew current_scene = "snake_game"
       state.food = random_position()
     ~meow
 
-    -- Convert direction enum value from a number to a string key:
-    mew direction_key! = direction[state.direction]
-
-    mew new_head! = move_rect(paw at state.snake, movement[direction_key])
+    -- Convert Direction enum value from a number to a string key:
+    mew new_head! = move_rect(paw at state.snake, Movement[state.direction.name])
     state.snake = grow_snake(state.snake, new_head, got_food)
 
     look if is_game_over(state.snake)
