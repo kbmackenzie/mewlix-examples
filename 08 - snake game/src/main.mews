@@ -225,7 +225,7 @@ mew current_scene = "snake_game"
 =^.x.^= [SceneTable["game_over"]]()
   do draw_food  => state.food
   do draw_snake => state.snake
-  do graphic.paint => new Color(255, 0, 0, 50)
+  do graphic.paint => new Color(0, 0, 0, 80)
 
   look if key_pressed(keys.space)
     state = init_state()
