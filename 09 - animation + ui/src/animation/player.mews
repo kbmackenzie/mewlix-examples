@@ -48,7 +48,7 @@ clowder AnimationPlayer
       home._next_frame()
     ~meow
 
-    graphic.draw(home.current_frame, x, y)
+    do graphic.draw => home.current_frame, x, y
   ~meow
 
   =^.x.^= set_frame_rate(frame_rate)

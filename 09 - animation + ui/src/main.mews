@@ -17,12 +17,12 @@ mew anim!!! = new AnimationPlayer(mewly.frames, mewly.frame_rate)
 
 =^.x.^= draw_anim()
   mew pos = position.center(mewly.width, mewly.height)
-  anim.draw(pos.x, pos.y)
+  do anim.draw => pos.x, pos.y
 ~meow
 
 =^.x.^= set_anim_speed(percentage)
   mew new_frame_rate = std.floor(mewly.frame_rate * (percentage / 100))
-  anim.set_frame_rate(new_frame_rate)
+  do anim.set_frame_rate => new_frame_rate
 ~meow
 
 ------------------------------------------------------------------------
@@ -39,7 +39,7 @@ mew title_options!! = =^-x-^= [
 
   mew x = (canvas.width - text_size.width) / 2
   mew y = position.row(1)
-  graphic.write(title_string, x, y, title_options)
+  do graphic.write => title_string, x, y, title_options
 ~meow
 
 ------------------------------------------------------------------------
@@ -56,7 +56,7 @@ controls.set_position(controls_x, controls_y)
 =^.x.^= draw_controls()
   controls.draw()
   controls.update()
-  set_anim_speed(controls.speed)
+  do set_anim_speed => controls.speed
 ~meow
 
 ------------------------------------------------------------------------
@@ -74,12 +74,12 @@ mew fps_options!!! = =^-x-^= [ color: palette.cream, ]
 -- Game loop:
 ------------------------------------------------------------------------
 =^.x.^= game_loop()
-  graphic.paint(palette.dark_purple)
+  do graphic.paint => palette.dark_purple
   draw_anim()
   draw_text()
   draw_controls()
   draw_fps()
 ~meow
 
-game_loop |> graphic.thumbnail
-game_loop |> graphic.init
+do graphic.thumbnail => game_loop
+do graphic.init => game_loop

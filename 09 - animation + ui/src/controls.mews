@@ -106,13 +106,13 @@ mew controls!!! = =^-x-^= [
   mew plus_sprite  = plus.hovered if controls.plus.is_hovered() else plus.normal
   mew minus_sprite = minus.hovered if controls.minus.is_hovered() else minus.normal
 
-  graphic.draw(plus_sprite, controls.plus.rect.x, controls.plus.rect.y)
-  graphic.draw(minus_sprite, controls.minus.rect.x, controls.minus.rect.y)
+  do graphic.draw => plus_sprite, controls.plus.rect.x, controls.plus.rect.y
+  do graphic.draw => minus_sprite, controls.minus.rect.x, controls.minus.rect.y
   controls.display.draw()
 ~meow
 
 =^.x.^= update()
   controls.plus.update()
   controls.minus.update()
-  controls.display.set_message(:3"[speed]%")
+  do controls.display.set_message => :3"[speed]%"
 ~meow
