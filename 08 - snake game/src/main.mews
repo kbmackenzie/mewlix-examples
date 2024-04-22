@@ -141,12 +141,12 @@ Let's define procedures for drawing each element in our world:
 
 =^.x.^= draw_snake(snake)
   chase after square in snake!!!
-    graphic.rect(square, new Color(0, 0, 0))
+    do graphic.rect => square, new Color(0, 0, 0)
   ~meow
 ~meow
 
 =^.x.^= draw_food(food)
-  graphic.rect(food, new Color(0, 255, 0))
+  do graphic.rect => food, new Color(0, 255, 0)
 ~meow
 
 -----------------------------------------
@@ -196,8 +196,8 @@ mew current_scene = "snake_game"
 =^.x.^= [SceneTable["snake_game"]]()
   tick = tick + graphic.delta()
 
-  draw_food(state.food)
-  draw_snake(state.snake)
+  do draw_food  => state.food
+  do draw_snake => state.snake
 
   state.direction = get_direction(state.direction)
 
@@ -223,9 +223,9 @@ mew current_scene = "snake_game"
 ~meow
 
 =^.x.^= [SceneTable["game_over"]]()
-  draw_food(state.food)
-  draw_snake(state.snake)
-  graphic.paint(new Color(255, 0, 0, 50))
+  do draw_food  => state.food
+  do draw_snake => state.snake
+  do graphic.paint => new Color(255, 0, 0, 50)
 
   look if key_pressed(keys.space)
     state = init_state()
@@ -240,4 +240,4 @@ mew current_scene = "snake_game"
 ~( ^.x.^)> 
 ... And finally, we can initialize our game:
 <(^.x.^ )~
-graphic.init(game_loop)
+do graphic.init => game_loop
