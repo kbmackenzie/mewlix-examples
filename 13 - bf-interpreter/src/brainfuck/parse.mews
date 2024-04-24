@@ -4,12 +4,12 @@ from brainfuck.ast takes MoveLeft, MoveRight, Increment, Decrement, Puts, Gets, 
 from brainfuck.parser takes Parser
 
 mew token_table!!! = std.table()              \
-  .add("<", =^oxo^= (c) => new MoveLeft(c))   \
-  .add(">", =^oxo^= (c) => new MoveRight(c))  \
-  .add("+", =^oxo^= (c) => new Increment(c))  \
-  .add("-", =^oxo^= (c) => new Decrement(c))  \
-  .add(".", =^oxo^= (c) => new Puts(c))       \
-  .add(",", =^oxo^= (c) => new Gets(c))
+  .add("<", =^oxo^= (c) -> new MoveLeft(c))   \
+  .add(">", =^oxo^= (c) -> new MoveRight(c))  \
+  .add("+", =^oxo^= (c) -> new Increment(c))  \
+  .add("-", =^oxo^= (c) -> new Decrement(c))  \
+  .add(".", =^oxo^= (c) -> new Puts(c))       \
+  .add(",", =^oxo^= (c) -> new Gets(c))
 
 =^.x.^= parse(input)
   mew parser = new Parser(input)

@@ -5,7 +5,7 @@ from brainfuck.state takes State
 =^.x.^= evaluate(tokens)
   mew state! = new State()
   chase after token in tokens!!!!!!!
-    token.evaluate(state)
+    do token.evaluate <- state
   ~meow
-  bring state.get_output()
+  bring do state.get_output
 ~meow
