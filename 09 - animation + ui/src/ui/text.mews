@@ -29,7 +29,7 @@ clowder TextBox
     mew text_x = home.rect.x + ((home.rect.width  - text_size.width) / 2)
     mew text_y = home.rect.y + ((home.rect.height - text_size.height) / 2)
 
-    do graphic.write => home.message, text_x, text_y, home.options
+    do graphic.write <- home.message, text_x, text_y, home.options
   ~meow
 
   =^.x.^= set_message(message)

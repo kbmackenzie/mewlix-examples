@@ -15,5 +15,5 @@ It returns a shelf with keys for each frame, in the same order.
 
 =^.x.^= load_frames(sheet, frame_boxes)
   spritesheet(sheet, frame_boxes)
-  bring std.map(=^oxo^= (x) => x.key, frame_boxes)
+  bring std.map(=^oxo^= (x) -> x.key, frame_boxes)
 ~meow
