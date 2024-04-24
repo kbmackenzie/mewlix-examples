@@ -28,4 +28,4 @@ yarn ball main
   ] |> std.cat |> std.meowf
 ~meow
 
-sing()
+do sing
