@@ -29,7 +29,7 @@ https://leetcode.com/problems/fizz-buzz/
 
 -- Set project name in the console:
 takes std.console
-do console.name => "fizzbuzz"
+do console.name <- "fizzbuzz"
 
 -- We'll ask the user for a number for the fun of it:
 mew input = listen "run fizzbuzz from 1 to... (enter number)"
