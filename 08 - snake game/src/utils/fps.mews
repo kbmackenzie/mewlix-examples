@@ -37,6 +37,6 @@ clowder FpsCounter
   =^.x.^= draw(x, y, options)
     look if not x; x = 0; ~meow
     look if not y; y = 0; ~meow
-    do graphic.write => home.get_fps(), x, y, options
+    do graphic.write <- home.get_fps(), x, y, options
   ~meow
 ~meow
