@@ -16,12 +16,12 @@ from utils.fps takes FpsCounter
 mew anim!!! = new AnimationPlayer(mewly.frames, mewly.frame_rate)
 
 =^.x.^= draw_anim()
-  mew pos = position.center(mewly.width, mewly.height)
+  mew pos = do position.center <- mewly.width, mewly.height
   do anim.draw <- pos.x, pos.y
 ~meow
 
 =^.x.^= set_anim_speed(percentage)
-  mew new_frame_rate = std.floor(mewly.frame_rate * (percentage / 100))
+  mew new_frame_rate = do std.floor <- mewly.frame_rate * (percentage / 100)
   do anim.set_frame_rate <- new_frame_rate
 ~meow
 
@@ -35,10 +35,10 @@ mew title_options!! = =^-x-^= [
 ]
 
 =^.x.^= draw_text()
-  mew text_size = graphic.measure_text(title_string, title_options)
+  mew text_size = do graphic.measure_text <- title_string, title_options
 
   mew x = (canvas.width - text_size.width) / 2
-  mew y = position.row(1)
+  mew y = do position.row <- 1
   do graphic.write <- title_string, x, y, title_options
 ~meow
 
@@ -49,9 +49,9 @@ mew controls_x!!! = position.center(
     controls.get_width(),
     controls.get_height(),
   ).x
-mew controls_y!!! = position.row(6)
 
-controls.set_position(controls_x, controls_y)
+mew controls_y!!! = do position.row <- 6
+do controls.set_position <- controls_x, controls_y
 
 =^.x.^= draw_controls()
   controls.draw()
