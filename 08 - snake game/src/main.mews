@@ -28,10 +28,10 @@ cat tree Direction
 Vector2 constants defining movement based on direction. We will use this when moving the snake.
 <(^.x.^ )~
 mew Movement!!! = =^-x-^= [
-  Up:    new Vector2( 0, -8),
-  Down:  new Vector2( 0,  8),
-  Left:  new Vector2(-8,  0),
-  Right: new Vector2( 8,  0),
+  Up:    (new Vector2 <-  0, -8),
+  Down:  (new Vector2 <-  0,  8),
+  Left:  (new Vector2 <- -8,  0),
+  Right: (new Vector2 <-  8,  0),
 ]
 
 -----------------------------------------
@@ -82,17 +82,14 @@ Based on that, we can define:
   2. Pure functions for checking the snake's collision with food and with itself.
 <(^.x.^ )~
 =^.x.^= grow_snake(snake, new_head, got_food)
-  mew body! = snake if got_food else std.remove(snake, -1)
+  mew body! = snake if got_food else (do std.remove <- snake, -1)
   bring new_head push body
 ~meow
 
 =^.x.^= is_game_over(snake)
   mew head! = paw at snake
-
-  mew is_colliding! = =^oxo^= (x)
-    -> head.collides(x)
-
-  bring std.any(is_colliding, knock over snake)
+  mew is_colliding! = =^oxo^= (x) -> do head.collides <- x
+  bring do std.any <- is_colliding, knock over snake
 ~meow
 
 =^.x.^= has_gotten_food(snake, food)
@@ -163,7 +160,7 @@ All our mutable game state and our 'scene' structure will live below.
     snake: [random_position()],
     food: random_position(),
   ]
-  state.direction = start_direction(paw at state.snake)
+  state.direction = do start_direction <- paw at state.snake
   bring state
 ~meow
 
@@ -199,19 +196,19 @@ mew current_scene = "snake_game"
   do draw_food  <- state.food
   do draw_snake <- state.snake
 
-  state.direction = get_direction(state.direction)
+  state.direction = do get_direction <- state.direction
 
   look if tick > wait_time
     tick = 0
-    mew got_food! = has_gotten_food(state.snake, state.food)
+    mew got_food! = do has_gotten_food <- state.snake, state.food
 
     look if got_food
       state.food = random_position()
     ~meow
 
     -- Convert Direction enum value from a number to a string key:
-    mew new_head! = move_rect(paw at state.snake, Movement[state.direction.name])
-    state.snake = grow_snake(state.snake, new_head, got_food)
+    mew new_head! = do move_rect <- paw at state.snake, Movement[state.direction.name]
+    state.snake = do grow_snake <- state.snake, new_head, got_food
 
     look if is_game_over(state.snake)
       current_scene = "game_over"
@@ -225,7 +222,7 @@ mew current_scene = "snake_game"
 =^.x.^= [SceneTable["game_over"]]()
   do draw_food  <- state.food
   do draw_snake <- state.snake
-  do graphic.paint <- new Color(0, 0, 0, 80)
+  do graphic.paint <- new Color <- 0, 0, 0, 80
 
   look if key_pressed(keys.space)
     state = init_state()

@@ -11,7 +11,7 @@ Those magic numbers can be safely used in these functions.
 
 -- Get (x, y) positions for centering an object in the canvas.
 =^.x.^= center(width, height)
-  bring new Vector2((128 - width) / 2, (128 - height) / 2)
+  bring new Vector2 <- (128 - width) / 2, (128 - height) / 2
 ~meow
 
 ~( ^.x.^)> 
