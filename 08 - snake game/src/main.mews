@@ -207,7 +207,7 @@ mew current_scene = "snake_game"
     ~meow
 
     -- Convert Direction enum value from a number to a string key:
-    mew new_head! = do move_rect <- paw at state.snake, Movement[state.direction.name]
+    mew new_head! = do move_rect <- paw at state.snake, Movement[state.direction.key]
     state.snake = do grow_snake <- state.snake, new_head, got_food
 
     look if is_game_over(state.snake)
