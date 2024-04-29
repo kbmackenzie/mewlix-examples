@@ -15,7 +15,7 @@ mew rows!!!    = canvas.height // square_side
 mew columns!!! = canvas.width  // square_side
 
 ~( ^.x.^)> 
-An enum representing all possible directions the snake is able to move in.
+A cat tree representing all possible directions the snake is able to move in.
 <(^.x.^ )~
 cat tree Direction
   Up
@@ -26,6 +26,7 @@ cat tree Direction
 
 ~( ^.x.^)> 
 Vector2 constants defining movement based on direction. We will use this when moving the snake.
+The keys in this box should match the Direction cat tree's constants:
 <(^.x.^ )~
 mew Movement!!! = =^-x-^= [
   Up:    (new Vector2 <-  0, -8),
@@ -151,10 +152,9 @@ Let's define procedures for drawing each element in our world:
 -----------------------------------------
 
 ~( ^.x.^)>
-We can now start thinking about game state.
+We can now start thinking about mutable game state.
 All our mutable game state and our 'scene' structure will live below.
 <(^.x.^ )~
-
 =^.x.^= init_state()
   mew state! = =^-x-^= [
     snake: [random_position()],
@@ -183,10 +183,8 @@ mew wait_time = 1 / 4
 With this, we can begin defining procedures for each 'scene' in our game:
   - snake_game: The main game.
   - game_over:  The 'game over' screen for when the snake bites itself.
-
 Let us define our scene table!
 <(^.x.^ )~
-
 mew SceneTable! = =^-x-^= []
 mew current_scene = "snake_game"
 
@@ -206,8 +204,11 @@ mew current_scene = "snake_game"
       state.food = random_position()
     ~meow
 
-    -- Convert Direction enum value from a number to a string key:
-    mew new_head! = do move_rect <- paw at state.snake, Movement[state.direction.key]
+    -- We use a Direction constant's key to get a Movement vector constant:
+    mew movement_vector = Movement[state.direction.key]
+
+    -- And we can grow the snake:
+    mew new_head! = do move_rect <- paw at state.snake, 
     state.snake = do grow_snake <- state.snake, new_head, got_food
 
     look if is_game_over(state.snake)
