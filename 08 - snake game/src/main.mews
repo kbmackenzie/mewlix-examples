@@ -1,6 +1,7 @@
 yarn ball main
 
 from std.graphic takes Rectangle, Vector2, Color, key_pressed, key_down, keys
+from sprites takes SnakeHead, SnakeBody, Apple
 takes std.graphic                 -- The standard library's graphic template functions!
 takes utils.canvas                -- Canvas size constants.
 takes utils.position              -- Functions for positioning elements.
@@ -137,14 +138,18 @@ Let's define procedures for drawing each element in our world:
   - The food.
 <(^.x.^ )~
 
-=^.x.^= draw_snake(snake)
-  chase after square in snake!!!
-    do graphic.rect <- square, new Color(0, 0, 0)
+=^.x.^= draw_snake(snake, direction)
+  mew head! = paw at snake
+  mew body! = knock over snake
+  do graphic.draw <- SnakeHead[direction.key], head.x, head.y
+
+  chase after square in body!!!
+    do graphic.draw <- SnakeBody[direction.key], square.x, square.y
   ~meow
 ~meow
 
 =^.x.^= draw_food(food)
-  do graphic.rect <- food, new Color(0, 255, 0)
+  do graphic.draw <- Apple, food.x, food.y
 ~meow
 
 -----------------------------------------
@@ -192,7 +197,7 @@ mew current_scene = "snake_game"
   tick = tick + graphic.delta()
 
   do draw_food  <- state.food
-  do draw_snake <- state.snake
+  do draw_snake <- state.snake, state.direction
 
   state.direction = do get_direction <- state.direction
 
@@ -208,7 +213,7 @@ mew current_scene = "snake_game"
     mew movement_vector = Movement[state.direction.key]
 
     -- And we can grow the snake:
-    mew new_head! = do move_rect <- paw at state.snake, 
+    mew new_head! = do move_rect <- paw at state.snake, movement_vector
     state.snake = do grow_snake <- state.snake, new_head, got_food
 
     look if is_game_over(state.snake)
@@ -222,7 +227,7 @@ mew current_scene = "snake_game"
 
 =^.x.^= [SceneTable["game_over"]]()
   do draw_food  <- state.food
-  do draw_snake <- state.snake
+  do draw_snake <- state.snake, state.direction
   do graphic.paint <- new Color <- 0, 0, 0, 80
 
   look if key_pressed(keys.space)
