@@ -1,0 +1,13 @@
+yarn ball palette
+
+~( ^.x.^)>
+Color constants, for the color palette being used.
+
+The palette used for this example is 'Moonlight GB' by Tofu:
+https://lospec.com/palette-list/moonlight-gb
+<(^.x.^ )~
+
+mew indigo!   = "#0f052d"
+mew teal!     = "#36868f"
+mew cerulean! = "#203671"
+mew green!    = "#5fc75d"
