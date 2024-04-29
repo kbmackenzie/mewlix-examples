@@ -76,13 +76,22 @@ Thus, we follow these rules for choosing (x, y) positions:
 ~meow
 
 ~( ^.x.^)> 
-We will represent our snake as a shelf of Rectangle boxes.
+We will represent our snake as a shelf of boxes.
 We will represent our food as a Rectangle box.
 
 Based on that, we can define:
-  1. A pure function for 'growing' our snake.
-  2. Pure functions for checking the snake's collision with food and with itself.
+  1. A function for constructing a new box for the snake body.
+  2. A pure function for 'growing' our snake.
+  3. Pure functions for checking the snake's collision with food and with itself.
 <(^.x.^ )~
+
+=^.x.^= snake_part(rect, direction)
+  bring =^-x-^= [
+    rect: rect,
+    direction: direction,
+  ]
+~meow
+
 =^.x.^= grow_snake(snake, new_head, got_food)
   mew body! = snake if got_food else (do std.remove <- snake, -1)
   bring new_head push body
@@ -90,12 +99,12 @@ Based on that, we can define:
 
 =^.x.^= is_game_over(snake)
   mew head! = paw at snake
-  mew is_colliding! = =^oxo^= (x) -> do head.collides <- x
+  mew is_colliding! = =^oxo^= (x) -> do head.rect.collides <- x.rect
   bring do std.any <- is_colliding, knock over snake
 ~meow
 
 =^.x.^= has_gotten_food(snake, food)
-  bring (paw at snake).collides(food)
+  bring (paw at snake).rect.collides(food)
 ~meow
 
 -----------------------------------------
@@ -138,13 +147,13 @@ Let's define procedures for drawing each element in our world:
   - The food.
 <(^.x.^ )~
 
-=^.x.^= draw_snake(snake, direction)
+=^.x.^= draw_snake(snake)
   mew head! = paw at snake
   mew body! = knock over snake
-  do graphic.draw <- SnakeHead[direction.key], head.x, head.y
+  do graphic.draw <- SnakeHead[head.direction.key], head.rect.x, head.rect.y
 
-  chase after square in body!!!
-    do graphic.draw <- SnakeBody[direction.key], square.x, square.y
+  chase after part in body!!!
+    do graphic.draw <- SnakeBody[part.direction.key], part.rect.x, part.rect.y
   ~meow
 ~meow
 
@@ -161,12 +170,14 @@ We can now start thinking about mutable game state.
 All our mutable game state and our 'scene' structure will live below.
 <(^.x.^ )~
 =^.x.^= init_state()
-  mew state! = =^-x-^= [
-    snake: [random_position()],
+  mew snake_rect = random_position()
+  mew snake_direction = do start_direction <- snake_rect
+
+  bring =^-x-^= [
+    snake: [do snake_part <- snake_rect, snake_direction],
     food: random_position(),
+    direction: snake_direction,
   ]
-  state.direction = do start_direction <- paw at state.snake
-  bring state
 ~meow
 
 mew state = init_state()
@@ -182,7 +193,7 @@ mew fps_opts! = =^-x-^= []
 And we'll define how fast our snake should move--or rather, how long our game loop should wait before updating the snake's position.
 I think 4 squares per second is a good movement speed--so let's define the wait time in seconds:
 <(^.x.^ )~
-mew wait_time = 1 / 4
+mew wait_time! = 1 / 4
 
 ~( ^.x.^)>
 With this, we can begin defining procedures for each 'scene' in our game:
@@ -197,8 +208,7 @@ mew current_scene = "snake_game"
   tick = tick + graphic.delta()
 
   do draw_food  <- state.food
-  do draw_snake <- state.snake, state.direction
-
+  do draw_snake <- state.snake
   state.direction = do get_direction <- state.direction
 
   look if tick > wait_time
@@ -213,7 +223,8 @@ mew current_scene = "snake_game"
     mew movement_vector = Movement[state.direction.key]
 
     -- And we can grow the snake:
-    mew new_head! = do move_rect <- paw at state.snake, movement_vector
+    mew head_rect! = do move_rect <- (paw at state.snake).rect, movement_vector
+    mew new_head! = do snake_part <- head_rect, state.direction
     state.snake = do grow_snake <- state.snake, new_head, got_food
 
     look if is_game_over(state.snake)
@@ -227,7 +238,7 @@ mew current_scene = "snake_game"
 
 =^.x.^= [SceneTable["game_over"]]()
   do draw_food  <- state.food
-  do draw_snake <- state.snake, state.direction
+  do draw_snake <- state.snake
   do graphic.paint <- new Color <- 0, 0, 0, 80
 
   look if key_pressed(keys.space)
