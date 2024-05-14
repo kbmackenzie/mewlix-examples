@@ -9,23 +9,14 @@ mew SnakeHead! = =^-x-^= [
   Right:  "snake-head-right",
 ]
 
-mew SnakeBody! = =^-x-^= [
-  Up:     "snake-body-vertical",
-  Down:   "snake-body-vertical",
-  Left:   "snake-body-horizontal",
-  Right:  "snake-body-horizontal",
-]
-
 mew Apple! = "snake-apple"
 
 ~( ^.x.^)> Loading assets: <(^.x.^ )~
-spritesheet("./assets/snake-spritesheet.png", [
-  =^-x-^= [ key: SnakeHead.Down   , rect: new Rectangle( 0, 0, 8, 8) ],
-  =^-x-^= [ key: SnakeHead.Up     , rect: new Rectangle( 8, 0, 8, 8) ],
-  =^-x-^= [ key: SnakeHead.Right  , rect: new Rectangle(16, 0, 8, 8) ],
-  =^-x-^= [ key: SnakeHead.Left   , rect: new Rectangle( 0, 8, 8, 8) ],
-  =^-x-^= [ key: SnakeBody.Left   , rect: new Rectangle( 8, 8, 8, 8) ],
-  =^-x-^= [ key: SnakeBody.Down   , rect: new Rectangle(16, 8, 8, 8) ],
+spritesheet("./assets/snake.png", [
+  =^-x-^= [ key: SnakeHead.Up    , rect: new Rectangle(0, 0, 8, 8) ],
+  =^-x-^= [ key: SnakeHead.Down  , rect: new Rectangle(8, 0, 8, 8) ],
+  =^-x-^= [ key: SnakeHead.Left  , rect: new Rectangle(0, 8, 8, 8) ],
+  =^-x-^= [ key: SnakeHead.Right , rect: new Rectangle(8, 8, 8, 8) ],
 ]);
 
 load(Apple, "./assets/snake-apple.png")

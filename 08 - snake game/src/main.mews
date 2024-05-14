@@ -1,8 +1,9 @@
 yarn ball main
 
 from std.graphic takes Rectangle, Vector2, Color, key_pressed, key_down, keys
-from sprites takes SnakeHead, SnakeBody, Apple
+from sprites takes SnakeHead, Apple
 takes std.graphic                 -- The standard library's graphic template functions!
+takes palette                     -- Color palette constants.
 takes utils.canvas                -- Canvas size constants.
 takes utils.position              -- Functions for positioning elements.
 from utils.fps takes FpsCounter   -- A little utility clowder for FPS counters.
@@ -152,8 +153,10 @@ Let's define procedures for drawing each element in our world:
   mew body! = knock over snake
   do graphic.draw <- SnakeHead[head.direction.key], head.rect.x, head.rect.y
 
+  mew last_direction = head.direction
+
   chase after part in body!!!
-    do graphic.draw <- SnakeBody[part.direction.key], part.rect.x, part.rect.y
+    do graphic.rect <- part.rect, palette.teal
   ~meow
 ~meow
 
@@ -207,8 +210,10 @@ mew current_scene = "snake_game"
 =^.x.^= [SceneTable["snake_game"]]()
   tick = tick + graphic.delta()
 
+  do graphic.paint <- palette.indigo
   do draw_food  <- state.food
   do draw_snake <- state.snake
+
   state.direction = do get_direction <- state.direction
 
   look if tick > wait_time
@@ -237,6 +242,7 @@ mew current_scene = "snake_game"
 ~meow
 
 =^.x.^= [SceneTable["game_over"]]()
+  do graphic.paint <- palette.indigo
   do draw_food  <- state.food
   do draw_snake <- state.snake
   do graphic.paint <- new Color <- 0, 0, 0, 80
