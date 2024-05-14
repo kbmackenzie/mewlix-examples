@@ -14,10 +14,11 @@ clowder Input
 ~meow
 
 clowder State
-  =^.x.^= wake()
+  =^.x.^= wake(stdin)
     home.cells    = std.table()
     home.pointer  = 0
     home.output   = ""
+    home.input = new Input(stdin)
   ~meow
 
   =^.x.^= peek()
@@ -41,10 +42,6 @@ clowder State
   ~meow
 
   =^.x.^= gets()
-    look if home.input == nothing
-      home.input = new Input(listen "Enter input to be read by the program:")
-    ~meow
-
     mew char! = home.input.get()
     look if char != nothing
       home.set(std.bap(char))

@@ -7,9 +7,35 @@ from brainfuck.eval takes evaluate
 console.name("brainfuck")
 console.accepted_files([".b", ".bf"])
 
-stare while true
-  mew input! = listen "Enter a Brainfuck string (or upload a *.b file):"
-  mew tokens! = parse(input)
-  mew output! = evaluate(tokens)
-  meow :3"\[Output:\]\n[output]\n\n"
+cat tree StateMachine
+  Parse
+  Interpret
 ~meow
+
+mew state = StateMachine.Parse
+mew tokens
+
+=^.x.^= opening_message(input)
+  look if state == StateMachine.Parse
+    bring "Enter a Brainfuck string (or upload a *.b file):"
+  else just
+    bring "Enter input for the program:"
+  ~meow
+~meow
+
+=^.x.^= run_interpreter(input)
+  look if state == StateMachine.Parse
+    tokens = parse(input)
+    state = StateMachine.Interpret
+    run away
+  ~meow
+
+  look if state == StateMachine.Interpret
+    mew output! = evaluate(tokens, input)
+    tokens = nothing
+    state = StateMachine.Parse
+    bring :3"\[Output:\]\n[output]\n\n"
+  ~meow
+~meow
+
+do console.run <- run_interpreter, opening_message
