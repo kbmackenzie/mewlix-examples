@@ -7,32 +7,34 @@ https://leetcode.com/problems/fizz-buzz/
 
 =^.x.^= fizzbuzz(max)
   mew nums = std.count(1, max)
+  mew output = []
 
   chase after num in nums!!!!!!!!!
     mew message = ""
-
     look if num % 3 == 0
       message = message .. "fizz"
     ~meow
-
     look if num % 5 == 0
       message = message .. "buzz"
     ~meow
-
     look if std.empty(message)
       message = std.purr(num)
     ~meow
-    
-    meow message
+    output = message push output 
   ~meow
+
+  bring output
 ~meow
 
 -- Set project name in the console:
 takes std.console
 do console.name <- "fizzbuzz"
 
--- We'll ask the user for a number for the fun of it:
-mew input = listen "run fizzbuzz from 1 to... (enter number)"
+-- We'll ask the user for a number for the fun of it,
+-- parse the number and run fizzbuzz:
+=^.x.^= run_fizzbuzz(input)
+  bring std.slap(input) |> fizzbuzz
+~meow
 
--- And now we convert 'n' to a number... and pipe that value into our 'fizzbuzz' function:
-std.slap(input) |> fizzbuzz
+meow "Enter number:"
+do console.run <- run_fizzbuzz
