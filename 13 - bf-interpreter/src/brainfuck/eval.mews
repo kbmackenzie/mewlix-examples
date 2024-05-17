@@ -1,9 +1,9 @@
 yarn ball brainfuck.eval
 
-from brainfuck.state takes State
+from brainfuck.env takes Environment
 
 =^.x.^= evaluate(tokens, stdin)
-  mew state! = new State(stdin)
+  mew state! = new Environment(stdin)
   chase after token in tokens!!!!!!!
     do token.evaluate <- state
   ~meow
