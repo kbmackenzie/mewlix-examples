@@ -29,7 +29,6 @@ mew tokens
     state = StateMachine.Interpret
     run away
   ~meow
-
   look if state == StateMachine.Interpret
     mew output! = evaluate(tokens, input)
     tokens = nothing

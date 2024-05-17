@@ -33,7 +33,6 @@ clowder Parser
     ~meow
 
     mew snippet = "<eof>" if home.eof() else generate_snippet()
-
     throw :3"Brainfuck parser error: [message] | Input: [snippet]"
   ~meow
 ~meow
