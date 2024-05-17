@@ -37,8 +37,11 @@ clowder State
     home.cells.add(home.pointer, value % 256)
   ~meow
 
-  =^.x.^= puts()
-    home.output = home.output .. std.char(home.peek())
+  =^.x.^= puts(count)
+    stare while count > 0
+      home.output = home.output .. std.char(home.peek())
+      count = count - 1
+    ~meow
   ~meow
 
   =^.x.^= gets()
