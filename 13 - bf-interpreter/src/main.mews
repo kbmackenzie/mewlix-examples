@@ -25,8 +25,15 @@ mew tokens
 
 =^.x.^= run_interpreter(input)
   look if state == StateMachine.Parse
-    tokens = parse(input)
-    state = StateMachine.Interpret
+    watch attentively
+      tokens = parse(input)
+      state = StateMachine.Interpret
+    pounce on error
+      look if error.id == std.error.ExternalError
+        rethrow
+      ~meow
+      bring :3"Caught error: [error.message]"
+    ~meow
     run away
   ~meow
   look if state == StateMachine.Interpret
