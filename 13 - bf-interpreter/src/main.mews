@@ -7,16 +7,16 @@ from brainfuck.eval takes evaluate
 console.name("brainfuck")
 console.accepted_files([".b", ".bf"])
 
-cat tree StateMachine
+cat tree State
   Parse
   Interpret
 ~meow
 
-mew state = StateMachine.Parse
+mew state = State.Parse
 mew tokens
 
 =^.x.^= opening_message(input)
-  look if state == StateMachine.Parse
+  look if state == State.Parse
     bring "Enter a Brainfuck string (or upload a *.b file):"
   else just
     bring "Enter input for the program:"
@@ -24,10 +24,10 @@ mew tokens
 ~meow
 
 =^.x.^= run_interpreter(input)
-  look if state == StateMachine.Parse
+  look if state == State.Parse
     watch attentively
       tokens = parse(input)
-      state = StateMachine.Interpret
+      state = State.Interpret
     pounce on error
       look if error.id == std.error.ExternalError
         rethrow
@@ -36,10 +36,10 @@ mew tokens
     ~meow
     run away
   ~meow
-  look if state == StateMachine.Interpret
+  look if state == State.Interpret
     mew output! = evaluate(tokens, input)
     tokens = nothing
-    state = StateMachine.Parse
+    state = State.Parse
     bring :3"\[Output:\]\n[output]\n\n"
   ~meow
 ~meow
