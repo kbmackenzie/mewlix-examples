@@ -150,13 +150,14 @@ Let's define procedures for drawing each element in our world:
 =^.x.^= draw_snake(snake)
   mew head! = paw at snake
   mew body! = knock over snake
-  do graphic.draw <- SnakeHead[head.direction.key], head.rect.x, head.rect.y
-
   mew last_direction = head.direction
 
   chase after part in body!!!
     do graphic.rect <- part.rect, palette.rose
   ~meow
+
+  -- We draw the head last to make sure it'll always be drawn 'over' the body:
+  do graphic.draw <- SnakeHead[head.direction.key], head.rect.x, head.rect.y
 ~meow
 
 =^.x.^= draw_food(food)
