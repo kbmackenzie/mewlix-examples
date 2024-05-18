@@ -3,20 +3,20 @@ yarn ball sprites
 from std.graphic takes spritesheet, load, Rectangle
 
 mew SnakeHead! = =^-x-^= [
-  Up:     "snake-head-up",
-  Down:   "snake-head-down",
-  Left:   "snake-head-left",
-  Right:  "snake-head-right",
+  Up:    "snake-head-up",
+  Down:  "snake-head-down",
+  Left:  "snake-head-left",
+  Right: "snake-head-right",
 ]
 
-mew Apple! = "snake-apple"
+--mew Apple! = "snake-apple"
 
 ~( ^.x.^)> Loading assets: <(^.x.^ )~
-spritesheet("./assets/snake.png", [
+spritesheet("./assets/cat-snake-spritesheet.png", [
   =^-x-^= [ key: SnakeHead.Up    , rect: new Rectangle(0, 0, 8, 8) ],
   =^-x-^= [ key: SnakeHead.Down  , rect: new Rectangle(8, 0, 8, 8) ],
   =^-x-^= [ key: SnakeHead.Left  , rect: new Rectangle(0, 8, 8, 8) ],
   =^-x-^= [ key: SnakeHead.Right , rect: new Rectangle(8, 8, 8, 8) ],
 ]);
 
-load(Apple, "./assets/snake-apple.png")
+--load(Apple, "./assets/snake-apple.png")
