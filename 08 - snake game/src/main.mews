@@ -1,7 +1,7 @@
 yarn ball main
 
 from std.graphic takes Rectangle, Vector2, Color, key_pressed, key_down, keys
-from sprites takes SnakeHead
+from sprites takes snake_head
 takes std.graphic               -- The standard library's graphic template functions.
 takes palette                   -- Color palette constants.
 takes utils.canvas              -- Canvas size constants.
@@ -30,7 +30,7 @@ cat tree Direction
 Vector2 constants defining movement based on direction. We will use this when moving the snake.
 The keys in this box should match the Direction cat tree's constants:
 <(^.x.^ )~
-mew Movement!!! = =^-x-^= [
+mew movement! = =^-x-^= [
   Up:    (new Vector2 <-  0, -8),
   Down:  (new Vector2 <-  0,  8),
   Left:  (new Vector2 <- -8,  0),
@@ -157,7 +157,7 @@ Let's define procedures for drawing each element in our world:
   ~meow
 
   -- We draw the head last to make sure it'll always be drawn 'over' the body:
-  do graphic.draw <- SnakeHead[head.direction.key], head.rect.x, head.rect.y
+  do graphic.draw <- snake_head[head.direction.key], head.rect.x, head.rect.y
 ~meow
 
 =^.x.^= draw_food(food)
@@ -196,14 +196,14 @@ mew state = new_state()
 With this, we can begin defining procedures for each 'scene' in our game:
 The code below is self-documenting, so comments will be more sparse.
 <(^.x.^ )~
-mew SceneTable! = =^-x-^= []
+mew scene_table! = =^-x-^= []
 mew current_scene = "snake_game"
 
 ~( ^.x.^)>
 The "snake_game" scene, our core gameplay loop!
 We draw and listen to input inside of it.
 <(^.x.^ )~
-=^.x.^= [SceneTable["snake_game"]]()
+=^.x.^= [scene_table["snake_game"]]()
   do graphic.paint <- palette.light
   do draw_food  <- state.food
   do draw_snake <- state.snake
@@ -219,7 +219,7 @@ We draw and listen to input inside of it.
       state.food = random_position()
     ~meow
 
-    mew movement_vector = Movement[state.direction.key]
+    mew movement_vector = movement[state.direction.key]
     mew head_rect! = do move_rect <- (paw at state.snake).rect, movement_vector
     mew new_head!  = do snake_part <- head_rect, state.direction
 
@@ -234,7 +234,7 @@ We draw and listen to input inside of it.
 ~( ^.x.^)>
 The "game_over" scene, our game over screen.
 <(^.x.^ )~
-=^.x.^= [SceneTable["game_over"]]()
+=^.x.^= [scene_table["game_over"]]()
   do graphic.paint <- palette.light
   do draw_food  <- state.food
   do draw_snake <- state.snake
@@ -255,7 +255,7 @@ mew fps! = new FpsCounter()
 mew fps_opts! = =^-x-^= [ color: palette.rouge ]
 
 =^.x.^= game_loop()
-  SceneTable[current_scene]()
+  scene_table[current_scene]()
   fps.tick()
   fps.draw(1, 0, fps_opts)
 ~meow
