@@ -2,11 +2,11 @@ yarn ball main
 
 from std.graphic takes Rectangle, Vector2, Color, key_pressed, key_down, keys
 from sprites takes SnakeHead
-takes std.graphic                 -- The standard library's graphic template functions!
-takes palette                     -- Color palette constants.
-takes utils.canvas                -- Canvas size constants.
-takes utils.position              -- Functions for positioning elements.
-from utils.fps takes FpsCounter   -- A little utility clowder for FPS counters.
+takes std.graphic               -- The standard library's graphic template functions.
+takes palette                   -- Color palette constants.
+takes utils.canvas              -- Canvas size constants.
+takes utils.position            -- Functions for positioning elements.
+from utils.fps takes FpsCounter -- A little utility clowder for FPS counters.
 
 ~( ^.x.^)> 
 The map for our game will be made up of 8 x 8 pixel squares.
@@ -85,7 +85,6 @@ Based on that, we can define:
   2. A pure function for 'growing' our snake.
   3. Pure functions for checking the snake's collision with food and with itself.
 <(^.x.^ )~
-
 =^.x.^= snake_part(rect, direction)
   bring =^-x-^= [
     rect: rect,
@@ -172,92 +171,92 @@ Let's define procedures for drawing each element in our world:
 We can now start thinking about mutable game state.
 All our mutable game state and our 'scene' structure will live below.
 <(^.x.^ )~
-=^.x.^= init_state()
+
+=^.x.^= new_state()
   mew snake_rect = random_position()
   mew snake_direction = do start_direction <- snake_rect
 
   bring =^-x-^= [
+    -- Our snake body, food position, and snake direction state:
     snake: [do snake_part <- snake_rect, snake_direction],
     food: random_position(),
     direction: snake_direction,
+
+    -- We also need to keep track of how fast the snake should move.
+    -- Four squares per second is a good movement speed.
+    timer: 0.0,
+    wait: 1 / 4,
   ]
 ~meow
 
-mew state = init_state()
-mew tick = 0.0
-
-~( ^.x.^)> 
-We'll also initialize a little FPS counter for convenience:
-<(^.x.^ )~
-mew fps! = new FpsCounter()
-mew fps_opts! = =^-x-^= []
-
-~( ^.x.^)> 
-And we'll define how fast our snake should move--or rather, how long our game loop should wait before updating the snake's position.
-I think 4 squares per second is a good movement speed--so let's define the wait time in seconds:
-<(^.x.^ )~
-mew wait_time! = 1 / 4
+mew state = new_state()
 
 ~( ^.x.^)>
 With this, we can begin defining procedures for each 'scene' in our game:
-  - snake_game: The main game.
-  - game_over:  The 'game over' screen for when the snake bites itself.
-Let us define our scene table!
+The code below is self-documenting, so comments will be more sparse.
 <(^.x.^ )~
 mew SceneTable! = =^-x-^= []
 mew current_scene = "snake_game"
 
+~( ^.x.^)>
+The "snake_game" scene, our core gameplay loop!
+We draw and listen to input inside of it.
+<(^.x.^ )~
 =^.x.^= [SceneTable["snake_game"]]()
-  tick = tick + graphic.delta()
-
   do graphic.paint <- palette.light
   do draw_food  <- state.food
   do draw_snake <- state.snake
 
   state.direction = do get_direction <- state.direction
+  state.timer = state.timer + graphic.delta()
 
-  look if tick > wait_time
-    tick = 0
+  look if state.timer > state.wait
+    state.timer = 0
     mew got_food! = do has_gotten_food <- state.snake, state.food
 
     look if got_food
       state.food = random_position()
     ~meow
 
-    -- We use a Direction constant's key to get a Movement vector constant:
     mew movement_vector = Movement[state.direction.key]
-
-    -- And we can grow the snake:
     mew head_rect! = do move_rect <- (paw at state.snake).rect, movement_vector
-    mew new_head! = do snake_part <- head_rect, state.direction
+    mew new_head!  = do snake_part <- head_rect, state.direction
+
     state.snake = do grow_snake <- state.snake, new_head, got_food
 
     look if is_game_over(state.snake)
       current_scene = "game_over"
     ~meow
   ~meow
-
-  fps.tick()
-  fps.draw(1, 0, fps_opts)
 ~meow
 
+~( ^.x.^)>
+The "game_over" scene, our game over screen.
+<(^.x.^ )~
 =^.x.^= [SceneTable["game_over"]]()
   do graphic.paint <- palette.light
   do draw_food  <- state.food
   do draw_snake <- state.snake
-  do graphic.paint <- new Color <- 0, 0, 0, 80
+  do graphic.paint <- new Color <- 255, 0, 0, 50
 
+  -- Logic for re-staring the game.
   look if key_pressed(keys.space)
-    state = init_state()
+    state = new_state()
     current_scene = "snake_game"
   ~meow
 ~meow
 
+~( ^.x.^)> 
+And finally, we can define our main game loop and start the game!
+We will also add a FPS counter for our own convenience.
+<(^.x.^ )~
+mew fps! = new FpsCounter()
+mew fps_opts! = =^-x-^= [ color: palette.rouge ]
+
 =^.x.^= game_loop()
   SceneTable[current_scene]()
+  fps.tick()
+  fps.draw(1, 0, fps_opts)
 ~meow
 
-~( ^.x.^)> 
-... And finally, we can initialize our game:
-<(^.x.^ )~
 do graphic.init <- game_loop
