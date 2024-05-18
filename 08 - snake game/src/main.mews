@@ -156,13 +156,12 @@ Let's define procedures for drawing each element in our world:
   mew last_direction = head.direction
 
   chase after part in body!!!
-    do graphic.rect <- part.rect, "#FBB75C"
+    do graphic.rect <- part.rect, palette.rose
   ~meow
 ~meow
 
 =^.x.^= draw_food(food)
-  --do graphic.draw <- Apple, food.x, food.y
-    do graphic.rect <- food, "#FBB75C"
+    do graphic.rect <- food, palette.rouge
 ~meow
 
 -----------------------------------------
@@ -211,7 +210,7 @@ mew current_scene = "snake_game"
 =^.x.^= [SceneTable["snake_game"]]()
   tick = tick + graphic.delta()
 
-  do graphic.paint <- "#925E78"
+  do graphic.paint <- palette.light
   do draw_food  <- state.food
   do draw_snake <- state.snake
 
@@ -243,7 +242,7 @@ mew current_scene = "snake_game"
 ~meow
 
 =^.x.^= [SceneTable["game_over"]]()
-  do graphic.paint <- "#925E78"
+  do graphic.paint <- palette.light
   do draw_food  <- state.food
   do draw_snake <- state.snake
   do graphic.paint <- new Color <- 0, 0, 0, 80
