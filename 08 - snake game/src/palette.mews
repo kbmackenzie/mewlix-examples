@@ -5,7 +5,7 @@ Color constants, for the color palette being used.
 <(^.x.^ )~
 
 mew light!   = "#f9fef8"
-mew cream!   = "#fff3a2"
+mew pastel!  = "#f0c1ff"
 mew rose!    = "#ffafd1"
-mew magenta! = "#ed679f"
+mew magenta! = "#ff84b8"
 mew rouge!   = "#bb527e"

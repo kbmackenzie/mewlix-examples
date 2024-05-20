@@ -153,7 +153,7 @@ Let's define procedures for drawing each element in our world:
   mew last_direction = head.direction
 
   chase after part in body!!!
-    do graphic.rect <- part.rect, palette.rose
+    do graphic.rect <- part.rect, palette.magenta
   ~meow
 
   -- We draw the head last to make sure it'll always be drawn 'over' the body:
@@ -204,7 +204,7 @@ The "snake_game" scene, our core gameplay loop!
 We draw and listen to input inside of it.
 <(^.x.^ )~
 =^.x.^= [scene_table["snake_game"]]()
-  do graphic.paint <- palette.light
+  do graphic.paint <- palette.pastel
   do draw_food  <- state.food
   do draw_snake <- state.snake
 
@@ -235,7 +235,7 @@ We draw and listen to input inside of it.
 The "game_over" scene, our game over screen.
 <(^.x.^ )~
 =^.x.^= [scene_table["game_over"]]()
-  do graphic.paint <- palette.light
+  do graphic.paint <- palette.pastel
   do draw_food  <- state.food
   do draw_snake <- state.snake
   do graphic.paint <- new Color <- 255, 0, 0, 50
