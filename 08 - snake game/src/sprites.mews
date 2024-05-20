@@ -9,7 +9,7 @@ mew snake_head! = =^-x-^= [
   Right: "snake-head-right",
 ]
 
---mew Apple! = "snake-apple"
+mew heart! = "heart-symbol"
 
 ~( ^.x.^)> Loading assets: <(^.x.^ )~
 spritesheet("./assets/cat-snake-spritesheet.png", [
@@ -19,4 +19,4 @@ spritesheet("./assets/cat-snake-spritesheet.png", [
   =^-x-^= [ key: snake_head.Right , rect: new Rectangle(8, 8, 8, 8) ],
 ]);
 
---load(Apple, "./assets/snake-apple.png")
+load(heart, "./assets/heart-symbol.png")

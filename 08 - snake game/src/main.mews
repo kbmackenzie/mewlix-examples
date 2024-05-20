@@ -1,7 +1,7 @@
 yarn ball main
 
 from std.graphic takes Rectangle, Vector2, Color, key_pressed, key_down, keys
-from sprites takes snake_head
+from sprites takes snake_head, heart
 takes std.graphic               -- The standard library's graphic template functions.
 takes palette                   -- Color palette constants.
 takes utils.canvas              -- Canvas size constants.
@@ -161,7 +161,7 @@ Let's define procedures for drawing each element in our world:
 ~meow
 
 =^.x.^= draw_food(food)
-    do graphic.rect <- food, palette.rouge
+    do graphic.draw <- heart, food.x, food.y
 ~meow
 
 -----------------------------------------
