@@ -148,8 +148,8 @@ Let's define procedures for drawing each element in our world:
 <(^.x.^ )~
 
 =^.x.^= draw_snake(snake)
-  mew head! = paw at snake
-  mew body! = knock over snake
+  mew head = paw at snake
+  mew body = knock over snake
   mew last_direction = head.direction
 
   chase after part in body!!!
@@ -162,6 +162,14 @@ Let's define procedures for drawing each element in our world:
 
 =^.x.^= draw_food(food)
     do graphic.draw <- heart, food.x, food.y
+~meow
+
+-- Draw text centered horizontally on the screen.
+=^.x.^= draw_text(message, row, opts)
+  mew size = graphic.measure_text(message, opts)
+  mew x = (canvas.width - size.width) / 2
+  mew y = position.row(row)
+  graphic.write(message, x, y, opts)
 ~meow
 
 -----------------------------------------
@@ -238,7 +246,16 @@ The "game_over" scene, our game over screen.
   do graphic.paint <- palette.pastel
   do draw_food  <- state.food
   do draw_snake <- state.snake
-  do graphic.paint <- new Color <- 255, 0, 0, 50
+  do graphic.paint <- new Color <- 255, 0, 128, 20
+
+  do draw_text <- "You bit your tail!", 3, =^-x-^= [
+    size: 16,
+    color: palette.light,
+  ]
+  do draw_text <- "Press [Space] to restart!", 4, =^-x-^= [
+    size: 8,
+    color: palette.light,
+  ]
 
   -- Logic for re-staring the game.
   look if key_pressed(keys.space)
