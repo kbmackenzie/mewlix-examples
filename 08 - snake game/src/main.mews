@@ -1,24 +1,23 @@
 yarn ball main
 
+-- Before anything, let's import the core graphic functions + types:
+takes std.graphic
 from std.graphic takes Rectangle, Vector2, Color, key_pressed, key_down, keys
-from sprites takes snake_head, heart
-takes std.graphic               -- The standard library's graphic template functions.
-takes palette                   -- Color palette constants.
-takes utils.canvas              -- Canvas size constants.
-takes utils.position            -- Functions for positioning elements.
-from utils.fps takes FpsCounter -- A little utility clowder for FPS counters.
 
-~( ^.x.^)> 
-The map for our game will be made up of 8 x 8 pixel squares.
-We can define a few useful constants based on this:
-<(^.x.^ )~
+-- And after that...
+from sprites takes snake_head, heart -- ... Our sprites!
+takes palette                        -- ... Our color palette!
+takes utils.canvas                   -- ... Canvas size constants.
+takes utils.position                 -- ... Canvas positioning utilities.
+from utils.fps takes FpsCounter      -- ... A FPS counter for later.
+
+-- The map for our game will be made up of 8 x 8 pixel squares.
+-- We can define a few useful constants based on this:
 mew square_side!!! = 8
 mew rows!!!    = canvas.height // square_side
 mew columns!!! = canvas.width  // square_side
 
-~( ^.x.^)> 
-A cat tree representing all possible directions the snake is able to move in.
-<(^.x.^ )~
+-- A cat tree representing all possible directions the snake is able to move in.
 cat tree Direction
   Up
   Down
@@ -26,10 +25,8 @@ cat tree Direction
   Right
 ~meow
 
-~( ^.x.^)> 
-Vector2 constants defining movement based on direction. We will use this when moving the snake.
-The keys in this box should match the Direction cat tree's constants:
-<(^.x.^ )~
+-- Vector2 constants defining movement based on direction.
+-- The keys in this box should match the Direction cat tree's constants:
 mew movement! = =^-x-^= [
   Up:    (new Vector2 <-  0, -8),
   Down:  (new Vector2 <-  0,  8),
@@ -139,13 +136,8 @@ Note: We're choosing not to allow *backwards movement*, because it's certainly n
 -- Drawing
 -----------------------------------------
 
-~( ^.x.^)> 
-We're now truly out of the world of pure functions. It's time to draw!
-
-Let's define procedures for drawing each element in our world:
-  - The snake.
-  - The food.
-<(^.x.^ )~
+-- We're now truly out of the world of pure functions. It's time to draw!
+-- Let us begin defining how to draw our snake, food, and text.
 
 =^.x.^= draw_snake(snake)
   mew head = paw at snake
@@ -176,11 +168,8 @@ Let's define procedures for drawing each element in our world:
 -- Game Loop 
 -----------------------------------------
 
-~( ^.x.^)>
-We can now start thinking about mutable game state.
-All our mutable game state and our 'scene' structure will live below.
-<(^.x.^ )~
-
+-- We can now start thinking about mutable game state.
+-- All our mutable game state and our 'scene' structure will live below.
 =^.x.^= new_state()
   mew snake_rect = random_position()
   mew snake_direction = do start_direction <- snake_rect
@@ -200,17 +189,13 @@ All our mutable game state and our 'scene' structure will live below.
 
 mew state = new_state()
 
-~( ^.x.^)>
-With this, we can begin defining procedures for each 'scene' in our game:
-The code below is self-documenting, so comments will be more sparse.
-<(^.x.^ )~
+-- With this, we can begin defining procedures for each 'scene' in our game:
+-- The code below is self-documenting, so comments will be more sparse.
 mew scene_table! = =^-x-^= []
 mew current_scene = "snake_game"
 
-~( ^.x.^)>
-The "snake_game" scene, our core gameplay loop!
-We draw and listen to input inside of it.
-<(^.x.^ )~
+-- The "snake_game" scene, our core gameplay loop.
+-- We draw and listen to input inside of it.
 =^.x.^= [scene_table["snake_game"]]()
   do graphic.paint <- palette.pastel
   do draw_food  <- state.food
@@ -239,9 +224,8 @@ We draw and listen to input inside of it.
   ~meow
 ~meow
 
-~( ^.x.^)>
-The "game_over" scene, our game over screen.
-<(^.x.^ )~
+-- The "game_over" scene, our game over screen.
+-- A player can press [Space] to restart the game.
 =^.x.^= [scene_table["game_over"]]()
   do graphic.paint <- palette.pastel
   do draw_food  <- state.food
@@ -257,17 +241,14 @@ The "game_over" scene, our game over screen.
     color: palette.light,
   ]
 
-  -- Logic for re-staring the game.
   look if key_pressed(keys.space)
     state = new_state()
     current_scene = "snake_game"
   ~meow
 ~meow
 
-~( ^.x.^)> 
-And finally, we can define our main game loop and start the game!
-We will also add a FPS counter for our own convenience.
-<(^.x.^ )~
+-- And finally, we can define our main game loop and start the game!
+-- We will also add a FPS counter for our own convenience.
 mew fps! = new FpsCounter()
 mew fps_opts! = =^-x-^= [ color: palette.rouge ]
 
