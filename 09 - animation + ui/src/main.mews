@@ -10,6 +10,11 @@ from std.graphic takes Rectangle
 from animation.player takes AnimationPlayer
 from utils.fps takes FpsCounter
 
+~( ^.x.^)>
+The main yarn ball. A lot of the code here is self-documenting.
+See the comments on each yarn ball imported here.
+<(^.x.^ )~
+
 ------------------------------------------------------------------------
 -- Animation:
 ------------------------------------------------------------------------
@@ -34,7 +39,7 @@ mew title_options! = =^-x-^= [
   color: palette.light_pink,
 ]
 
-=^.x.^= draw_text()
+=^.x.^= draw_title()
   mew text_size = do graphic.measure_text <- title_string, title_options
 
   mew x = (canvas.width - text_size.width) / 2
@@ -45,13 +50,13 @@ mew title_options! = =^-x-^= [
 ------------------------------------------------------------------------
 -- Controls:
 ------------------------------------------------------------------------
-mew controls_x! = position.center(
-    controls.get_width(),
-    controls.get_height(),
-  ).x
+=^.x.^= center_controls()
+  mew x = (128 - controls.get_width()) / 2
+  mew y = position.row(6)
+  do controls.set_position <- x, y
+~meow
 
-mew controls_y! = do position.row <- 6
-do controls.set_position <- controls_x, controls_y
+center_controls()
 
 =^.x.^= draw_controls()
   controls.draw()
@@ -76,7 +81,7 @@ mew fps_options! = =^-x-^= [ color: palette.cream, ]
 =^.x.^= game_loop()
   do graphic.paint <- palette.dark_purple
   draw_anim()
-  draw_text()
+  draw_title()
   draw_controls()
   draw_fps()
 ~meow
