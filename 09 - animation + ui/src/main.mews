@@ -65,25 +65,19 @@ center_controls()
 ~meow
 
 ------------------------------------------------------------------------
--- FPS:
+-- Game loop:
 ------------------------------------------------------------------------
 mew fps! = new FpsCounter()
 mew fps_options! = =^-x-^= [ color: palette.cream, ]
 
-=^.x.^= draw_fps()
-  fps.tick()
-  fps.draw(1, 0, fps_options)
-~meow
-
-------------------------------------------------------------------------
--- Game loop:
-------------------------------------------------------------------------
 =^.x.^= game_loop()
   do graphic.paint <- palette.dark_purple
   draw_anim()
   draw_title()
   draw_controls()
-  draw_fps()
+
+  fps.tick()
+  fps.draw(0, 1, fps_options)
 ~meow
 
 do graphic.thumbnail <- game_loop
