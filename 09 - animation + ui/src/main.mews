@@ -13,7 +13,7 @@ from utils.fps takes FpsCounter
 ------------------------------------------------------------------------
 -- Animation:
 ------------------------------------------------------------------------
-mew anim!!! = new AnimationPlayer(mewly.frames, mewly.frame_rate)
+mew anim! = new AnimationPlayer(mewly.frames, mewly.frame_rate)
 
 =^.x.^= draw_anim()
   mew pos = do position.center <- mewly.width, mewly.height
@@ -28,8 +28,8 @@ mew anim!!! = new AnimationPlayer(mewly.frames, mewly.frame_rate)
 ------------------------------------------------------------------------
 -- Title:
 ------------------------------------------------------------------------
-mew title_string!!! = "set animation speed"
-mew title_options!! = =^-x-^= [
+mew title_string! = "set animation speed"
+mew title_options! = =^-x-^= [
   size: 12,
   color: palette.light_pink,
 ]
@@ -45,12 +45,12 @@ mew title_options!! = =^-x-^= [
 ------------------------------------------------------------------------
 -- Controls:
 ------------------------------------------------------------------------
-mew controls_x!!! = position.center(
+mew controls_x! = position.center(
     controls.get_width(),
     controls.get_height(),
   ).x
 
-mew controls_y!!! = do position.row <- 6
+mew controls_y! = do position.row <- 6
 do controls.set_position <- controls_x, controls_y
 
 =^.x.^= draw_controls()
@@ -62,8 +62,8 @@ do controls.set_position <- controls_x, controls_y
 ------------------------------------------------------------------------
 -- FPS:
 ------------------------------------------------------------------------
-mew fps!!! = new FpsCounter()
-mew fps_options!!! = =^-x-^= [ color: palette.cream, ]
+mew fps! = new FpsCounter()
+mew fps_options! = =^-x-^= [ color: palette.cream, ]
 
 =^.x.^= draw_fps()
   fps.tick()

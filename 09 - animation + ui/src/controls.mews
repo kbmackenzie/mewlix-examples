@@ -14,15 +14,15 @@ The speed controls will consist of:
 
 To start off, let's define constants for our sprites:
 <(^.x.^ )~
-mew sprite_width!!!  = 16
-mew sprite_height!!! = 16
+mew sprite_width!  = 16
+mew sprite_height! = 16
 
-mew plus!!! = =^-x-^= [
+mew plus! = =^-x-^= [
   normal:  "plus-sprite",
   hovered: "plus-sprite-hovered",
 ]
 
-mew minus!! = =^-x-^= [
+mew minus! = =^-x-^= [
   normal:  "minus-sprite",
   hovered: "minus-sprite-hovered",
 ]
@@ -56,12 +56,12 @@ mew speed = 100
 ~( ^.x.^)>
 After that, we can begin constructing our controls.
 
-We will use some UI utility clowders here.
-The 'takes' statements at the top should tell you where they came from!
+We will keep *all* their state inside this yarn ball for simplicity!
+We will also use some utility clowders here, imported at the top of the file.
 
 Let's define a box to hold the two buttons and the text box:
 <(^.x.^ )~
-mew controls!!! = =^-x-^= [
+mew controls! = =^-x-^= [
   plus: new Button(
     new Rectangle(0, 0, sprite_width, sprite_height),
     =^oxo^= () -> change_speed(20),
@@ -78,7 +78,6 @@ mew controls!!! = =^-x-^= [
 ]
 
 ~( ^.x.^)> And now, let's define a couple functions to operate on them! <(^.x.^ )~
-
 =^.x.^= get_width()
   bring controls.plus.rect.width  \
     + controls.display.rect.width \

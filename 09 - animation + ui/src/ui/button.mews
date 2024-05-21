@@ -10,7 +10,7 @@ Its constructor accepts:
   2. A function to call when the button is clicked.
 
 It contains the following methods:
-  update():     Should be called every frame.
+  update(): Should be called every frame.
   is_hovered(): Returns true if the button is being hovered.
   is_clicked(): Returns true if the button has been clicked.
 <(^.x.^ )~
