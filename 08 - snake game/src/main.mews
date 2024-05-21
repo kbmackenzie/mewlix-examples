@@ -43,12 +43,11 @@ And now, we can begin defining a few pure functions that will help us with our g
 No I/O, no side effects. Pure utility functions only for now.
 
 We can begin with an utility function for 'moving' a Rectangle, which always generates a new Rectangle, avoiding any side effects.
-When our snake goes off screen, we want it to come out on the other side. For that, we'll use the modulo (%) operator.
 <(^.x.^ )~
 =^.x.^= move_rect(rect, move)
   bring new Rectangle(
-    (rect.x + move.x) % canvas.width,
-    (rect.y + move.y) % canvas.height,
+    rect.x + move.x,
+    rect.y + move.y,
     rect.width,
     rect.height,
   )
@@ -95,8 +94,13 @@ Based on that, we can define:
 ~meow
 
 =^.x.^= is_game_over(snake)
-  mew head! = paw at snake
-  mew is_colliding! = =^oxo^= (x) -> do head.rect.collides <- x.rect
+  mew head! = (paw at snake).rect
+
+  look if head.x < 0 or head.x >= 128 or head.y < 0 or head.y >= 128
+    bring true
+  ~meow
+
+  mew is_colliding! = =^oxo^= (x) -> do head.collides <- x.rect
   bring do std.any <- is_colliding, knock over snake
 ~meow
 
@@ -232,7 +236,7 @@ mew current_scene = "snake_game"
   do draw_snake <- state.snake
   do graphic.paint <- new Color <- 255, 0, 128, 20
 
-  do draw_text <- "You bit your tail!", 3, =^-x-^= [
+  do draw_text <- "Game over!", 3, =^-x-^= [
     size: 16,
     color: palette.light,
   ]
