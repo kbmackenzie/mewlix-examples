@@ -19,8 +19,7 @@ clowder AnimationPlayer
     assert not std.empty(frames)
     assert frame_rate > 0
 
-    -- Reverse to ensure frames will play
-    -- in the expected order. c:
+    -- Reverse to ensure frames will play in the expected order. c:
     frames = std.reverse(frames)
 
     home.frames = frames
@@ -44,7 +43,7 @@ clowder AnimationPlayer
   =^.x.^= draw(x, y)
     home.timer = home.timer + graphic.delta()
 
-    look if home.timer >= (1 / home.frame_rate)
+    look if home.timer >= 1 / home.frame_rate
       home._next_frame()
     ~meow
 
