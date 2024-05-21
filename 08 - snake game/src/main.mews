@@ -185,9 +185,9 @@ Note: We're choosing not to allow *backwards movement*, because it's certainly n
     direction: snake_direction,
 
     -- We also need to keep track of how fast the snake should move.
-    -- Four squares per second is a good movement speed.
+    -- Eight squares per second is a good movement speed.
     timer: 0.0,
-    wait: 1 / 4,
+    wait: 1 / 8,
   ]
 ~meow
 
