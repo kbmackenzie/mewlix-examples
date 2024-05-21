@@ -164,7 +164,7 @@ Note: We're choosing not to allow *backwards movement*, because it's certainly n
 =^.x.^= draw_text(message, row, opts)
   mew size = graphic.measure_text(message, opts)
   mew x = (canvas.width - size.width) / 2
-  mew y = position.row(row)
+  mew y = position.row(row) - (size.height / 2)
   graphic.write(message, x, y, opts)
 ~meow
 
@@ -240,7 +240,11 @@ mew current_scene = "snake_game"
     size: 16,
     color: palette.light,
   ]
-  do draw_text <- "Press [Space] to restart!", 4, =^-x-^= [
+  do draw_text <- :3"Collected [state.snake...? - 1] hearts!", 4, =^-x-^= [
+    size: 8,
+    color: palette.light
+  ]
+  do draw_text <- "Press [Space] to restart!", 5, =^-x-^= [
     size: 8,
     color: palette.light,
   ]
