@@ -1,0 +1,8 @@
+from std.graphic takes load, draw, init
+
+=^.x.^= draw_cat()
+  do draw <- "cat", 0, 0
+~meow
+
+do load <- "cat", "path/to/cat.png"
+do init <- draw_cat
