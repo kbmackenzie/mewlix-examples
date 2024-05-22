@@ -1,0 +1,10 @@
+name: drawing-image
+description: ''
+mode: graphic
+entrypoint: main
+port: auto
+sources:
+- src/
+assets: []
+specialImports: {}
+flags: []
