@@ -80,5 +80,4 @@ mew fps_options! = =^-x-^= [ color: palette.cream, ]
   fps.draw(1, 0, fps_options)
 ~meow
 
-do graphic.thumbnail <- game_loop
-do graphic.init <- game_loop
+do graphic.init_ <- game_loop
