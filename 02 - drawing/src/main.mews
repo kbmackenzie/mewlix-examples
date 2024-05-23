@@ -1,10 +1,8 @@
-from std.graphic takes load, draw, init, thumbnail
-
-do load <- "cat", "./assets/cat.png"
+from std.graphic takes load, draw, init_, thumbnail
 
 =^.x.^= draw_cat()
   do draw <- "cat", 0, 0
 ~meow
 
-do thumbnail <- draw_cat
-do init <- draw_cat
+do load  <- "cat", "./assets/cat.png"
+do init_ <- draw_cat
