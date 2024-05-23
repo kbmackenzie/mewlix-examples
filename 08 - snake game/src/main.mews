@@ -266,5 +266,4 @@ mew fps_opts! = =^-x-^= [ color: palette.rouge ]
   fps.draw(1, 0, fps_opts)
 ~meow
 
-do graphic.thumbnail <- game_loop
-do graphic.init <- game_loop
+do graphic.init_ <- game_loop
