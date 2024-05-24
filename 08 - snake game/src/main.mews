@@ -1,15 +1,13 @@
-yarn ball main
-
 -- Before anything, let's import the core graphic functions + types:
 takes std.graphic
 from std.graphic takes Rectangle, Vector2, Color, key_pressed, key_down, keys
 
 -- And after that...
-from sprites takes snake_head, heart -- ... Our sprites!
 takes palette                        -- ... Our color palette!
 takes utils.canvas                   -- ... Canvas size constants.
 takes utils.position                 -- ... Canvas positioning utilities.
 from utils.fps takes FpsCounter      -- ... A FPS counter for later.
+from sprites takes snake_head, heart -- ... And, of course, our sprites!
 
 -- The map for our game will be made up of 8 x 8 pixel squares.
 -- We can define a few useful constants based on this:
