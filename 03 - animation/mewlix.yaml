@@ -1,5 +1,5 @@
 name: animation
-description: ''
+description: An example of how to draw an animation on the canvas.
 mode: graphic
 entrypoint: main
 port: auto
