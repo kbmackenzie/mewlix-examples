@@ -3,9 +3,9 @@ yarn ball main
 takes std.graphic
 takes mewly
 takes palette
-takes controls
 takes utils.canvas
 takes utils.position
+from controls takes Controls
 from std.graphic takes Rectangle
 from animation.player takes AnimationPlayer
 from utils.fps takes FpsCounter
@@ -50,18 +50,12 @@ mew title_options! = =^-x-^= [
 ------------------------------------------------------------------------
 -- Controls:
 ------------------------------------------------------------------------
-=^.x.^= center_controls()
-  mew x = (128 - controls.get_width()) / 2
-  mew y = position.row(6)
-  do controls.set_position <- x, y
-~meow
-
-center_controls()
+mew controls! = new Controls <- 6
 
 =^.x.^= draw_controls()
   controls.draw()
   controls.update()
-  do set_anim_speed <- controls.speed
+  do set_anim_speed <- controls.get_speed()
 ~meow
 
 ------------------------------------------------------------------------

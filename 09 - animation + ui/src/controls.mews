@@ -1,9 +1,11 @@
 yarn ball controls
 
+takes std.graphic
 from std.graphic takes spritesheet, Rectangle
 from ui.button takes Button
 from ui.text takes TextBox
-takes std.graphic
+takes utils.position
+takes utils.canvas
 takes palette
 
 ~( ^.x.^)>
@@ -45,73 +47,66 @@ We will store our speed in percentages:
 
 We don't want our speed to ever go below 1%.
 
-Let's define a variable to hold our speed value, and a 'setter' function for safely setting our speed value:
+Let's define a clowder to represent our controls.
+The controls will always be horizontally centered.
+
+We will also manage the speed value in the same clowder.
 <(^.x.^ )~
-mew speed = 100
 
-=^.x.^= change_speed(value)
-  speed = std.max(20, speed + value)
-~meow
+clowder Controls
+  =^.x.^= wake(row)
+    home.speed = 100
 
-~( ^.x.^)>
-After that, we can begin constructing our controls.
+    mew text_width = 48
+    mew controls_width = sprite_width * 2 + text_width
 
-We will keep *all* their state inside this yarn ball for simplicity!
-We will also use some utility clowders here, imported at the top of the file.
+    mew x = (canvas.width - controls_width) / 2
+    mew y = position.row(row)
 
-Let's define a box to hold the two buttons and the text box:
-<(^.x.^ )~
-mew controls! = =^-x-^= [
-  plus: new Button(
-    new Rectangle(0, 0, sprite_width, sprite_height),
-    =^oxo^= () -> change_speed(20),
-  ),
-  minus: new Button(
-    new Rectangle(0, 0, sprite_width, sprite_height),
-    =^oxo^= () -> change_speed(-20),
-  ),
-  display: new TextBox(
-    new Rectangle(0, 0, 48, sprite_width),
-    std.purr(speed),
-    =^-x-^= [ size: 16, color: palette.light_pink ]
-  ),
-]
+    home.minus = new Button(
+      new Rectangle(x, y, sprite_width, sprite_height),
+      =^oxo^= () -> home.set_speed(-20),
+    )
+    x = x + sprite_width
 
-~( ^.x.^)> And now, let's define a couple functions to operate on them! <(^.x.^ )~
-=^.x.^= get_width()
-  bring controls.plus.rect.width  \
-    + controls.display.rect.width \
-    + controls.minus.rect.width
-~meow
+    home.display = new TextBox(
+      new Rectangle(x, y, text_width, sprite_height),
+      std.purr(:3"[home.get_speed()]%"),
+      =^-x-^= [ size: 16, color: palette.light_pink ]
+    )
+    x = x + text_width
 
-=^.x.^= get_height()
-  bring sprite_height
-~meow
+    home.plus = new Button(
+      new Rectangle(x, y, sprite_width, sprite_height),
+      =^oxo^= () -> home.set_speed(20),
+    )
+  ~meow
 
-=^.x.^= set_position(x, y)
-  controls.minus.rect.x = x
-  controls.minus.rect.y = y
-  x = x + controls.minus.rect.width   -- Move forward.
+  =^.x.^= get_speed()
+    bring home.speed
+  ~meow
 
-  controls.display.rect.x = x
-  controls.display.rect.y = y
-  x = x + controls.display.rect.width -- Move forward.
+  =^.x.^= set_speed(value)
+    home.speed = std.max(20, home.speed + value)
+  ~meow
 
-  controls.plus.rect.x = x
-  controls.plus.rect.y = y
-~meow
+  =^.x.^= draw(controls)
+    mew plus_sprite  = plus.hovered   \
+      if home.plus.is_hovered()       \
+      else plus.normal
 
-=^.x.^= draw()
-  mew plus_sprite  = plus.hovered if controls.plus.is_hovered() else plus.normal
-  mew minus_sprite = minus.hovered if controls.minus.is_hovered() else minus.normal
+    mew minus_sprite = minus.hovered  \
+      if home.minus.is_hovered()      \
+      else minus.normal
 
-  do graphic.draw <- plus_sprite, controls.plus.rect.x, controls.plus.rect.y
-  do graphic.draw <- minus_sprite, controls.minus.rect.x, controls.minus.rect.y
-  controls.display.draw()
-~meow
+    do graphic.draw <- plus_sprite, home.plus.rect.x, home.plus.rect.y 
+    do graphic.draw <- minus_sprite, home.minus.rect.x, home.minus.rect.y
+    home.display.draw()
+  ~meow
 
-=^.x.^= update()
-  controls.plus.update()
-  controls.minus.update()
-  do controls.display.set_message <- :3"[speed]%"
+  =^.x.^= update(controls)
+    home.plus.update()
+    home.minus.update()
+    do home.display.set_message <- :3"[home.get_speed()]%"
+  ~meow
 ~meow
