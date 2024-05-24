@@ -4,7 +4,7 @@ from brainfuck.env takes Environment
 
 =^.x.^= evaluate(tokens, stdin)
   mew state! = new Environment(stdin)
-  chase after token in tokens!!!!!!!
+  chase after token in tokens!
     do token.evaluate <- state
   ~meow
   bring do state.get_output

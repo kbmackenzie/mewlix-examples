@@ -55,7 +55,7 @@ clowder Loop is Token
   ~meow
 
   =^.x.^= run(state)
-    chase after token in home.tokens!!!!!!!!!
+    chase after token in home.tokens!
       token.evaluate(state)
     ~meow
   ~meow

@@ -38,12 +38,12 @@ mew token_table!!! = std.table()              \
   ~meow
 
   look if head == "["
-    mew token! = consume_loop(parser)
+    mew token! = do consume_loop <- parser
     bring token push tokens
   ~meow
 
   look if head == "]"
-    parser.error("Unmatched ']' found in string!")
+    do parser.error <- "Unmatched ']' found in string!"
   ~meow
 
   bring tokens
@@ -58,8 +58,8 @@ mew token_table!!! = std.table()              \
       bring new Loop(std.reverse(tokens))
     ~meow
 
-    tokens = consume_token(parser, tokens)
+    tokens = do consume_token <- parser, tokens
   ~meow
 
-  parser.error("Unclosed loop!")
+  do parser.error <- "Unclosed loop!"
 ~meow
