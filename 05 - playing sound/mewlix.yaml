@@ -1,0 +1,11 @@
+name: playing sound
+description: ''
+mode: graphic
+entrypoint: main
+port: auto
+sources:
+- src/
+assets:
+- assets/
+specialImports: {}
+flags: []

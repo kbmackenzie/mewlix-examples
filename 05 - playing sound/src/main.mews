@@ -1,0 +1,44 @@
+takes std.graphic
+takes palette
+takes utils.canvas
+from std.graphic takes Rectangle, Color
+
+=^.x.^= create_button()
+  mew width  = 48
+  mew height = 24
+
+  mew x = (canvas.width  -  width) / 2
+  mew y = (canvas.height - height) / 2
+
+  bring new Rectangle(x, y, width, height)
+~meow
+
+=^.x.^= is_hovered(rect)
+  bring rect.contains(graphic.mouse_position())
+~meow
+
+=^.x.^= draw_text(rect, message, opts)
+  mew size = graphic.measure_text(message, opts)
+  mew x = rect.x + (rect.width  -  size.width) / 2
+  mew y = rect.y + (rect.height - size.height) / 2
+  do graphic.write <- message, x, y, opts
+~meow
+
+-------------------------------------------------------------------------
+
+mew button! = create_button()
+
+=^.x.^= game_loop()
+  mew hovered = is_hovered(button)
+
+  look if graphic.mouse_click()
+    graphic.play_sfx("bleep")
+  ~meow
+
+  mew color! = palette.crepe if hovered else palette.flamingo
+  do graphic.rect <- button, color
+  do draw_text    <- button, "play", =^-x-^= [ size: 12, color: palette.cream ]
+~meow
+
+do graphic.load  <- "bleep", "./assets/button-bleep.ogg"
+do graphic.init_ <- game_loop
