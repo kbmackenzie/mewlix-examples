@@ -1,5 +1,5 @@
-name: drawing-image
-description: A simple example drawing a sprite.
+name: drawing
+description: An example of how to draw a sprite on the canvas.
 mode: graphic
 entrypoint: main
 port: auto
