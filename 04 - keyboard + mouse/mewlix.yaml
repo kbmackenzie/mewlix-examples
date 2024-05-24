@@ -1,5 +1,5 @@
 name: keyboard + mouse
-description: ''
+description: An example of how to listen to mouse and keyboard input.
 mode: graphic
 entrypoint: main
 port: auto
