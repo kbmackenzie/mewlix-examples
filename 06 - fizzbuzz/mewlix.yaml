@@ -1,5 +1,5 @@
 name: fizzbuzz
-description: ''
+description: A solution for the Fizz Buzz interview question.
 mode: console
 entrypoint: main
 port: auto
