@@ -1,5 +1,5 @@
 name: playing sound
-description: ''
+description: An example of how to play sound.
 mode: graphic
 entrypoint: main
 port: auto
