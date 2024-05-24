@@ -1,6 +1,5 @@
 name: animation + ui
-description: |
-  A simple animation example.
+description: A simple animation example.
 mode: graphic
 entrypoint: main
 port: auto
