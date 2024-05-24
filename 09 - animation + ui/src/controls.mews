@@ -1,12 +1,12 @@
 yarn ball controls
 
 takes std.graphic
+takes palette
+takes utils.position
+takes utils.canvas
 from std.graphic takes spritesheet, Rectangle
 from ui.button takes Button
 from ui.text takes TextBox
-takes utils.position
-takes utils.canvas
-takes palette
 
 ~( ^.x.^)>
 The speed controls will consist of:
