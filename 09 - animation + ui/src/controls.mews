@@ -72,7 +72,7 @@ clowder Controls
     home.display = new TextBox(
       new Rectangle(x, y, text_width, sprite_height),
       std.purr(:3"[home.get_speed()]%"),
-      =^-x-^= [ size: 16, color: palette.light_pink ]
+      =^-x-^= [ size: 16, color: palette.crepe ]
     )
     x = x + text_width
 

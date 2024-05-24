@@ -36,7 +36,7 @@ mew anim! = new AnimationPlayer(mewly.frames, mewly.frame_rate)
 mew title_string! = "set animation speed"
 mew title_options! = =^-x-^= [
   size: 12,
-  color: palette.light_pink,
+  color: palette.crepe,
 ]
 
 =^.x.^= draw_title()
@@ -65,7 +65,7 @@ mew fps! = new FpsCounter()
 mew fps_options! = =^-x-^= [ color: palette.cream, ]
 
 =^.x.^= game_loop()
-  do graphic.paint <- palette.dark_purple
+  do graphic.paint <- palette.lilac
   draw_anim()
   draw_title()
   draw_controls()
