@@ -17,4 +17,4 @@ Into as few tokens as possible. For that example, only one token is generated:
 - As Mewlix doesn't have indexable arrays, a [table](https://github.com/KBMackenzie/mewlix/wiki/std#stdtable) is used to represent the byte array.
 - The value for each *'cell'* wraps around: Incrementing a cell above 255 will cause it to wrap around to 0, and vice versa.
 - This interpreter chooses to handle EOF by making no changes to a cell whatsoever. [This seemed like the better option.](https://esolangs.org/wiki/Brainfuck#EOF).
-- This project is meant to run in the browser, with Mewlix's `console` template. As such, when interpreting a program, we can't print character by character to the screen as we go. Instead, program output is stored as a string and only shown when a program finishes executing.
+- This project is meant to run in the browser, with Mewlix's `console` template. As such, when interpreting a program, we can't print its output to the screen character by character as we go. Instead, program output is stored as a string and only shown when a program finishes executing.
