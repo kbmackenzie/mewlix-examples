@@ -1,0 +1,10 @@
+name: keyboard + mouse
+description: ''
+mode: graphic
+entrypoint: main
+port: auto
+sources:
+- src/
+assets: []
+specialImports: {}
+flags: []

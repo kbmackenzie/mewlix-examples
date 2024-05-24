@@ -1,0 +1,31 @@
+takes std.graphic
+from std.graphic takes keys
+from utils.position takes row
+
+mew arrows = [
+  keys.up,
+  keys.down,
+  keys.left,
+  keys.right,
+]
+
+mew wasd = [ "w", "a", "s", "d" ]
+
+=^.x.^= game_loop()
+  -- Mouse input:
+  mew mouse! = graphic.mouse_position()
+  do graphic.write <- :3"mouse x: [mouse.x]", 0, row(0)
+  do graphic.write <- :3"mouse y: [mouse.y]", 0, row(1)
+  do graphic.write <- :3"mouse click?: [graphic.mouse_down()]", 0, row(2)
+
+  -- Keyboard input:
+  mew space_key!  = "pressed" if graphic.key_down(keys.space)      else "not pressed"
+  mew arrow_keys! = "pressed" if std.any(graphic.key_down, arrows) else "not pressed"
+  mew wasd_keys!  = "pressed" if std.any(graphic.key_down, wasd)   else "not pressed"
+
+  do graphic.write <- :3"space key: [space_key]", 0, row(3)
+  do graphic.write <- :3"wasd keys: [wasd_keys]", 0, row(4)
+  do graphic.write <- :3"arrow keys: [arrow_keys]", 0, row(5)
+~meow
+
+do graphic.init_ <- game_loop
