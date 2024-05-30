@@ -4,7 +4,7 @@ https://leetcode.com/problems/fizz-buzz/
 <(^.x.^ )~
 
 -- A pure function:
-=^.x.^= fizzbuzz(max)
+😺 fizzbuzz(max)
   mew nums = std.count(1, max)
   mew output = []
 
@@ -31,7 +31,7 @@ do console.name <- "fizzbuzz"
 
 -- We'll ask the user for a number for the fun of it, parse the number,
 -- and run fizzbuzz, returning the result:
-=^.x.^= run_fizzbuzz(input)
+😺 run_fizzbuzz(input)
   bring std.slap(input) |> fizzbuzz
 ~meow
 

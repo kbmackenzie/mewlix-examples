@@ -1,19 +1,19 @@
 from std.graphic takes load, draw, init_, spritesheet, Rectangle
 
 do spritesheet <- './assets/cat-spritesheet.png', [
-  =^-x-^= [ key: "cat-01", rect: new Rectangle(  0, 0, 128, 128) ],
-  =^-x-^= [ key: "cat-02", rect: new Rectangle(128, 0, 128, 128) ],
+  📦 [ key: "cat-01", rect: new Rectangle(  0, 0, 128, 128) ],
+  📦 [ key: "cat-02", rect: new Rectangle(128, 0, 128, 128) ],
 ]
 mew frames! = [ "cat-01", "cat-02" ]
 
-mew state = =^-x-^= [
+mew state = 📦 [
   current: paw at frames,
   stack: knock over frames,
   timer: 0.0,
   frame_duration: 1 / 4,
 ]
 
-=^.x.^= draw_animation(delta)
+😺 draw_animation(delta)
   state.timer = state.timer + delta
 
   look if state.timer >= state.frame_duration
@@ -29,4 +29,4 @@ mew state = =^-x-^= [
   do draw <- state.current, 0, 0
 ~meow
 
-do init_ <- =^oxo^= (delta) -> draw_animation(delta or 0)
+do init_ <- 🐈 (delta) -> draw_animation(delta or 0)

@@ -16,26 +16,26 @@ It contains the following methods:
 <(^.x.^ )~
 
 clowder Button
-  =^.x.^= wake(rect, callback)
+  😺 wake(rect, callback)
     home.rect = rect
     home.callback = callback
   ~meow
 
-  =^.x.^= is_hovered()
+  😺 is_hovered()
     bring home.rect.contains(graphic.mouse_position())
   ~meow
 
-  =^.x.^= is_clicked()
+  😺 is_clicked()
     bring graphic.mouse_click() and home.is_hovered()
   ~meow
 
-  =^.x.^= update()
+  😺 update()
     look if home.is_clicked()
       home.callback()
     ~meow
   ~meow
 
-  =^.x.^= set_position(x, y)
+  😺 set_position(x, y)
     home.rect.x = x
     home.rect.y = y
   ~meow

@@ -1,6 +1,6 @@
 yarn ball main
 
-=^.x.^= verse(i)
+😺 verse(i)
   bring [
     :3"[i] bottles of milk on the wall, [i] bottles of milk! ",
     "Take one down and pass it around, ",
@@ -8,7 +8,7 @@ yarn ball main
   ] |> std.cat
 ~meow
 
-=^.x.^= sing()
+😺 sing()
   mew bottles!!! = std.count(99, 3)
 
   chase after bottle in bottles!!!!!!

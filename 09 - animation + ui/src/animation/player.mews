@@ -15,7 +15,7 @@ It contains the following methods:
 <(^.x.^ )~
 
 clowder AnimationPlayer
-  =^.x.^= wake(frames, frame_rate)
+  😺 wake(frames, frame_rate)
     assert not std.empty(frames)
     assert frame_rate > 0
 
@@ -30,7 +30,7 @@ clowder AnimationPlayer
     home.current_frame = paw at frames
   ~meow
 
-  =^.x.^= _next_frame()
+  😺 _next_frame()
     look if std.empty(home.frame_stack)
       home.frame_stack = home.frames
     ~meow
@@ -40,7 +40,7 @@ clowder AnimationPlayer
     home.frame_stack = knock over home.frame_stack
   ~meow
 
-  =^.x.^= draw(x, y)
+  😺 draw(x, y)
     home.timer = home.timer + graphic.delta()
 
     look if home.timer >= 1 / home.frame_rate
@@ -50,7 +50,7 @@ clowder AnimationPlayer
     do graphic.draw <- home.current_frame, x, y
   ~meow
 
-  =^.x.^= set_frame_rate(frame_rate)
+  😺 set_frame_rate(frame_rate)
     assert frame_rate > 0
     home.frame_rate = frame_rate
   ~meow

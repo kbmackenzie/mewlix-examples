@@ -20,12 +20,12 @@ See the comments on each yarn ball imported here.
 ------------------------------------------------------------------------
 mew anim! = new AnimationPlayer(mewly.frames, mewly.frame_rate)
 
-=^.x.^= draw_anim()
+😺 draw_anim()
   mew pos = do position.center <- mewly.width, mewly.height
   do anim.draw <- pos.x, pos.y
 ~meow
 
-=^.x.^= set_anim_speed(percentage)
+😺 set_anim_speed(percentage)
   mew new_frame_rate = do std.floor <- mewly.frame_rate * (percentage / 100)
   do anim.set_frame_rate <- new_frame_rate
 ~meow
@@ -34,12 +34,12 @@ mew anim! = new AnimationPlayer(mewly.frames, mewly.frame_rate)
 -- Title:
 ------------------------------------------------------------------------
 mew title_string! = "set animation speed"
-mew title_options! = =^-x-^= [
+mew title_options! = 📦 [
   size: 12,
   color: palette.crepe,
 ]
 
-=^.x.^= draw_title()
+😺 draw_title()
   mew text_size = do graphic.measure_text <- title_string, title_options
 
   mew x = (canvas.width - text_size.width) / 2
@@ -52,7 +52,7 @@ mew title_options! = =^-x-^= [
 ------------------------------------------------------------------------
 mew controls! = new Controls <- 6
 
-=^.x.^= draw_controls()
+😺 draw_controls()
   controls.draw()
   controls.update()
   do set_anim_speed <- controls.get_speed()
@@ -62,9 +62,9 @@ mew controls! = new Controls <- 6
 -- Game loop:
 ------------------------------------------------------------------------
 mew fps! = new FpsCounter()
-mew fps_options! = =^-x-^= [ color: palette.cream, ]
+mew fps_options! = 📦 [ color: palette.cream, ]
 
-=^.x.^= game_loop()
+😺 game_loop()
   do graphic.paint <- palette.lilac
   draw_anim()
   draw_title()

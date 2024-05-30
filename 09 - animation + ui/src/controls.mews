@@ -19,22 +19,22 @@ To start off, let's define constants for our sprites:
 mew sprite_width!  = 16
 mew sprite_height! = 16
 
-mew plus! = =^-x-^= [
+mew plus! = 📦 [
   normal:  "plus-sprite",
   hovered: "plus-sprite-hovered",
 ]
 
-mew minus! = =^-x-^= [
+mew minus! = 📦 [
   normal:  "minus-sprite",
   hovered: "minus-sprite-hovered",
 ]
 
 ~( ^.x.^)> And let us load our sprites: <(^.x.^ )~
 spritesheet("assets/plus-minus.png", [
-  =^-x-^= [ key: plus.normal,    rect: new Rectangle( 0,  0,  16, 16) ],
-  =^-x-^= [ key: plus.hovered,   rect: new Rectangle(16,  0,  16, 16) ],
-  =^-x-^= [ key: minus.normal,   rect: new Rectangle( 0, 16,  16, 16) ],
-  =^-x-^= [ key: minus.hovered,  rect: new Rectangle(16, 16,  16, 16) ],
+  📦 [ key: plus.normal,    rect: new Rectangle( 0,  0,  16, 16) ],
+  📦 [ key: plus.hovered,   rect: new Rectangle(16,  0,  16, 16) ],
+  📦 [ key: minus.normal,   rect: new Rectangle( 0, 16,  16, 16) ],
+  📦 [ key: minus.hovered,  rect: new Rectangle(16, 16,  16, 16) ],
 ])
 
 ~( ^.x.^)>
@@ -54,7 +54,7 @@ We will also manage the speed value in the same clowder.
 <(^.x.^ )~
 
 clowder Controls
-  =^.x.^= wake(row)
+  😺 wake(row)
     home.speed = 100
 
     mew text_width = 48
@@ -65,32 +65,32 @@ clowder Controls
 
     home.minus = new Button(
       new Rectangle(x, y, sprite_width, sprite_height),
-      =^oxo^= () -> home.set_speed(-20),
+      🐈 () -> home.set_speed(-20),
     )
     x = x + sprite_width
 
     home.display = new TextBox(
       new Rectangle(x, y, text_width, sprite_height),
       std.purr(:3"[home.get_speed()]%"),
-      =^-x-^= [ size: 16, color: palette.crepe ]
+      📦 [ size: 16, color: palette.crepe ]
     )
     x = x + text_width
 
     home.plus = new Button(
       new Rectangle(x, y, sprite_width, sprite_height),
-      =^oxo^= () -> home.set_speed(20),
+      🐈 () -> home.set_speed(20),
     )
   ~meow
 
-  =^.x.^= get_speed()
+  😺 get_speed()
     bring home.speed
   ~meow
 
-  =^.x.^= set_speed(value)
+  😺 set_speed(value)
     home.speed = std.max(20, home.speed + value)
   ~meow
 
-  =^.x.^= draw(controls)
+  😺 draw(controls)
     mew plus_sprite  = plus.hovered   \
       if home.plus.is_hovered()       \
       else plus.normal
@@ -104,7 +104,7 @@ clowder Controls
     home.display.draw()
   ~meow
 
-  =^.x.^= update(controls)
+  😺 update(controls)
     home.plus.update()
     home.minus.update()
     do home.display.set_message <- :3"[home.get_speed()]%"

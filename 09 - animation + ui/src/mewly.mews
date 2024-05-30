@@ -9,8 +9,8 @@ mew height! = 64
 mew frame_rate! = 12
 
 mew frames!!! = load_frames("assets/mewly-run.png", [
-  =^-x-^= [ key: "mewly-run-0", rect: new Rectangle(0,   0, 96, 64) ],
-  =^-x-^= [ key: "mewly-run-1", rect: new Rectangle(96,  0, 96, 64) ],
-  =^-x-^= [ key: "mewly-run-2", rect: new Rectangle(0 , 64, 96, 64) ],
-  =^-x-^= [ key: "mewly-run-3", rect: new Rectangle(96, 64, 96, 64) ],
+  📦 [ key: "mewly-run-0", rect: new Rectangle(0,   0, 96, 64) ],
+  📦 [ key: "mewly-run-1", rect: new Rectangle(96,  0, 96, 64) ],
+  📦 [ key: "mewly-run-2", rect: new Rectangle(0 , 64, 96, 64) ],
+  📦 [ key: "mewly-run-3", rect: new Rectangle(96, 64, 96, 64) ],
 ])

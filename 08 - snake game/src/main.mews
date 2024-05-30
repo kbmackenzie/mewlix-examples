@@ -25,7 +25,7 @@ cat tree Direction
 
 -- Vector2 constants defining movement based on direction.
 -- The keys in this box should match the Direction cat tree's constants:
-mew movement! = =^-x-^= [
+mew movement! = 📦 [
   Up:    (new Vector2 <-  0, -8),
   Down:  (new Vector2 <-  0,  8),
   Left:  (new Vector2 <- -8,  0),
@@ -42,7 +42,7 @@ No I/O, no side effects. Pure utility functions only for now.
 
 We can begin with an utility function for 'moving' a Rectangle, which always generates a new Rectangle, avoiding any side effects.
 <(^.x.^ )~
-=^.x.^= move_rect(rect, move)
+😺 move_rect(rect, move)
   bring new Rectangle(
     rect.x + move.x,
     rect.y + move.y,
@@ -61,7 +61,7 @@ Thus, we follow these rules for choosing (x, y) positions:
   0 < x < columns - 1
   0 < y < rows - 1
 <(^.x.^ )~
-=^.x.^= random_position()
+😺 random_position()
   bring new Rectangle(
     std.random_int(1, columns - 2) * square_side,
     std.random_int(1, rows - 2) * square_side,
@@ -79,30 +79,30 @@ Based on that, we can define:
   2. A pure function for 'growing' our snake.
   3. Pure functions for checking the snake's collision with food and with itself.
 <(^.x.^ )~
-=^.x.^= snake_part(rect, direction)
-  bring =^-x-^= [
+😺 snake_part(rect, direction)
+  bring 📦 [
     rect: rect,
     direction: direction,
   ]
 ~meow
 
-=^.x.^= grow_snake(snake, new_head, got_food)
+😺 grow_snake(snake, new_head, got_food)
   mew body! = snake if got_food else (do std.remove <- snake, -1)
   bring new_head push body
 ~meow
 
-=^.x.^= is_game_over(snake)
+😺 is_game_over(snake)
   mew head! = (paw at snake).rect
 
   look if head.x < 0 or head.x >= 128 or head.y < 0 or head.y >= 128
     bring true
   ~meow
 
-  mew is_colliding! = =^oxo^= (x) -> do head.collides <- x.rect
+  mew is_colliding! = 🐈 (x) -> do head.collides <- x.rect
   bring do std.any <- is_colliding, knock over snake
 ~meow
 
-=^.x.^= has_gotten_food(snake, food)
+😺 has_gotten_food(snake, food)
   bring (paw at snake).rect.collides(food)
 ~meow
 
@@ -116,7 +116,7 @@ Now, we can begin thinking about direction and movement.
 For convenience, let's define a function for choosing a good starting direction for our snake.
 The snake should always face away from the nearest corner at the start:
 <(^.x.^ )~
-=^.x.^= start_direction(pos)
+😺 start_direction(pos)
   bring Direction.Up if pos.y > (canvas.width / 2) else Direction.Down
 ~meow
 
@@ -126,7 +126,7 @@ A procedure for listening to keyboard input and changing direction based on the 
 
 Note: We're choosing not to allow *backwards movement*, because it's certainly never what the player intended.
 <(^.x.^ )~
-=^.x.^= get_direction(current)
+😺 get_direction(current)
   look if key_down(keys.up)    and current != Direction.Down;  bring Direction.Up;    ~meow
   look if key_down(keys.down)  and current != Direction.Up;    bring Direction.Down;  ~meow
   look if key_down(keys.left)  and current != Direction.Right; bring Direction.Left;  ~meow
@@ -141,7 +141,7 @@ Note: We're choosing not to allow *backwards movement*, because it's certainly n
 -- We're now truly out of the world of pure functions. It's time to draw!
 -- Let us begin defining how to draw our snake, food, and text.
 
-=^.x.^= draw_snake(snake)
+😺 draw_snake(snake)
   mew head = paw at snake
   mew body = knock over snake
   mew last_direction = head.direction
@@ -154,12 +154,12 @@ Note: We're choosing not to allow *backwards movement*, because it's certainly n
   do graphic.draw <- snake_head[head.direction.key], head.rect.x, head.rect.y
 ~meow
 
-=^.x.^= draw_food(food)
+😺 draw_food(food)
     do graphic.draw <- heart, food.x, food.y
 ~meow
 
 -- Draw text centered horizontally on the screen.
-=^.x.^= draw_text(message, row, opts)
+😺 draw_text(message, row, opts)
   mew size = graphic.measure_text(message, opts)
   mew x = (canvas.width - size.width) / 2
   mew y = position.row(row) - (size.height / 2)
@@ -172,11 +172,11 @@ Note: We're choosing not to allow *backwards movement*, because it's certainly n
 
 -- We can now start thinking about mutable game state.
 -- All our mutable game state and our 'scene' structure will live below.
-=^.x.^= new_state()
+😺 new_state()
   mew snake_rect = random_position()
   mew snake_direction = do start_direction <- snake_rect
 
-  bring =^-x-^= [
+  bring 📦 [
     -- Our snake body, food position, and snake direction state:
     snake: [do snake_part <- snake_rect, snake_direction],
     food: random_position(),
@@ -193,12 +193,12 @@ mew state = new_state()
 
 -- With this, we can begin defining procedures for each 'scene' in our game:
 -- The code below is self-documenting, so comments will be more sparse.
-mew scene_table! = =^-x-^= []
+mew scene_table! = 📦 []
 mew current_scene = "snake_game"
 
 -- The "snake_game" scene, our core gameplay loop.
 -- We draw and listen to input inside of it.
-=^.x.^= [scene_table["snake_game"]]()
+😺 [scene_table["snake_game"]]()
   do graphic.paint <- palette.pastel
   do draw_food  <- state.food
   do draw_snake <- state.snake
@@ -228,21 +228,21 @@ mew current_scene = "snake_game"
 
 -- The "game_over" scene, our game over screen.
 -- A player can press [Space] to restart the game.
-=^.x.^= [scene_table["game_over"]]()
+😺 [scene_table["game_over"]]()
   do graphic.paint <- palette.pastel
   do draw_food  <- state.food
   do draw_snake <- state.snake
   do graphic.paint <- new Color <- 255, 0, 128, 20
 
-  do draw_text <- "Game over!", 3, =^-x-^= [
+  do draw_text <- "Game over!", 3, 📦 [
     size: 16,
     color: palette.light,
   ]
-  do draw_text <- :3"Collected [state.snake...? - 1] hearts!", 4, =^-x-^= [
+  do draw_text <- :3"Collected [state.snake...? - 1] hearts!", 4, 📦 [
     size: 8,
     color: palette.light
   ]
-  do draw_text <- "Press [Space] to restart!", 5, =^-x-^= [
+  do draw_text <- "Press [Space] to restart!", 5, 📦 [
     size: 8,
     color: palette.light,
   ]
@@ -256,9 +256,9 @@ mew current_scene = "snake_game"
 -- And finally, we can define our main game loop and start the game!
 -- We will also add a FPS counter for our own convenience.
 mew fps! = new FpsCounter()
-mew fps_opts! = =^-x-^= [ color: palette.rouge ]
+mew fps_opts! = 📦 [ color: palette.rouge ]
 
-=^.x.^= game_loop()
+😺 game_loop()
   scene_table[current_scene]()
   fps.tick()
   fps.draw(1, 0, fps_opts)

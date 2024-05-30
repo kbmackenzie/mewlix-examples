@@ -13,13 +13,13 @@ It contains the following methods:
 <(^.x.^ )~
 
 clowder FpsCounter
-  =^.x.^= wake()
+  😺 wake()
     home.timer = 0.0
     home.frames = 0
     home.fps    = 0
   ~meow
 
-  =^.x.^= tick() -- Should be called every frame.
+  😺 tick() -- Should be called every frame.
     home.timer  = home.timer + graphic.delta()
     home.frames = home.frames + 1
 
@@ -30,11 +30,11 @@ clowder FpsCounter
     ~meow
   ~meow
 
-  =^.x.^= get_fps()
+  😺 get_fps()
     bring home.fps
   ~meow
 
-  =^.x.^= draw(x, y, options)
+  😺 draw(x, y, options)
     look if not x; x = 0; ~meow
     look if not y; y = 0; ~meow
     do graphic.write <- home.get_fps(), x, y, options

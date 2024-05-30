@@ -1,6 +1,6 @@
 from std.graphic takes load, draw, init_, thumbnail
 
-=^.x.^= draw_cat()
+😺 draw_cat()
   do draw <- "cat", 0, 0
 ~meow
 

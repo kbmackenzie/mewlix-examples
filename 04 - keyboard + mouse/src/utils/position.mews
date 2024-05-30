@@ -10,7 +10,7 @@ Those magic numbers can be safely used in these functions.
 <(^.x.^ )~
 
 -- Get (x, y) positions for centering an object in the canvas.
-=^.x.^= center(width, height)
+😺 center(width, height)
   bring new Vector2 <- (128 - width) / 2, (128 - height) / 2
 ~meow
 
@@ -22,11 +22,11 @@ We can use these magic numbers in these functions:
 <(^.x.^ )~
 
 -- Get y position for the start of a row:
-=^.x.^= row(num)
+😺 row(num)
   bring 16 * num
 ~meow
 
 -- Get x position for the start of a column:
-=^.x.^= column(num)
+😺 column(num)
   bring 16 * num
 ~meow

@@ -3,15 +3,15 @@ yarn ball brainfuck.parse
 from brainfuck.ast takes MoveLeft, MoveRight, Increment, Decrement, Puts, Gets, Loop
 from brainfuck.parser takes Parser
 
-mew token_table!!! = std.table()              \
-  .add("<", =^oxo^= (c) -> new MoveLeft(c))   \
-  .add(">", =^oxo^= (c) -> new MoveRight(c))  \
-  .add("+", =^oxo^= (c) -> new Increment(c))  \
-  .add("-", =^oxo^= (c) -> new Decrement(c))  \
-  .add(".", =^oxo^= (c) -> new Puts(c))       \
-  .add(",", =^oxo^= (c) -> new Gets(c))
+mew token_table!!! = std.table()         \
+  .add("<", 🐈 (c) -> new MoveLeft(c))   \
+  .add(">", 🐈 (c) -> new MoveRight(c))  \
+  .add("+", 🐈 (c) -> new Increment(c))  \
+  .add("-", 🐈 (c) -> new Decrement(c))  \
+  .add(".", 🐈 (c) -> new Puts(c))       \
+  .add(",", 🐈 (c) -> new Gets(c))
 
-=^.x.^= parse(input)
+😺 parse(input)
   mew parser = new Parser(input)
   mew tokens = []
 
@@ -22,7 +22,7 @@ mew token_table!!! = std.table()              \
   bring std.reverse(tokens)
 ~meow
 
-=^.x.^= consume_token(parser, tokens)
+😺 consume_token(parser, tokens)
   mew head! = parser.head()
   parser.advance()
 
@@ -49,7 +49,7 @@ mew token_table!!! = std.table()              \
   bring tokens
 ~meow
 
-=^.x.^= consume_loop(parser)
+😺 consume_loop(parser)
   mew tokens = []
 
   stare while not parser.eof()

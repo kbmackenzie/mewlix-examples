@@ -10,7 +10,7 @@ Still, the parser performs a few optimizations for the fun of it. It collapses o
 ```
 Into as few tokens as possible. For that example, only one token is generated:
 ```mewlix
-[=^-x-^= [ evaluate: <function>, count: 8 ]]
+[📦 [ evaluate: <function>, count: 8 ]]
 ```
 
 ### Implementation Details
