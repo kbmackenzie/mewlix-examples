@@ -4,8 +4,8 @@ takes std.console
 from brainfuck.parse takes parse
 from brainfuck.eval takes evaluate
 
-console.name("brainfuck")
-console.accepted_files([".b", ".bf"])
+do console.name <- "brainfuck"
+do console.accepted_files <- [".b", ".bf"]
 
 cat tree State
   Parse
@@ -34,9 +34,7 @@ mew tokens
       ~meow
       bring :3"Caught error: [error.message]"
     ~meow
-    run away
-  ~meow
-  look if state == State.Interpret
+  or if state == State.Interpret
     mew output! = evaluate(tokens, input)
     tokens = nothing
     state = State.Parse
