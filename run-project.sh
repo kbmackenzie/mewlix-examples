@@ -2,6 +2,14 @@
 
 SCRIPT_NAME='run-project'
 HELP_MESSAGE=$(cat << EOM
+Usage: run-project [NUMBER] [-h|--help] [-r|--rebuild] [-n|--no-run]
+
+  Run an example project by number.
+
+Available options:
+  -h, --help        Display this help message
+  -r, --rebuild     Re-build project before running.
+  -n, --no-run      Build project, but don't run it. Implies --rebuild.
 EOM
 )
 
@@ -25,13 +33,14 @@ is_number() {
   string_match "^[[:digit:]]+$" "$1"
 }
 
-LONG_OPTIONS='help,rebuild'
-SHORT_OPTIONS='hr'
+LONG_OPTIONS='help,rebuild,no-run'
+SHORT_OPTIONS='hrn'
 
 OPTS=$(getopt -o "$SHORT_OPTIONS" -l "$LONG_OPTIONS" -n "$SCRIPT_NAME" -- "$@")
 eval set -- "$OPTS"
 
 REBUILD=false
+NO_RUN=false
 
 while true; do
   case "$1" in
@@ -40,6 +49,9 @@ while true; do
       exit 0 ;;
     -r | --rebuild)
       REBUILD=true
+      shift ;;
+    -n | --no-run)
+      NO_RUN=true
       shift ;;
     --)
       shift
@@ -75,7 +87,10 @@ cd "$PROJECT" || {
   exit 1
 }
 
-if [ "$REBUILD" = 'true' ]; then
+if [ "$NO_RUN" = 'true' ]; then
+  # Implies --rebuild.
+  mewlix build
+elif [ "$REBUILD" = 'true' ]; then
   mewlix build && mewlix run
 else
   mewlix run
