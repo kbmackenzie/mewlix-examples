@@ -27,7 +27,6 @@ mew tokens
   look if state == State.Parse
     watch
       tokens = parse(input)
-      meow tokens
       state = State.Interpret
     pounce on error
       look if error.id == std.error.ExternalError
