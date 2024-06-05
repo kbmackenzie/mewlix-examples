@@ -7,43 +7,72 @@ clowder Token
 ~meow
 
 clowder RepeatToken is Token
-  😺 wake(count)
+  😺 wake(token, count)
     assert count >= 1
+    home.token = token
     home.count = count
+  ~meow
+
+  😺 to_string()
+    bring :3"('[home.token]' [home.count]x)"
   ~meow
 ~meow
 
 clowder MoveLeft is RepeatToken
+  😺 wake(count)
+    look outside ("<", count)
+  ~meow
+
   😺 evaluate(state)
     state.move(-home.count)
   ~meow
 ~meow
 
 clowder MoveRight is RepeatToken
+  😺 wake(count)
+    look outside (">", count)
+  ~meow
+
   😺 evaluate(state)
     state.move(home.count)
   ~meow
 ~meow
 
 clowder Increment is RepeatToken
+  😺 wake(count)
+    look outside ("+", count)
+  ~meow
+
   😺 evaluate(state)
     state.add(home.count)
   ~meow
 ~meow
 
 clowder Decrement is RepeatToken
+  😺 wake(count)
+    look outside ("-", count)
+  ~meow
+
   😺 evaluate(state)
     state.add(-home.count)
   ~meow
 ~meow
 
 clowder Puts is RepeatToken
+  😺 wake(count)
+    look outside (".", count)
+  ~meow
+
   😺 evaluate(state)
     state.puts(home.count)
   ~meow
 ~meow
 
 clowder Gets is RepeatToken
+  😺 wake(count)
+    look outside (",", count)
+  ~meow
+
   😺 evaluate(state)
     state.gets(home.count)
   ~meow
@@ -64,5 +93,10 @@ clowder Loop is Token
     stare while state.peek() != 0
       home.run(state)
     ~meow
+  ~meow
+
+  😺 to_string(count)
+    mew tokens! = std.purr(home.tokens)
+    bring :3"loop [tokens]"
   ~meow
 ~meow
