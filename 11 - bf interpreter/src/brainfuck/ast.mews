@@ -2,7 +2,7 @@ yarn ball brainfuck.ast
 
 clowder Token
   😺 evaluate(_)
-    throw "Not implemented!"
+    explode "Not implemented!"
   ~meow
 ~meow
 
