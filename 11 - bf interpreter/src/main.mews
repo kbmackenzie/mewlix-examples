@@ -15,7 +15,7 @@ cat tree State
 mew state = State.Parse
 mew tokens
 
-😺 opening_message(input)
+🐱 opening_message(input)
   look if state == State.Parse
     bring "Enter a Brainfuck string (or upload a *.b file):"
   else just
@@ -23,7 +23,7 @@ mew tokens
   ~meow
 ~meow
 
-😺 run_interpreter(input)
+🐱 run_interpreter(input)
   look if state == State.Parse
     watch
       tokens = parse(input)

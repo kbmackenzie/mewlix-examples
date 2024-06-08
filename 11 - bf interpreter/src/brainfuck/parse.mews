@@ -11,7 +11,7 @@ mew token_table!!! = std.table()         \
   .add(".", 🐈 (c) -> new Puts(c))       \
   .add(",", 🐈 (c) -> new Gets(c))
 
-😺 parse(input)
+🐱 parse(input)
   mew parser = new Parser(input)
   mew tokens = []
 
@@ -22,7 +22,7 @@ mew token_table!!! = std.table()         \
   bring std.reverse(tokens)
 ~meow
 
-😺 consume_token(parser, tokens)
+🐱 consume_token(parser, tokens)
   mew head! = parser.head()
   parser.advance()
 
@@ -49,7 +49,7 @@ mew token_table!!! = std.table()         \
   bring tokens
 ~meow
 
-😺 consume_loop(parser)
+🐱 consume_loop(parser)
   mew tokens = []
 
   stare while not parser.eof()

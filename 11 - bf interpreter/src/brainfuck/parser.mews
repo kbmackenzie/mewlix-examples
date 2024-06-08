@@ -1,12 +1,12 @@
 yarn ball brainfuck.parser
 
 clowder Parser
-  😺 wake(input)
+  🐱 wake(input)
     home.input = input
     home.index = 0
   ~meow
 
-  😺 head()
+  🐱 head()
     look if home.eof()
       home.error("Unexpected end of input!")
     ~meow
@@ -14,17 +14,17 @@ clowder Parser
     bring std.poke(home.input, home.index)
   ~meow
 
-  😺 advance()
+  🐱 advance()
     home.index = home.index + 1
     assert home.index <= home.input...?
   ~meow
 
-  😺 eof()
+  🐱 eof()
     assert home.index >= 0
     bring home.index >= home.input...?
   ~meow
 
-  😺 error(message)
+  🐱 error(message)
     mew start! = std.max(home.index - 1, 0)
     mew stop!  = std.min(20, home.input...? - start) + 1
 

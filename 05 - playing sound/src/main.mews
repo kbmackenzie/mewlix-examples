@@ -3,7 +3,7 @@ takes palette
 takes utils.canvas
 from std.graphic takes Rectangle, Color
 
-😺 create_button()
+🐱 create_button()
   mew width  = 48
   mew height = 24
 
@@ -13,11 +13,11 @@ from std.graphic takes Rectangle, Color
   bring new Rectangle(x, y, width, height)
 ~meow
 
-😺 is_hovered(rect)
+🐱 is_hovered(rect)
   bring rect.contains(graphic.mouse_position())
 ~meow
 
-😺 draw_text(rect, message, opts)
+🐱 draw_text(rect, message, opts)
   mew size = graphic.measure_text(message, opts)
   mew x = rect.x + (rect.width  -  size.width) / 2
   mew y = rect.y + (rect.height - size.height) / 2
@@ -28,7 +28,7 @@ from std.graphic takes Rectangle, Color
 
 mew button! = create_button()
 
-😺 game_loop()
+🐱 game_loop()
   mew hovered = is_hovered(button)
 
   look if hovered and graphic.mouse_click()

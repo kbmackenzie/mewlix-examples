@@ -13,7 +13,7 @@ mew state = 📦 [
   frame_duration: 1 / 4,
 ]
 
-😺 draw_animation(delta)
+🐱 draw_animation(delta)
   state.timer = state.timer + delta
 
   look if state.timer >= state.frame_duration

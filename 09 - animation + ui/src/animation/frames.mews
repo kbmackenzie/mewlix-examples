@@ -13,7 +13,7 @@ It accepts the following argumments:
 It returns a shelf with keys for each frame, in the same order.
 <(^.x.^ )~
 
-😺 load_frames(sheet, frame_boxes)
+🐱 load_frames(sheet, frame_boxes)
   do spritesheet <- sheet, frame_boxes
   bring do std.map <- 🐈 (x) -> x.key, frame_boxes
 ~meow

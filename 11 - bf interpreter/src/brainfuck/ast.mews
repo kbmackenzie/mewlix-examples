@@ -1,101 +1,101 @@
 yarn ball brainfuck.ast
 
 clowder Token
-  😺 evaluate(_)
+  🐱 evaluate(_)
     explode "Not implemented!"
   ~meow
 ~meow
 
 clowder RepeatToken is Token
-  😺 wake(token, count)
+  🐱 wake(token, count)
     assert count >= 1
     home.token = token
     home.count = count
   ~meow
 
-  😺 to_string()
+  🐱 to_string()
     bring :3"('[home.token]' [home.count]x)"
   ~meow
 ~meow
 
 clowder MoveLeft is RepeatToken
-  😺 wake(count)
+  🐱 wake(count)
     look outside ("<", count)
   ~meow
 
-  😺 evaluate(state)
+  🐱 evaluate(state)
     state.move(-home.count)
   ~meow
 ~meow
 
 clowder MoveRight is RepeatToken
-  😺 wake(count)
+  🐱 wake(count)
     look outside (">", count)
   ~meow
 
-  😺 evaluate(state)
+  🐱 evaluate(state)
     state.move(home.count)
   ~meow
 ~meow
 
 clowder Increment is RepeatToken
-  😺 wake(count)
+  🐱 wake(count)
     look outside ("+", count)
   ~meow
 
-  😺 evaluate(state)
+  🐱 evaluate(state)
     state.add(home.count)
   ~meow
 ~meow
 
 clowder Decrement is RepeatToken
-  😺 wake(count)
+  🐱 wake(count)
     look outside ("-", count)
   ~meow
 
-  😺 evaluate(state)
+  🐱 evaluate(state)
     state.add(-home.count)
   ~meow
 ~meow
 
 clowder Puts is RepeatToken
-  😺 wake(count)
+  🐱 wake(count)
     look outside (".", count)
   ~meow
 
-  😺 evaluate(state)
+  🐱 evaluate(state)
     state.puts(home.count)
   ~meow
 ~meow
 
 clowder Gets is RepeatToken
-  😺 wake(count)
+  🐱 wake(count)
     look outside (",", count)
   ~meow
 
-  😺 evaluate(state)
+  🐱 evaluate(state)
     state.gets(home.count)
   ~meow
 ~meow
 
 clowder Loop is Token
-  😺 wake(tokens)
+  🐱 wake(tokens)
     home.tokens = tokens
   ~meow
 
-  😺 run(state)
+  🐱 run(state)
     chase after token in home.tokens!
       token.evaluate(state)
     ~meow
   ~meow
 
-  😺 evaluate(state)
+  🐱 evaluate(state)
     stare while state.peek() != 0
       home.run(state)
     ~meow
   ~meow
 
-  😺 to_string(count)
+  🐱 to_string(count)
     mew tokens! = std.purr(home.tokens)
     bring :3"loop [tokens]"
   ~meow

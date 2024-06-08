@@ -54,7 +54,7 @@ We will also manage the speed value in the same clowder.
 <(^.x.^ )~
 
 clowder Controls
-  😺 wake(row)
+  🐱 wake(row)
     home.speed = 100
 
     mew text_width = 48
@@ -82,15 +82,15 @@ clowder Controls
     )
   ~meow
 
-  😺 get_speed()
+  🐱 get_speed()
     bring home.speed
   ~meow
 
-  😺 set_speed(value)
+  🐱 set_speed(value)
     home.speed = std.max(20, home.speed + value)
   ~meow
 
-  😺 draw(controls)
+  🐱 draw(controls)
     mew plus_sprite  = plus.hovered   \
       if home.plus.is_hovered()       \
       else plus.normal
@@ -104,7 +104,7 @@ clowder Controls
     home.display.draw()
   ~meow
 
-  😺 update(controls)
+  🐱 update(controls)
     home.plus.update()
     home.minus.update()
     do home.display.set_message <- :3"[home.get_speed()]%"

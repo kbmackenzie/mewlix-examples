@@ -11,7 +11,7 @@ mew arrows = [
 
 mew wasd = [ "w", "a", "s", "d" ]
 
-😺 game_loop()
+🐱 game_loop()
   -- Mouse input:
   mew mouse! = graphic.mouse_position()
   do graphic.write <- :3"mouse x: [mouse.x]", 0, row(0)

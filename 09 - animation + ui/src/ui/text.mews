@@ -17,13 +17,13 @@ It contains the following methods:
 <(^.x.^ )~
 
 clowder TextBox
-  😺 wake(rect, message, options)
+  🐱 wake(rect, message, options)
     home.rect    = rect
     home.message = message
     home.options = options
   ~meow
 
-  😺 draw()
+  🐱 draw()
     mew text_size = graphic.measure_text(home.message, home.options)
 
     mew text_x = home.rect.x + ((home.rect.width  - text_size.width) / 2)
@@ -32,7 +32,7 @@ clowder TextBox
     do graphic.write <- home.message, text_x, text_y, home.options
   ~meow
 
-  😺 set_message(message)
+  🐱 set_message(message)
     home.message = message
   ~meow
 ~meow
