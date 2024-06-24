@@ -6,5 +6,4 @@ port: auto
 sources:
 - src/
 assets: []
-specialImports: {}
 flags: []

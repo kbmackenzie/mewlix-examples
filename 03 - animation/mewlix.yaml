@@ -7,5 +7,4 @@ sources:
 - src/
 assets:
 - assets/
-specialImports: {}
 flags: []
