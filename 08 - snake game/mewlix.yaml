@@ -1,5 +1,5 @@
 name: snake game
-description: A tiny little recreation of the classic Snake game, with a cozy color palette and thematic flare.
+description: A little recreation of the classic Snake game, with a cozy color palette and thematic flare.
 mode: graphic
 entrypoint: main
 port: auto
