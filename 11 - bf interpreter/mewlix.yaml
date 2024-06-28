@@ -1,8 +1,7 @@
 name: brainfuck
-description: |-
+description: >
   A Brainfuck interpreter written in Mewlix.
-
-  Brainfuck is an esoteric programming language. Read more about it [here](https://en.wikipedia.org/wiki/Brainfuck).
+  Brainfuck is an esoteric programming language created by Urban Müller.
 mode: console
 entrypoint: main
 port: auto
