@@ -3,7 +3,7 @@ yarn ball brainfuck.parse
 from brainfuck.ast takes MoveLeft, MoveRight, Increment, Decrement, Puts, Gets, Loop
 from brainfuck.parser takes Parser
 
-mew token_table!!! = std.table()         \
+mew _token_table!!! = std.table()        \
   .add("<", 🐈 (c) -> new MoveLeft(c))   \
   .add(">", 🐈 (c) -> new MoveRight(c))  \
   .add("+", 🐈 (c) -> new Increment(c))  \
@@ -16,29 +16,28 @@ mew token_table!!! = std.table()         \
   mew tokens = []
 
   stare while not parser.eof()
-    tokens = consume_token(parser, tokens)
+    tokens = _consume_token(parser, tokens)
   ~meow
 
   bring std.reverse(tokens)
 ~meow
 
-🐱 consume_token(parser, tokens)
+🐱 _consume_token(parser, tokens)
   mew head! = parser.head()
   parser.advance()
 
-  look if token_table.has(head)
+  look if _token_table.has(head)
     mew count = 1
     stare while not parser.eof() and parser.head() == head
       parser.advance()
       count = count + 1
     ~meow
-
-    mew token! = token_table.get(head)(count)
+    mew token! = _token_table.get(head)(count)
     bring token push tokens
   ~meow
 
   look if head == "["
-    mew token! = do consume_loop <- parser
+    mew token! = do _consume_loop <- parser
     bring token push tokens
   ~meow
 
@@ -49,7 +48,7 @@ mew token_table!!! = std.table()         \
   bring tokens
 ~meow
 
-🐱 consume_loop(parser)
+🐱 _consume_loop(parser)
   mew tokens = []
 
   stare while not parser.eof()
@@ -57,8 +56,7 @@ mew token_table!!! = std.table()         \
       parser.advance()
       bring new Loop(std.reverse(tokens))
     ~meow
-
-    tokens = do consume_token <- parser, tokens
+    tokens = do _consume_token <- parser, tokens
   ~meow
 
   do parser.error <- "Unclosed loop!"
