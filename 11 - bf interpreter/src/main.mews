@@ -16,25 +16,25 @@ mew state = State.Parse
 mew tokens
 
 🐱 opening_message(input)
-  look if state == State.Parse
+  pounce when state == State.Parse
     bring "Enter a Brainfuck string (or upload a *.b file):"
-  else just
+  else hiss
     bring "Enter input for the program:"
   ~meow
 ~meow
 
 🐱 run_interpreter(input)
-  look if state == State.Parse
+  pounce when state == State.Parse
     watch
       tokens = parse(input)
       state = State.Interpret
     pounce on error
-      look if error.id == std.error.ExternalError
+      pounce when error.id == std.error.ExternalError
         rethrow
       ~meow
       bring :3"Caught error: [error.message]"
     ~meow
-  or if state == State.Interpret
+  or when state == State.Interpret
     mew output! = evaluate(tokens, input)
     tokens = nothing
     state = State.Parse

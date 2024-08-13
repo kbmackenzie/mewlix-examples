@@ -31,7 +31,7 @@ mew button! = create_button()
 🐱 game_loop()
   mew hovered = is_hovered(button)
 
-  look if hovered and graphic.mouse_click()
+  pounce when hovered and graphic.mouse_click()
     graphic.play_sfx("bleep")
   ~meow
 

@@ -23,7 +23,7 @@ clowder FpsCounter
     home.timer  = home.timer + graphic.delta()
     home.frames = home.frames + 1
 
-    look if home.timer >= 1
+    pounce when home.timer >= 1
       home.fps = home.frames
       home.frames = 0
       home.timer = 0.0
@@ -35,8 +35,8 @@ clowder FpsCounter
   ~meow
 
   🐱 draw(x, y, options)
-    look if not x; x = 0; ~meow
-    look if not y; y = 0; ~meow
+    pounce when not x; x = 0; ~meow
+    pounce when not y; y = 0; ~meow
     do graphic.write <- home.get_fps(), x, y, options
   ~meow
 ~meow

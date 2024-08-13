@@ -30,7 +30,7 @@ clowder Button
   ~meow
 
   🐱 update()
-    look if home.is_clicked()
+    pounce when home.is_clicked()
       home.callback()
     ~meow
   ~meow

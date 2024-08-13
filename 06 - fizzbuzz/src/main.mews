@@ -10,13 +10,13 @@ https://leetcode.com/problems/fizz-buzz/
 
   chase after num in nums!!!!!!!!!
     mew message = ""
-    look if num % 3 == 0
+    pounce when num % 3 == 0
       message = message .. "fizz"
     ~meow
-    look if num % 5 == 0
+    pounce when num % 5 == 0
       message = message .. "buzz"
     ~meow
-    look if std.empty(message)
+    pounce when std.empty(message)
       message = std.purr(num)
     ~meow
     output = message push output 

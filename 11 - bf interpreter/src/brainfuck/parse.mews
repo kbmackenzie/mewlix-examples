@@ -26,7 +26,7 @@ mew _token_table!!! = std.table()        \
   mew head! = parser.head()
   parser.advance()
 
-  look if _token_table.has(head)
+  pounce when _token_table.has(head)
     mew count = 1
     stare while not parser.eof() and parser.head() == head
       parser.advance()
@@ -36,12 +36,12 @@ mew _token_table!!! = std.table()        \
     bring token push tokens
   ~meow
 
-  look if head == "["
+  pounce when head == "["
     mew token! = do _consume_loop <- parser
     bring token push tokens
   ~meow
 
-  look if head == "]"
+  pounce when head == "]"
     do parser.error <- "Unmatched ']' found in string!"
   ~meow
 
@@ -52,7 +52,7 @@ mew _token_table!!! = std.table()        \
   mew tokens = []
 
   stare while not parser.eof()
-    look if parser.head() == "]"
+    pounce when parser.head() == "]"
       parser.advance()
       bring new Loop(std.reverse(tokens))
     ~meow

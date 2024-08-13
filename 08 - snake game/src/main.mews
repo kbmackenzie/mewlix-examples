@@ -94,7 +94,7 @@ Based on that, we can define:
 🐱 is_game_over(snake)
   mew head! = (paw at snake).rect
 
-  look if head.x < 0 or head.x >= 128 or head.y < 0 or head.y >= 128
+  pounce when head.x < 0 or head.x >= 128 or head.y < 0 or head.y >= 128
     bring true
   ~meow
 
@@ -127,10 +127,10 @@ A procedure for listening to keyboard input and changing direction based on the 
 Note: We're choosing not to allow *backwards movement*, because it's certainly never what the player intended.
 <(^.x.^ )~
 🐱 get_direction(current)
-  look if key_down(keys.up)    and current != Direction.Down;  bring Direction.Up;    ~meow
-  look if key_down(keys.down)  and current != Direction.Up;    bring Direction.Down;  ~meow
-  look if key_down(keys.left)  and current != Direction.Right; bring Direction.Left;  ~meow
-  look if key_down(keys.right) and current != Direction.Left;  bring Direction.Right; ~meow
+  pounce when key_down(keys.up)    and current != Direction.Down;  bring Direction.Up;    ~meow
+  pounce when key_down(keys.down)  and current != Direction.Up;    bring Direction.Down;  ~meow
+  pounce when key_down(keys.left)  and current != Direction.Right; bring Direction.Left;  ~meow
+  pounce when key_down(keys.right) and current != Direction.Left;  bring Direction.Right; ~meow
   bring current
 ~meow
 
@@ -206,11 +206,11 @@ mew current_scene = "snake_game"
   state.direction = do get_direction <- state.direction
   state.timer = state.timer + graphic.delta()
 
-  look if state.timer > state.wait
+  pounce when state.timer > state.wait
     state.timer = 0
     mew got_food! = do has_gotten_food <- state.snake, state.food
 
-    look if got_food
+    pounce when got_food
       state.food = random_position()
     ~meow
 
@@ -220,7 +220,7 @@ mew current_scene = "snake_game"
 
     state.snake = do grow_snake <- state.snake, new_head, got_food
 
-    look if is_game_over(state.snake)
+    pounce when is_game_over(state.snake)
       current_scene = "game_over"
     ~meow
   ~meow
@@ -247,7 +247,7 @@ mew current_scene = "snake_game"
     color: palette.light,
   ]
 
-  look if key_pressed(keys.space)
+  pounce when key_pressed(keys.space)
     state = new_state()
     current_scene = "snake_game"
   ~meow

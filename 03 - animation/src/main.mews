@@ -16,12 +16,12 @@ mew state = 📦 [
 🐱 draw_animation(delta)
   state.timer = state.timer + delta
 
-  look if state.timer >= state.frame_duration
+  pounce when state.timer >= state.frame_duration
     state.current = paw at state.stack
     state.stack   = knock over state.stack
     state.timer   = 0.0
 
-    look if std.empty(state.stack)
+    pounce when std.empty(state.stack)
       state.stack = frames
     ~meow
   ~meow

@@ -31,7 +31,7 @@ clowder AnimationPlayer
   ~meow
 
   🐱 _next_frame()
-    look if std.empty(home.frame_stack)
+    pounce when std.empty(home.frame_stack)
       home.frame_stack = home.frames
     ~meow
 
@@ -43,7 +43,7 @@ clowder AnimationPlayer
   🐱 draw(x, y)
     home.timer = home.timer + graphic.delta()
 
-    look if home.timer >= 1 / home.frame_rate
+    pounce when home.timer >= 1 / home.frame_rate
       home._next_frame()
     ~meow
 

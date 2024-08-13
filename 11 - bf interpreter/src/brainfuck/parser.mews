@@ -7,7 +7,7 @@ clowder Parser
   ~meow
 
   🐱 head()
-    look if home.eof()
+    pounce when home.eof()
       home.error("Unexpected end of input!")
     ~meow
 
