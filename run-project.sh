@@ -91,7 +91,7 @@ if [ "$NO_RUN" = 'true' ]; then
   # Implies --rebuild.
   mewlix build
 elif [ "$REBUILD" = 'true' ]; then
-  mewlix build && mewlix run
+  mewlix run -r
 else
   mewlix run
 fi
