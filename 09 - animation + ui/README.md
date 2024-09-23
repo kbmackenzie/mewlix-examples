@@ -6,4 +6,4 @@ It includes:
 
 The animation speed can be changed by interacting with the `+` and `-` buttons!
 
-<img width="500" height="500" src="../previews/mewlix-anim-ui.webp" alt="Pixel animation of a cartoon cat running, with simple buttons for speeding up and slowing down the animation.">
+<img width="500" height="500" src="../previews/mewlix-anim.webp" alt="Pixel animation of a cartoon cat running, with simple buttons for speeding up and slowing down the animation.">
