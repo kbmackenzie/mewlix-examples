@@ -5,12 +5,12 @@ A collection of example projects written in [mewlix](https://github.com/kbmacken
     <img width="300" height="300" src="./previews/mewlix-snake.webp" alt="Snake game example.">
   </a>
   <a href="./09 - animation + ui">
-    <img width="300" height="300" src="./previews/mewlix-anim-ui.webp" alt="Animation + UI example.">
+    <img width="300" height="300" src="./previews/mewlix-anim.webp" alt="Animation + UI example.">
   </a>
   <a href="./03 - animation">
-    <img width="300" height="300" src="./previews/mewly-anim-static.webp" alt="Animation example.">
+    <img width="300" height="300" src="./previews/mewlix-balloon.webp" alt="Animation example.">
   </a>
   <a href="./05 - playing sound">
-    <img width="300" height="300" src="./previews/play-sound.webp" alt="Button example.">
+    <img width="300" height="300" src="./previews/mewlix-button.webp" alt="Button example.">
   </a>
 </p>
