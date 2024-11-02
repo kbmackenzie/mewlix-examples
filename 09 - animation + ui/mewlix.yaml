@@ -3,8 +3,8 @@ description: A simple animation example.
 mode: graphic
 entrypoint: main
 port: auto
-sources:
-- src/
+source-files:
+- 'src/**/*.mews'
 assets:
-- assets/
+- 'assets/**'
 flags: []

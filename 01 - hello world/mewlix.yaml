@@ -3,7 +3,7 @@ description: A simple hello world program, meowed with glee.
 mode: console
 entrypoint: main
 port: auto
-sources:
+source-files:
 - main.mews
 assets: []
 flags: []

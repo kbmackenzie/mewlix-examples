@@ -3,7 +3,7 @@ description: An example of how to listen to mouse and keyboard input.
 mode: graphic
 entrypoint: main
 port: auto
-sources:
-- src/
+source-files:
+- 'src/**/*.mews'
 assets: []
 flags: []
