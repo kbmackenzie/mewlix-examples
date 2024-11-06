@@ -2,7 +2,7 @@
 
 SCRIPT_NAME='run-project'
 HELP_MESSAGE=$(cat << EOM
-Usage: run-project [NUMBER] [-h|--help] [-r|--rebuild] [-n|--no-run]
+Usage: run-project NUMBER [-h|--help] [-r|--rebuild] [-n|--no-run]
 
   Run an example project by number.
 
