@@ -4,7 +4,7 @@ do spritesheet <- './assets/cat-spritesheet.png', [
   📦 [ key: "cat-01", rect: new Rectangle(  0, 0, 128, 128) ],
   📦 [ key: "cat-02", rect: new Rectangle(128, 0, 128, 128) ],
 ]
-mew frames! = [ "cat-01", "cat-02" ]
+mew frames! = ['cat-01', 'cat-02']
 
 mew state = 📦 [
   current: paw at frames,
@@ -29,4 +29,4 @@ mew state = 📦 [
   do draw <- state.current, 0, 0
 ~meow
 
-do init_ <- 🐈 (delta) -> draw_animation(delta or 0)
+do init_ <- draw_animation
