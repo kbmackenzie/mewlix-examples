@@ -86,12 +86,11 @@ cd "$PROJECT" || {
   log_error "Couldn't cd into project directory \"$PROJECT'\""
   exit 1
 }
-
 if [ "$NO_RUN" = 'true' ]; then
   # Implies --rebuild.
-  mewlix build
+  mewlix clean && mewlix build
 elif [ "$REBUILD" = 'true' ]; then
-  mewlix run -r
+  mewlix clean && mewlix run
 else
   mewlix run
 fi
