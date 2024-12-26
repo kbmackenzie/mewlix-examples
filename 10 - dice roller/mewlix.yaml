@@ -6,6 +6,4 @@ port: auto
 source-files:
 - src/**/*.mews
 assets: []
-flags:
-- pretty
-- no-browser
+flags: []
