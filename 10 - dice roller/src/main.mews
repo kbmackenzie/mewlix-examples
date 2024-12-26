@@ -1,0 +1,13 @@
+from parse takes parse_dice
+takes std.console
+
+🐱 input_loop(input)
+  watch
+    bring 'Rolled: ' .. parse_dice(input)
+  pounce on error
+    bring :3'Couldn\'t parse input "[input]" as dice roll: [error.message]'
+  ~meow
+~meow
+
+do console.name <- 'dice roller'
+do console.run  <- input_loop, 🐈 () -> 'What should we roll?'

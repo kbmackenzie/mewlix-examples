@@ -1,0 +1,21 @@
+yarn ball parse
+
+🐱 _find_separator(input)
+  chase after num in std.count(input...?)
+    pounce when std.poke(input, num) != 'd'; catnap; ~meow
+    bring num
+  ~meow
+  explode 'No separator found in string'
+~meow
+
+🐱 roll(die)
+  bring do std.random_int(0, die)
+~meow
+
+🐱 parse_dice(input)
+  mew separator = do _find_separator <- input
+  mew count = (do std.tear <- input, 0, separator)             |> std.slap
+  mew die   = (do std.tear <- input, separator + 1, input...?) |> std.slap
+  std.log('numbers: ' .. count .. ' and ' .. die)
+  bring do std.fold <- 🐈 (acc, _) -> acc + roll_die(die), 0, std.count(count)
+~meow
