@@ -10,12 +10,12 @@ yarn ball parse
 
 🐱 roll(die)
   assert type of die == 'number'
-  bring do std.random_int <- 1, die
+  bring std.random_int(1, die)
 ~meow
 
 🐱 parse_dice(input)
-  mew separator = do _find_separator <- input
-  mew count = (do std.tear <- input, 0, separator)             |> std.slap
-  mew die   = (do std.tear <- input, separator + 1, input...?) |> std.slap
-  bring do std.fold <- 🐈 (acc, _) -> acc + roll(die), 0, std.count(1, count)
+  mew separator = _find_separator(input)
+  mew amount = std.tear(input, 0, separator)             |> std.slap
+  mew die    = std.tear(input, separator + 1, input...?) |> std.slap
+  bring do std.fold <- 🐈 (acc, _) -> acc + roll(die), 0, std.count(1, amount)
 ~meow
