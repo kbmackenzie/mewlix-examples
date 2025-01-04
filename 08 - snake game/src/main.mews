@@ -144,7 +144,6 @@ Note: We're choosing not to allow *backwards movement*, because it's certainly n
 🐱 draw_snake(snake)
   mew head = paw at snake
   mew body = knock over snake
-  mew last_direction = head.direction
 
   chase after part in body!!!
     do graphic.rect <- part.rect, palette.magenta
