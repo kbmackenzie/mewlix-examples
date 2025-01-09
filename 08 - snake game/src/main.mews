@@ -154,7 +154,7 @@ Note: We're choosing not to allow *backwards movement*, because it's certainly n
 ~meow
 
 🐱 draw_food(food)
-    do graphic.draw <- heart, food.x, food.y
+  do graphic.draw <- heart, food.x, food.y
 ~meow
 
 -- Draw text centered horizontally on the screen.
@@ -171,7 +171,7 @@ Note: We're choosing not to allow *backwards movement*, because it's certainly n
 
 -- We can now start thinking about mutable game state.
 -- All our mutable game state and our 'scene' structure will live below.
-🐱 new_state()
+🐱 blank_state()
   mew snake_rect = random_position()
   mew snake_direction = do start_direction <- snake_rect
 
@@ -188,7 +188,7 @@ Note: We're choosing not to allow *backwards movement*, because it's certainly n
   ]
 ~meow
 
-mew state = new_state()
+mew state = blank_state()
 
 -- With this, we can begin defining procedures for each 'scene' in our game:
 -- The code below is self-documenting, so comments will be more sparse.
@@ -214,7 +214,7 @@ mew current_scene = "snake_game"
     ~meow
 
     mew movement_vector = movement[state.direction.key]
-    mew head_rect! = do move_rect <- (paw at state.snake).rect, movement_vector
+    mew head_rect! = do move_rect  <- (paw at state.snake).rect, movement_vector
     mew new_head!  = do snake_part <- head_rect, state.direction
 
     state.snake = do grow_snake <- state.snake, new_head, got_food
@@ -247,7 +247,7 @@ mew current_scene = "snake_game"
   ]
 
   pounce when key_pressed(keys.space)
-    state = new_state()
+    state = blank_state()
     current_scene = "snake_game"
   ~meow
 ~meow
