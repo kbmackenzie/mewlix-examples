@@ -9,68 +9,57 @@ from controls takes Controls
 from animation.player takes AnimationPlayer
 from utils.fps takes FpsCounter
 
-~( ^.x.^)>
-The main yarn ball. A lot of the code here is self-documenting.
-See the comments on each yarn ball imported here.
-<(^.x.^ )~
+~( ^.x.^)> A clowder representing our game and all of its state. <(^.x.^ )~
+clowder GameLoop
+  🐱 wake()
+    -- Animation:
+    home.animation = new AnimationPlayer(mewly.frames, mewly.frame_rate)
 
-------------------------------------------------------------------------
--- Animation:
-------------------------------------------------------------------------
-mew anim! = new AnimationPlayer(mewly.frames, mewly.frame_rate)
+    -- Text:
+    home.title = 📦 [
+      text: "set animation speed",
+      options: 📦 [ size: 12, color: palette.crepe ],
+    ]
 
-🐱 draw_anim()
-  mew pos = do position.center <- mewly.width, mewly.height
-  do anim.draw <- pos.x, pos.y
+    -- Controls:
+    home.controls = new Controls(6)
+
+    -- Frame counter (for conveniency):
+    home.fps = 📦 [
+      state: new FpsCounter(),
+      options: 📦 [ color: palette.cream ]
+    ]
+  ~meow
+
+  🐱 change_speed(percentage)
+    mew new_frame_rate! = std.floor(mewly.frame_rate * (percentage / 100))
+    home.animation.set_frame_rate(new_frame_rate)
+  ~meow
+
+  🐱 loop()
+    do graphic.paint <- palette.lilac
+
+    -- Animation:
+    mew animation_pos! = position.center(mewly.width, mewly.height)
+    do home.animation.draw <- animation_pos.x, animation_pos.y
+
+    -- Text:
+    mew text_size! = graphic.measure_text(home.title.text, home.title.options)
+    mew text_x! = (canvas.width - text_size.width) / 2
+    mew text_y! = position.row(1)
+    do graphic.write <- home.title.text, text_x, text_y, home.title.options
+
+    -- Controls:
+    home.controls.draw()
+    home.controls.update()
+    do home.change_speed <- home.controls.get_speed()
+
+    -- FPS:
+    home.fps.state.tick()
+    do home.fps.state.draw <- 1, 0, home.fps.options
+  ~meow
 ~meow
 
-🐱 set_anim_speed(percentage)
-  mew new_frame_rate = do std.floor <- mewly.frame_rate * (percentage / 100)
-  do anim.set_frame_rate <- new_frame_rate
-~meow
-
-------------------------------------------------------------------------
--- Title:
-------------------------------------------------------------------------
-mew title_string! = "set animation speed"
-mew title_options! = 📦 [
-  size: 12,
-  color: palette.crepe,
-]
-
-🐱 draw_title()
-  mew text_size = do graphic.measure_text <- title_string, title_options
-
-  mew x = (canvas.width - text_size.width) / 2
-  mew y = do position.row <- 1
-  do graphic.write <- title_string, x, y, title_options
-~meow
-
-------------------------------------------------------------------------
--- Controls:
-------------------------------------------------------------------------
-mew controls! = new Controls <- 6
-
-🐱 draw_controls()
-  controls.draw()
-  controls.update()
-  do set_anim_speed <- controls.get_speed()
-~meow
-
-------------------------------------------------------------------------
--- Game loop:
-------------------------------------------------------------------------
-mew fps! = new FpsCounter()
-mew fps_options! = 📦 [ color: palette.cream, ]
-
-🐱 game_loop()
-  do graphic.paint <- palette.lilac
-  draw_anim()
-  draw_title()
-  draw_controls()
-
-  fps.tick()
-  fps.draw(1, 0, fps_options)
-~meow
-
-do graphic.init_ <- game_loop
+~( ^.x.^)> And with that, we can draw our game loop! <(^.x.^ )~
+mew game! = new GameLoop()
+do graphic.init_ <- game.loop

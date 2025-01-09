@@ -13,9 +13,9 @@ The speed controls will consist of:
   - A 'plus' button for increasing speed.
   - A 'minus' button for decreasing speed.
   - A text box to display the current speed.
-
-To start off, let's define constants for our sprites:
 <(^.x.^ )~
+
+~( ^.x.^)> Sprite constants: <(^.x.^ )~
 mew sprite_width!  = 16
 mew sprite_height! = 16
 
@@ -30,12 +30,12 @@ mew minus! = 📦 [
 ]
 
 ~( ^.x.^)> And let us load our sprites: <(^.x.^ )~
-spritesheet("assets/plus-minus.png", [
+do spritesheet <- "assets/plus-minus.png", [
   📦 [ key: plus.normal,    rect: new Rectangle( 0,  0,  16, 16) ],
   📦 [ key: plus.hovered,   rect: new Rectangle(16,  0,  16, 16) ],
   📦 [ key: minus.normal,   rect: new Rectangle( 0, 16,  16, 16) ],
   📦 [ key: minus.hovered,  rect: new Rectangle(16, 16,  16, 16) ],
-])
+]
 
 ~( ^.x.^)>
 After that, we can begin working on our controls' state.
@@ -46,38 +46,33 @@ We will store our speed in percentages:
   200% is twice as fast.
 
 We don't want our speed to ever go below 1%.
-
-Let's define a clowder to represent our controls.
-The controls will always be horizontally centered.
-
-We will also manage the speed value in the same clowder.
 <(^.x.^ )~
 
+~( ^.x.^)>
+A clowder for representing controls.
+We will also manage the speed value in this clowder.
+<(^.x.^ )~
 clowder Controls
   🐱 wake(row)
     home.speed = 100
 
-    mew text_width = 48
-    mew controls_width = sprite_width * 2 + text_width
+    mew text_width!     = 48
+    mew controls_width! = sprite_width * 2 + text_width
 
-    mew x = (canvas.width - controls_width) / 2
-    mew y = position.row(row)
+    mew x! = (canvas.width - controls_width) / 2
+    mew y! = position.row(row)
 
     home.minus = new Button(
       new Rectangle(x, y, sprite_width, sprite_height),
       🐈 () -> home.set_speed(-20),
     )
-    x = x + sprite_width
-
     home.display = new TextBox(
-      new Rectangle(x, y, text_width, sprite_height),
+      new Rectangle(x + sprite_width, y, text_width, sprite_height),
       std.purr(:3"[home.get_speed()]%"),
       📦 [ size: 16, color: palette.crepe ]
     )
-    x = x + text_width
-
     home.plus = new Button(
-      new Rectangle(x, y, sprite_width, sprite_height),
+      new Rectangle(x + sprite_width + text_width, y, sprite_width, sprite_height),
       🐈 () -> home.set_speed(20),
     )
   ~meow
@@ -99,7 +94,7 @@ clowder Controls
       if home.minus.is_hovered()      \
       else minus.normal
 
-    do graphic.draw <- plus_sprite, home.plus.rect.x, home.plus.rect.y 
+    do graphic.draw <- plus_sprite , home.plus.rect.x , home.plus.rect.y 
     do graphic.draw <- minus_sprite, home.minus.rect.x, home.minus.rect.y
     home.display.draw()
   ~meow
