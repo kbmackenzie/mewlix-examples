@@ -1,5 +1,5 @@
 name: 99 bottles of milk
-description: An implementation of the classic program, with some thematic flare.
+description: An implementation of the classic 99 Bottles program, with some thematic flare.
 mode: console
 entrypoint: main
 port: auto
