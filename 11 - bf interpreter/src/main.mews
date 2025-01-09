@@ -15,7 +15,7 @@ cat tree State
 mew state = State.Parse
 mew tokens
 
-🐱 opening_message(input)
+🐱 opening_message()
   pounce when state == State.Parse
     bring "Enter a Brainfuck string (or upload a *.b file):"
   else hiss

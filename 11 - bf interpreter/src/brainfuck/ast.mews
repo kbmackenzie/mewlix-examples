@@ -95,7 +95,7 @@ clowder Loop is Token
     ~meow
   ~meow
 
-  🐱 to_string(count)
+  🐱 to_string()
     mew tokens! = std.purr(home.tokens)
     bring :3"loop [tokens]"
   ~meow
