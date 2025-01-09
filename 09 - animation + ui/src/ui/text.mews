@@ -1,7 +1,6 @@
 yarn ball ui.text
 
 takes std.graphic
-takes utils.position
 
 ~( ^.x.^)> 
 A clowder defining the behavior of a text box.

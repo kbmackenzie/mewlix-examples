@@ -6,7 +6,6 @@ takes palette
 takes utils.canvas
 takes utils.position
 from controls takes Controls
-from std.graphic takes Rectangle
 from animation.player takes AnimationPlayer
 from utils.fps takes FpsCounter
 

@@ -90,7 +90,7 @@ clowder Controls
     home.speed = std.max(20, home.speed + value)
   ~meow
 
-  🐱 draw(controls)
+  🐱 draw()
     mew plus_sprite  = plus.hovered   \
       if home.plus.is_hovered()       \
       else plus.normal
@@ -104,7 +104,7 @@ clowder Controls
     home.display.draw()
   ~meow
 
-  🐱 update(controls)
+  🐱 update()
     home.plus.update()
     home.minus.update()
     do home.display.set_message <- :3"[home.get_speed()]%"
