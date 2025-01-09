@@ -233,8 +233,11 @@ mew current_scene = "snake_game"
 -- The "game_over" scene, our game over screen.
 -- A player can press [Space] to restart the game.
 
-mew overlay_color = graphic.hex(palette.rouge)
+mew overlay_color! = graphic.hex(palette.rouge)
 overlay_color.opacity = 60
+
+mew big_text!    = 📦 [ size: 16, color: palette.light  ]
+mew medium_text! = 📦 [ size:  8, color: palette.pastel ]
 
 🐱 [scene_table["game_over"]]()
   do graphic.paint <- palette.pastel
@@ -242,18 +245,9 @@ overlay_color.opacity = 60
   do draw_snake <- state.snake
   do graphic.paint <- overlay_color
 
-  do draw_text <- "Game over!", 3, 📦 [
-    size: 16,
-    color: palette.light,
-  ]
-  do draw_text <- :3"Collected [state.snake...? - 1] hearts!", 4, 📦 [
-    size: 8,
-    color: palette.light
-  ]
-  do draw_text <- "Press [Space] to restart!", 5, 📦 [
-    size: 8,
-    color: palette.light,
-  ]
+  do draw_text <- "Game over!", 3, big_text
+  do draw_text <- :3"Collected [state.snake...? - 1] hearts!", 4, medium_text
+  do draw_text <- "Press [Space] to restart!", 5, medium_text
 
   pounce when key_pressed(keys.space)
     state = blank_state()
