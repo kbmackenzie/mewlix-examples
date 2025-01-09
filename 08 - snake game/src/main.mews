@@ -171,6 +171,7 @@ Note: We're choosing not to allow *backwards movement*, because it's certainly n
 
 -- We can now start thinking about mutable game state.
 -- All our mutable game state and our 'scene' structure will live below.
+
 🐱 blank_state()
   mew snake_rect = random_position()
   mew snake_direction = do start_direction <- snake_rect
@@ -192,11 +193,13 @@ mew state = blank_state()
 
 -- With this, we can begin defining procedures for each 'scene' in our game:
 -- The code below is self-documenting, so comments will be more sparse.
+
 mew scene_table! = 📦 []
 mew current_scene = "snake_game"
 
 -- The "snake_game" scene, our core gameplay loop.
 -- We draw and listen to input inside of it.
+
 🐱 [scene_table["snake_game"]]()
   do graphic.paint <- palette.pastel
   do draw_food  <- state.food
@@ -205,33 +208,39 @@ mew current_scene = "snake_game"
   state.direction = do get_direction <- state.direction
   state.timer = state.timer + graphic.delta()
 
-  pounce when state.timer > state.wait
-    state.timer = 0
-    mew got_food! = do has_gotten_food <- state.snake, state.food
+  pounce when state.timer <= state.wait
+    run away
+  ~meow
 
-    pounce when got_food
-      state.food = random_position()
-    ~meow
+  state.timer = 0
+  mew got_food! = do has_gotten_food <- state.snake, state.food
 
-    mew movement_vector = movement[state.direction.key]
-    mew head_rect! = do move_rect  <- (paw at state.snake).rect, movement_vector
-    mew new_head!  = do snake_part <- head_rect, state.direction
+  pounce when got_food
+    state.food = random_position()
+  ~meow
 
-    state.snake = do grow_snake <- state.snake, new_head, got_food
+  mew movement_vector = movement[state.direction.key]
+  mew head_rect! = do move_rect  <- (paw at state.snake).rect, movement_vector
+  mew new_head!  = do snake_part <- head_rect, state.direction
 
-    pounce when is_game_over(state.snake)
-      current_scene = "game_over"
-    ~meow
+  state.snake = do grow_snake <- state.snake, new_head, got_food
+
+  pounce when is_game_over(state.snake)
+    current_scene = "game_over"
   ~meow
 ~meow
 
 -- The "game_over" scene, our game over screen.
 -- A player can press [Space] to restart the game.
+
+mew overlay_color = graphic.hex(palette.rouge)
+overlay_color.opacity = 60
+
 🐱 [scene_table["game_over"]]()
   do graphic.paint <- palette.pastel
   do draw_food  <- state.food
   do draw_snake <- state.snake
-  do graphic.paint <- new Color <- 255, 0, 128, 20
+  do graphic.paint <- overlay_color
 
   do draw_text <- "Game over!", 3, 📦 [
     size: 16,
@@ -252,8 +261,9 @@ mew current_scene = "snake_game"
   ~meow
 ~meow
 
--- And finally, we can define our main game loop and start the game!
+-- And finally, we can define our main game loop and start the game.
 -- We will also add a FPS counter for our own convenience.
+
 mew fps! = new FpsCounter()
 mew fps_opts! = 📦 [ color: palette.rouge ]
 
