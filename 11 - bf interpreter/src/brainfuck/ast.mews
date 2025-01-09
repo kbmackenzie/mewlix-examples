@@ -13,7 +13,7 @@ clowder RepeatToken is Token
     home.count = count
   ~meow
 
-  🐱 to_string()
+  🐱 purr()
     bring :3"('[home.token]' [home.count]x)"
   ~meow
 ~meow
@@ -95,7 +95,7 @@ clowder Loop is Token
     ~meow
   ~meow
 
-  🐱 to_string()
+  🐱 purr()
     mew tokens! = std.purr(home.tokens)
     bring :3"loop [tokens]"
   ~meow
