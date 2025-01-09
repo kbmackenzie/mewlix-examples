@@ -39,8 +39,11 @@ mew movement! = 📦 [
 ~( ^.x.^)> 
 And now, we can begin defining a few pure functions that will help us with our game's logic.
 No I/O, no side effects. Pure utility functions only for now.
+<(^.x.^ )~
 
-We can begin with an utility function for 'moving' a Rectangle, which always generates a new Rectangle, avoiding any side effects.
+~( ^.x.^)> 
+Move a Rectangle to another point in the canvas.
+Generates a new Rectangle.
 <(^.x.^ )~
 🐱 move_rect(rect, move)
   bring new Rectangle(
@@ -79,6 +82,8 @@ Based on that, we can define:
   2. A pure function for 'growing' our snake.
   3. Pure functions for checking the snake's collision with food and with itself.
 <(^.x.^ )~
+
+-- Construct snake.
 🐱 snake_part(rect, direction)
   bring 📦 [
     rect: rect,
@@ -86,11 +91,13 @@ Based on that, we can define:
   ]
 ~meow
 
+-- Grow snake. Pure function, returns a new snake.
 🐱 grow_snake(snake, new_head, got_food)
   mew body! = snake if got_food else (do std.remove <- snake, -1)
   bring new_head push body
 ~meow
 
+-- Checks if snake has collided with the walls or with itself.
 🐱 is_game_over(snake)
   mew head! = (paw at snake).rect
 
@@ -102,6 +109,7 @@ Based on that, we can define:
   bring do std.any <- is_colliding, knock over snake
 ~meow
 
+-- Checks if snake has collided with food.
 🐱 has_gotten_food(snake, food)
   bring (paw at snake).rect.collides(food)
 ~meow
@@ -111,20 +119,18 @@ Based on that, we can define:
 -----------------------------------------
 
 ~( ^.x.^)> 
-Now, we can begin thinking about direction and movement.
-
-For convenience, let's define a function for choosing a good starting direction for our snake.
+Choose a good starting direction for our snake.
 The snake should always face away from the nearest corner at the start:
 <(^.x.^ )~
 🐱 start_direction(pos)
   bring Direction.Up if pos.y > (canvas.width / 2) else Direction.Down
 ~meow
 
-~( ^.x.^)> 
-It's time to slowly move into the world of I/O.
-A procedure for listening to keyboard input and changing direction based on the keys pressed.
+-- It's time to slowly move into the world of I/O!
 
-Note: We're choosing not to allow *backwards movement*, because it's certainly never what the player intended.
+~( ^.x.^)> 
+Listen to keyboard input and change direction based on the keys pressed.
+Note: We're choosing not to allow *backwards movement*, because it's never what the player intended.
 <(^.x.^ )~
 🐱 get_direction(current)
   pounce when key_down(keys.up)    and current != Direction.Down;  bring Direction.Up;    ~meow
@@ -138,9 +144,11 @@ Note: We're choosing not to allow *backwards movement*, because it's certainly n
 -- Drawing
 -----------------------------------------
 
--- We're now truly out of the world of pure functions. It's time to draw!
--- Let us begin defining how to draw our snake, food, and text.
+~( ^.x.^)> 
+We're now truly out of the world of pure functions. It's time to draw!
+<(^.x.^ )~
 
+-- Draw snake, iterating over each part of its body.
 🐱 draw_snake(snake)
   mew head = paw at snake
   mew body = knock over snake
@@ -169,8 +177,10 @@ Note: We're choosing not to allow *backwards movement*, because it's certainly n
 -- Game Loop 
 -----------------------------------------
 
--- We can now start thinking about mutable game state.
--- All our mutable game state and our 'scene' structure will live below.
+~( ^.x.^)> 
+And now, it's time to think about mutable game state.
+All our mutable game state and our 'scene' structure will live below.
+<(^.x.^ )~
 
 🐱 blank_state()
   mew snake_rect = random_position()
@@ -191,8 +201,10 @@ Note: We're choosing not to allow *backwards movement*, because it's certainly n
 
 mew state = blank_state()
 
--- With this, we can begin defining procedures for each 'scene' in our game:
--- The code below is self-documenting, so comments will be more sparse.
+~( ^.x.^)> 
+With this, we can begin defining procedures for each 'scene' in our game.
+The code below is self-documenting, so comments will be more sparse.
+<(^.x.^ )~
 
 mew scene_table! = 📦 []
 mew current_scene = "snake_game"
