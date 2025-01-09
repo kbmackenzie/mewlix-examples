@@ -2,7 +2,7 @@ A collection of example projects written in [Mewlix](https://github.com/kbmacken
 
 The projects are, in order:
 
-1. [Hello World][1]: The classic 'hello world' example.
+1. [Hello World][1]: The classic *"hello world"* example.
 2. [Drawing][2]: Drawing a static image.
 3. [Animation][3]: Basic frame animation.
 4. [Keyboard + Mouse][4]: Listening for keyboard & mouse input.
