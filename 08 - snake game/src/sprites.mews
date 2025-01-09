@@ -12,11 +12,11 @@ mew snake_head! = 📦 [
 mew heart! = "heart-symbol"
 
 ~( ^.x.^)> Loading assets: <(^.x.^ )~
-spritesheet("./assets/cat-snake-spritesheet.png", [
+do spritesheet <- "./assets/cat-snake-spritesheet.png", [
   📦 [ key: snake_head.Up    , rect: new Rectangle(0, 0, 8, 8) ],
   📦 [ key: snake_head.Down  , rect: new Rectangle(8, 0, 8, 8) ],
   📦 [ key: snake_head.Left  , rect: new Rectangle(0, 8, 8, 8) ],
   📦 [ key: snake_head.Right , rect: new Rectangle(8, 8, 8, 8) ],
-]);
+];
 
-load(heart, "./assets/heart-symbol.png")
+do load <- heart, "./assets/heart-symbol.png"
