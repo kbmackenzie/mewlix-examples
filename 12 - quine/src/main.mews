@@ -1,0 +1,2 @@
+mew quine!!! = ["\nmeow 'mew quine!!! = ' .. quine .. paw at quine"]
+meow 'mew quine!!! = ' .. quine .. paw at quine

@@ -1,0 +1,9 @@
+name: quine
+description: A Quine program written in Mewlix.
+mode: node
+entrypoint: main
+port: auto
+source-files:
+- src/**/*.mews
+assets: []
+flags: []
