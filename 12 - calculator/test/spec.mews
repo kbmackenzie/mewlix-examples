@@ -34,6 +34,8 @@ mew tests! = [
   📦 [ input: '4 * 3 - 2 + (1 - 2) * (12 / 2)'  , expected: 4   ],
   📦 [ input: '100 / 4 - 1'                     , expected: 24  ],
   📦 [ input: '3 + 5 * 82'                      , expected: 413 ],
+  📦 [ input: '0 - 1'                           , expected: -1  ],
+  📦 [ input: '0 * 1'                           , expected: 0   ],
 ] |> std.reverse
 
 chase after test in tests!!!
