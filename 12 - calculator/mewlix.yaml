@@ -1,5 +1,5 @@
 name: calculator
-description: ''
+description: A simple calculator REPL written in Mewlix.
 mode: console
 entrypoint: main
 port: auto
