@@ -4,6 +4,6 @@ mode: node
 entrypoint: main
 port: auto
 source-files:
-- src/**/*.mews
+- main.mews
 assets: []
 flags: []
