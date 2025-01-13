@@ -1,0 +1,9 @@
+name: calculator
+description: ''
+mode: console
+entrypoint: main
+port: auto
+source-files:
+- src/**/*.mews
+assets: []
+flags: []
