@@ -32,6 +32,8 @@ mew tests! = [
   📦 [ input: '3 * (1 + 2) + 4 * (3 + 3)'       , expected: 33  ],
   📦 [ input: '3 * (1 + 2) + 4 * (3 + 3) + 1'   , expected: 34  ],
   📦 [ input: '4 * 3 - 2 + (1 - 2) * (12 / 2)'  , expected: 4   ],
+  📦 [ input: '4 * (3 * (2 + 1)) - 2'           , expected: 34  ],
+  📦 [ input: '(3 * (4 + 1)) / 5'               , expected: 3   ],
   📦 [ input: '100 / 4 - 1'                     , expected: 24  ],
   📦 [ input: '3 + 5 * 82'                      , expected: 413 ],
   📦 [ input: '0 - 1'                           , expected: -1  ],
