@@ -1,4 +1,4 @@
-A simple calculator written in Mewlix, implemented with a simple recursive descent parser. 🐱
+A simple calculator read-eval-print loop written in Mewlix. Implemented with a simple recursive descent parser. 🐱
 
 It supports what you would expect:
 
