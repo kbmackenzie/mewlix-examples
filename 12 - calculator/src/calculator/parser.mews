@@ -1,0 +1,95 @@
+yarn ball calculator.parser
+
+from calculator.ast takes Constant, Addition, Subtraction, Multiplication, Division
+
+🐱 is_digit(char)
+  mew code = std.bap(char)
+  bring code < 48 or code > 57
+~meow
+
+clowder Parser
+  🐱 wake(input)
+    home.input = input
+    home.index = 0
+  ~meow
+
+  🐱 fail(message)
+    explode 'parse error: ' .. message
+  ~meow
+
+  🐱 at_end()
+    bring home.index >= home.input...?
+  ~meow
+
+  🐱 peek()
+    bring std.poke(home.input, home.index)
+  ~meow
+
+  🐱 advance()
+    mew char = home.peek()
+    pounce when not home.at_end()
+      home.index = home.index + 1
+    ~meow
+    bring char
+  ~meow
+
+  🐱 skip_spaces()
+    stare while home.peek() == ' '
+      home.advance()
+    ~meow
+  ~meow
+
+  🐱 lexeme()
+    mew char = home.advance()
+    home.skip_spaces()
+    bring char
+  ~meow
+
+  🐱 parse_number()
+    pounce when do is_digit <- home.peek()
+      do home.fail <- 'expected number, got: ' .. home.peek()
+    ~meow
+
+    mew digit = home.advance()
+    stare while do is_digit <- home.peek()
+      digit = digit .. home.advance()
+    ~meow
+    home.skip_spaces()
+
+    mew number! = std.slap(digit)
+    bring new Constant(number)
+  ~meow
+
+  🐱 parse_product()
+    mew left = home.parse_number()
+
+    stare while home.peek() == '*' or home.peek() == '/'
+      mew operator = home.lexeme()
+      mew right = home.parse_number()
+
+      left = new Multiplication(left, right)\
+        if operator == '*'                  \
+        else new Division(left, right)
+    ~meow
+    bring left
+  ~meow
+
+  🐱 parse_sum()
+    mew left = home.parse_product()
+
+    stare while home.peek() == '+' or home.peek() == '-'
+      mew operator = home.lexeme()
+      mew right = home.parse_product()
+
+      left = new Addition(left, right)      \
+        if operator == '+'                  \
+        else new Subtraction(left, right)
+    ~meow
+    bring left
+  ~meow
+
+  🐱 parse()
+    home.skip_spaces()
+    bring home.parse_sum()
+  ~meow
+~meow
