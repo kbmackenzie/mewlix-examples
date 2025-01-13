@@ -2,12 +2,12 @@ yarn ball calculator.ast
 
 clowder Token; ~meow
 
-clowder Number is Token
+clowder Constant is Token
   🐱 wake(value)
     home.value = value
   ~meow
 
-  🐱 eval()
+  🐱 evaluate()
     bring home.value
   ~meow
 ~meow
@@ -19,26 +19,26 @@ clowder Operation is Token
   ~meow
 ~meow
 
-clowder Sum is Operation
-  🐱 eval()
-    bring home.a.eval() + home.b.eval()
+clowder Addition is Operation
+  🐱 evaluate()
+    bring home.a.evaluate() + home.b.evaluate()
   ~meow
 ~meow
 
-clowder Minus is Operation
-  🐱 eval()
-    bring home.a.eval() + home.b.eval()
-  ~meow
-~meow
-
-clowder Multiplication is Operation
-  🐱 eval()
-    bring home.a.eval() * home.b.eval()
+clowder Subtraction is Operation
+  🐱 evaluate()
+    bring home.a.evaluate() + home.b.evaluate()
   ~meow
 ~meow
 
 clowder Multiplication is Operation
-  🐱 eval()
-    bring home.a.eval() / home.b.eval()
+  🐱 evaluate()
+    bring home.a.evaluate() * home.b.evaluate()
+  ~meow
+~meow
+
+clowder Division is Operation
+  🐱 evaluate()
+    bring home.a.evaluate() / home.b.evaluate()
   ~meow
 ~meow
