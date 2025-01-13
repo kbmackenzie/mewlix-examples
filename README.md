@@ -13,7 +13,7 @@ The projects are, in order:
 9. [Animation + UI][9]: Animation + UI rendering example.
 10. [Dice Roller][10]: A simple dice roller.
 11. [Quine][11]: A Quine program written in Mewlix.
-12. [Brainf\*ck Interpreter][12]: A simple Brainf\*ck interpreter.
+12. [Calculator][12]: A simple calculator read-eval-print loop.
 
 <p float="left">
   <a href="./08 - snake game">
@@ -41,4 +41,4 @@ The projects are, in order:
 [9]: ./09&#32;-&#32;animation&#32;+&#32;ui
 [10]: ./10&#32;-&#32;dice&#32;roller
 [11]: ./11&#32;-&#32;quine
-[12]: ./12&#32;-&#32;bf&#32;interpreter
+[12]: ./12&#32;-&#32;calculator
