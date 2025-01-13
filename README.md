@@ -12,7 +12,8 @@ The projects are, in order:
 8. [Snake Game][8]: A cat-themed clone of the classic Snake Game.
 9. [Animation + UI][9]: Animation + UI rendering example.
 10. [Dice Roller][10]: A simple dice roller.
-11. [Brainf\*ck Interpreter][11]: A simple Brainf\*ck interpreter.
+11. [Quine][11]: A Quine program written in Mewlix.
+12. [Brainf\*ck Interpreter][11]: A simple Brainf\*ck interpreter.
 
 <p float="left">
   <a href="./08 - snake game">
@@ -39,4 +40,5 @@ The projects are, in order:
 [8]: ./08&#32;-&#32;snake&#32;game
 [9]: ./09&#32;-&#32;animation&#32;+&#32;ui
 [10]: ./10&#32;-&#32;dice&#32;roller
-[11]: ./11&#32;-&#32;bf&#32;interpreter
+[11]: ./11&#32;-&#32;quine
+[12]: ./12&#32;-&#32;bf&#32;interpreter
