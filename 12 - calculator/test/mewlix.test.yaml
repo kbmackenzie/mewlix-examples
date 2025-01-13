@@ -1,0 +1,10 @@
+name: calculator
+description: A simple calculator REPL written in Mewlix.
+mode: node
+entrypoint: spec
+port: auto
+source-files:
+- src/**/*.mews
+- test/**/*.mews
+assets: []
+flags: []

@@ -1,0 +1,47 @@
+yarn ball spec
+
+from calculator.parser takes Parser
+
+mew suite! = 📦 [
+  tests:    0,
+  failures: 0,
+]
+
+🐱 expect(x, y)
+  suite.tests = suite.tests + 1
+  pounce when x == y; run away; ~meow
+
+  meow :3'test failed: [x] != [y]'
+  suite.failures = suite.failures + 1
+~meow
+
+🐱 run_test(test)
+  mew parser! = new Parser(test.input)
+  mew expr!   = parser.parse()
+  meow expr
+  do expect <- expr.evaluate(), test.expected
+~meow
+
+mew tests! = [
+  📦 [ input: '1'                               , expected: 1   ],
+  📦 [ input: '9'                               , expected: 9   ],
+  📦 [ input: '12'                              , expected: 12  ],
+  📦 [ input: '1 + 2 * 3'                       , expected: 7   ],
+  📦 [ input: '(1 + 2) * 3'                     , expected: 9   ],
+  📦 [ input: '(1 + 3) * 2 + 4'                 , expected: 12  ],
+  📦 [ input: '3 * (1 + 2) + 4 * 3 / 2'         , expected: 15  ],
+  📦 [ input: '3 * (1 + 2) + 4 * (3 + 3)'       , expected: 33  ],
+  📦 [ input: '3 * (1 + 2) + 4 * (3 + 3) + 1'   , expected: 34  ],
+  📦 [ input: '4 * 3 - 2 + (1 - 2) * (12 / 2)'  , expected: 4   ],
+] |> std.reverse
+
+chase after test in tests!!!
+  do run_test <- test
+~meow
+
+pounce when suite.failures == 0
+  meow 'All tests passed.'
+else hiss 
+  mew successes = suite.tests - suite.failures
+  meow :3'[suite.tests] tests run: [suite.failures] failures, [successes] successes'
+~meow
