@@ -63,15 +63,30 @@ clowder Parser
     bring new Constant(number)
   ~meow
 
+  🐱 parse_term()
+    pounce when home.peek() == '('
+      home.lexeme()
+      mew expr = home.parse_sum()
+
+      pounce when home.peek() != ')'
+        do home.fail <- 'expected parenthesis, got: ' .. home.peek()
+      ~meow
+
+      home.lexeme()
+      bring expr
+    ~meow
+    bring home.parse_number()
+  ~meow
+
   🐱 parse_product()
-    mew left = home.parse_number()
+    mew left = home.parse_term()
 
     stare while home.peek() == '*' or home.peek() == '/'
       mew operator = home.lexeme()
-      mew right = home.parse_number()
+      mew right = home.parse_term()
 
-      left = new Multiplication(left, right)\
-        if operator == '*'                  \
+      left = new Multiplication(left, right)  \
+        if operator == '*'                    \
         else new Division(left, right)
     ~meow
     bring left
@@ -84,8 +99,8 @@ clowder Parser
       mew operator = home.lexeme()
       mew right = home.parse_product()
 
-      left = new Addition(left, right)      \
-        if operator == '+'                  \
+      left = new Addition(left, right)        \
+        if operator == '+'                    \
         else new Subtraction(left, right)
     ~meow
     bring left
@@ -93,6 +108,12 @@ clowder Parser
 
   🐱 parse()
     home.skip_spaces()
-    bring home.parse_sum()
+    mew expr! = home.parse_sum()
+
+    pounce when not home.at_end()
+      do home.fail <- 'expected eof, got: ' .. home.peek()
+    ~meow
+
+    bring expr
   ~meow
 ~meow
