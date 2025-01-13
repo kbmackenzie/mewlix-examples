@@ -18,7 +18,6 @@ mew suite! = 📦 [
 🐱 run_test(test)
   mew parser! = new Parser(test.input)
   mew expr!   = parser.parse()
-  meow expr
   do expect <- expr.evaluate(), test.expected
 ~meow
 
