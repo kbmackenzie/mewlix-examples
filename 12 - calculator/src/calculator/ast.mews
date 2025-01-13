@@ -41,7 +41,7 @@ clowder Addition is Operation
 
 clowder Subtraction is Operation
   🐱 evaluate()
-    bring home.a.evaluate() + home.b.evaluate()
+    bring home.a.evaluate() - home.b.evaluate()
   ~meow
 
   🐱 purr()
