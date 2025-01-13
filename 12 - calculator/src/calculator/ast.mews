@@ -10,6 +10,10 @@ clowder Constant is Token
   🐱 evaluate()
     bring home.value
   ~meow
+
+  🐱 purr()
+    bring home.value
+  ~meow
 ~meow
 
 clowder Operation is Token
@@ -17,11 +21,21 @@ clowder Operation is Token
     home.a = a
     home.b = b
   ~meow
+
+  🐱 build_purr(operator)
+    mew a! = home.a.purr()
+    mew b! = home.b.purr()
+    bring :3'([a] [operator] [b])'
+  ~meow
 ~meow
 
 clowder Addition is Operation
   🐱 evaluate()
     bring home.a.evaluate() + home.b.evaluate()
+  ~meow
+
+  🐱 purr()
+    bring home.build_purr('+')
   ~meow
 ~meow
 
@@ -29,16 +43,28 @@ clowder Subtraction is Operation
   🐱 evaluate()
     bring home.a.evaluate() + home.b.evaluate()
   ~meow
+
+  🐱 purr()
+    bring home.build_purr('-')
+  ~meow
 ~meow
 
 clowder Multiplication is Operation
   🐱 evaluate()
     bring home.a.evaluate() * home.b.evaluate()
   ~meow
+
+  🐱 purr()
+    bring home.build_purr('*')
+  ~meow
 ~meow
 
 clowder Division is Operation
   🐱 evaluate()
     bring home.a.evaluate() / home.b.evaluate()
+  ~meow
+
+  🐱 purr()
+    bring home.build_purr('/')
   ~meow
 ~meow
