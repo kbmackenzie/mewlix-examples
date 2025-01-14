@@ -1,0 +1,102 @@
+yarn ball dice.parser
+
+from dice.ast takes Constant, Dice, Addition, Subtraction
+
+🐱 is_digit(char)
+  pounce when not char
+    bring false
+  ~meow
+  mew code = std.bap(char)
+  bring code >= 48 and code <= 57
+~meow
+
+clowder Parser
+  🐱 wake(input)
+    home.input = input
+    home.index = 0
+  ~meow
+
+  🐱 fail(message)
+    explode 'parser error: ' .. message
+  ~meow
+
+  🐱 at_end()
+    bring home.index >= home.input...?
+  ~meow
+
+  🐱 peek()
+    bring std.poke(home.input, home.index)
+  ~meow
+
+  🐱 advance()
+    mew char = home.peek()
+    pounce when not home.at_end()
+      home.index = home.index + 1
+    ~meow
+    bring char
+  ~meow
+
+  🐱 skip_spaces()
+    stare while home.peek() == ' '
+      home.advance()
+    ~meow
+  ~meow
+
+  🐱 lexeme()
+    mew char = home.advance()
+    home.skip_spaces()
+    bring char
+  ~meow
+
+  🐱 parse_number()
+    mew digit = home.advance()
+
+    pounce when not is_digit(digit)
+      do home.fail <- 'expected number, got: ' .. home.peek()
+    ~meow
+
+    stare while do is_digit <- home.peek()
+      digit = digit .. home.advance()
+    ~meow
+    bring std.slap(digit)
+  ~meow
+
+  🐱 parse_term()
+    mew number = home.parse_number()
+
+    pounce when home.peek() == 'd'
+      home.advance()
+      mew type = home.parse_number()
+      home.skip_spaces()
+      bring new Dice(number, type)
+    ~meow
+
+    home.skip_spaces()
+    bring new Constant(number)
+  ~meow
+
+  🐱 parse_sum()
+    mew left = home.parse_term()
+
+    stare while home.peek() == '+' or home.peek() == '-'
+      mew operator!!! = home.lexeme()
+      mew right!!! = home.parse_term()
+      left = new Addition(left, right)    \
+        if operator == '+'                \
+        else new Subtraction(left, right)
+    ~meow
+
+    bring left
+  ~meow
+
+  🐱 parse()
+    home.skip_spaces()
+    mew expr = home.parse_sum()
+
+    pounce when not home.at_end()
+      do home.fail <- 'expected eof, got: ' .. home.peek()
+    ~meow
+
+    bring expr
+  ~meow
+~meow
