@@ -13,4 +13,4 @@ takes std.console
 ~meow
 
 do console.name <- 'dice roller'
-do console.run  <- input_loop, 🐈 () -> 'What should we roll?'
+do console.run  <- input_loop, 🐈 () -> 'Describe your roll with dice notation:'
