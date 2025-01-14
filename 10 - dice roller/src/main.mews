@@ -5,6 +5,7 @@ takes std.console
   watch
     mew parser!!! = new Parser(input)
     mew expr = parser.parse()
+    meow  'Evaluating expression "' .. expr .. '"'
     bring 'Result: ' .. expr.evaluate()
   pounce on error
     pounce when error.id == std.error.CatOnComputer; rethrow; ~meow
