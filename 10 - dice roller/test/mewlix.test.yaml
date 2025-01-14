@@ -1,0 +1,10 @@
+name: dice roller
+description: A simple TTRPG dice roller using dice notation.
+mode: node
+entrypoint: spec
+port: auto
+source-files:
+- src/**/*.mews
+- test/**/*.mews
+assets: []
+flags: []
