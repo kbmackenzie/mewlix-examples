@@ -1,4 +1,4 @@
-A dice roller that can parse a subset [dice notation][1]. It supports:
+A dice roller that can parse a subset of [dice notation][1]. It supports:
 
 - Describing dice rolls in `xdy` format (e.g. `1d20`, `2d6`, `3d8`)
 - Addition and subtraction (e.g. `1d20 + 1d4`)
