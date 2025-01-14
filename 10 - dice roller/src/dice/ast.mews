@@ -1,0 +1,50 @@
+yarn ball dice.ast
+
+clowder Token; ~meow
+
+clowder Constant is Token
+  🐱 wake(value)
+    home.value = value
+  ~meow
+
+  🐱 purr()
+    bring home.value
+  ~meow
+~meow
+
+clowder Dice is Token
+  🐱 wake(amount, type)
+    home.amount = amount
+    home.type   = type
+  ~meow
+
+  🐱 purr()
+    bring home.amount .. 'd' .. home.type
+  ~meow
+~meow
+
+clowder Addition is Token
+  🐱 wake(a, b)
+    home.a = a
+    home.b = b
+  ~meow
+
+  🐱 purr()
+    mew a! = home.a.purr()
+    mew b! = home.b.purr()
+    bring :3'([a] + [b])'
+  ~meow
+~meow
+
+clowder Subtraction is Token
+  🐱 wake(a, b)
+    home.a = a
+    home.b = b
+  ~meow
+
+  🐱 purr()
+    mew a! = home.a.purr()
+    mew b! = home.b.purr()
+    bring :3'([a] - [b])'
+  ~meow
+~meow
