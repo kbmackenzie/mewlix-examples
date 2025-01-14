@@ -1,3 +1,7 @@
-A simple dice roller. Dice can be rolled with a subset of [dice notation](https://en.wikipedia.org/wiki/Dice_notation).
+A dice roller that can parse a subset [dice notation][1]. It supports:
 
-Specifically, dice rolls should be in the form of `xdy`, where `x` is the amount of dice to be rolled and `y` is the kind of die. `2d20`, for example, means rolling two 20-sided dice.
+- Describing dice rolls in `xdy` format (e.g. `1d20`, `2d6`, `3d8`)
+- Addition and subtraction (e.g. `1d20 + 1d4`)
+- Numeric constants. (e.g. `2d6 + 5`)
+
+[1]: https://en.wikipedia.org/wiki/Dice_notation
