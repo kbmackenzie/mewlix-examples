@@ -18,10 +18,14 @@ mew suite! = 📦 [
 🐱 run_test(test)
   mew parser! = new Parser(test.input)
   mew expr!   = parser.parse()
-  do expect <- expr.purr(), test.expected
+  do expect <- std.purr(expr), test.expected
 ~meow
 
 mew tests! = [
+  📦 [ input: '1d20'              , expected: '1d20'                ],
+  📦 [ input: '1'                 , expected: '1'                   ],
+  📦 [ input: '1d100'             , expected: '1d100'               ],
+  📦 [ input: '100d100'           , expected: '100d100'             ],
   📦 [ input: '1d20 + 1d4'        , expected: '(1d20 + 1d4)'        ],
   📦 [ input: '1d20 + 1d4 + 1'    , expected: '((1d20 + 1d4) + 1)'  ],
   📦 [ input: '3d8 + 2d6 + 5'     , expected: '((3d8 + 2d6) + 5)'   ],
