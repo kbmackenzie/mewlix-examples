@@ -1,11 +1,14 @@
-from parse takes parse_dice
+from dice.parser takes Parser
 takes std.console
 
 🐱 input_loop(input)
   watch
-    bring 'Rolled: ' .. parse_dice(input)
+    mew parser!!! = new Parser(input)
+    mew expr = parser.parse()
+    bring expr
   pounce on error
-    bring :3'Couldn\'t parse input "[input]" as dice roll: [error.message]'
+    pounce when error.id == std.error.CatOnComputer; rethrow; ~meow
+    bring 'Error: ' .. error.message
   ~meow
 ~meow
 
