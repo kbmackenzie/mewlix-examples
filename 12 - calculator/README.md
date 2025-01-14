@@ -17,6 +17,8 @@ A few examples of expressions it will happily parse + evaluate are:
 3 * (1 + 2) + 4 * (3 + 3)
 3 * (1 + 2) + 4 * (3 + 3) + 1
 4 * 3 - 2 + (1 - 2) * (12 / 2)
+4 * (3 * (2 + 1)) - 2
+(3 * (4 + 1)) / 5
 100 / 4 - 1
 3 + 5 * 82
 ```
