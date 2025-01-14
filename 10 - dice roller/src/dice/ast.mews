@@ -10,6 +10,10 @@ clowder Constant is Token
   🐱 purr()
     bring home.value
   ~meow
+
+  🐱 evaluate()
+    bring home.value
+  ~meow
 ~meow
 
 clowder Dice is Token
@@ -20,6 +24,18 @@ clowder Dice is Token
 
   🐱 purr()
     bring home.amount .. 'd' .. home.type
+  ~meow
+
+  🐱 roll()
+    bring std.random_int(1, home.type)
+  ~meow
+
+  🐱 evaluate()
+    bring std.fold(
+      🐈 (acc, x) -> acc + x,
+      0,
+      std.repeat(home.roll, home.amount),
+    )
   ~meow
 ~meow
 
@@ -34,6 +50,10 @@ clowder Addition is Token
     mew b! = home.b.purr()
     bring :3'([a] + [b])'
   ~meow
+
+  🐱 evaluate()
+    bring home.a.evaluate() + home.b.evaluate()
+  ~meow
 ~meow
 
 clowder Subtraction is Token
@@ -46,5 +66,9 @@ clowder Subtraction is Token
     mew a! = home.a.purr()
     mew b! = home.b.purr()
     bring :3'([a] - [b])'
+  ~meow
+
+  🐱 evaluate()
+    bring home.a.evaluate() - home.b.evaluate()
   ~meow
 ~meow
