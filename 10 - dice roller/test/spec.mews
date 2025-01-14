@@ -30,6 +30,8 @@ mew tests! = [
   📦 [ input: '1d20 + 1d4 + 1'    , expected: '((1d20 + 1d4) + 1)'  ],
   📦 [ input: '3d8 + 2d6 + 5'     , expected: '((3d8 + 2d6) + 5)'   ],
   📦 [ input: '12d4 - 10'         , expected: '(12d4 - 10)'         ],
+  📦 [ input: '413'               , expected: '413'                 ],
+  📦 [ input: '3 + 4'             , expected: '(3 + 4)'             ],
 ] |> std.reverse
 
 chase after test in tests!!!
