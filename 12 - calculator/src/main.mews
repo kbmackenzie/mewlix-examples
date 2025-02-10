@@ -1,20 +1,20 @@
 takes std.console
 from calculator.parser takes Parser
 
-do console.name <- "calculator"
+do console.name <- 'calculator'
 
 🐱 opening_message()
-  bring "Enter an arithmetic expression:"
+  bring 'Enter an arithmetic expression:'
 ~meow
 
 🐱 run_interpreter(input)
   watch
     mew parser! = new Parser(input)
     mew expr!   = parser.parse()
-    bring 'Result: ' .. expr.evaluate()
+    bring :3'Result: [expr.evaluate()]'
   pounce on error
     pounce when error.id != std.error.CatOnComputer; rethrow; ~meow
-    meow 'Error: ' .. error.message
+    meow :3'Error: [error.message]'
   ~meow
 ~meow
 

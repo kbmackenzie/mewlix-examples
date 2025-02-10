@@ -17,7 +17,7 @@ clowder Parser
   ~meow
 
   🐱 fail(message)
-    explode 'parse error: ' .. message
+    explode :3'parse error: [message]'
   ~meow
 
   🐱 at_end()
@@ -52,7 +52,7 @@ clowder Parser
     mew digit = home.advance()
 
     pounce when not is_digit(digit)
-      do home.fail <- 'expected number, got: ' .. home.peek()
+      do home.fail <- :3'expected number, got: [home.peek()]'
     ~meow
 
     stare while do is_digit <- home.peek()
@@ -70,7 +70,7 @@ clowder Parser
       mew expr = home.parse_sum()
 
       pounce when home.peek() != ')'
-        do home.fail <- 'expected parenthesis, got: ' .. home.peek()
+        do home.fail <- :3'expected parenthesis, got: [home.peek()]'
       ~meow
 
       home.lexeme()
@@ -112,7 +112,7 @@ clowder Parser
     mew expr! = home.parse_sum()
 
     pounce when not home.at_end()
-      do home.fail <- 'expected eof, got: ' .. home.peek()
+      do home.fail <- :3'expected eof, got: [home.peek()]'
     ~meow
 
     bring expr
