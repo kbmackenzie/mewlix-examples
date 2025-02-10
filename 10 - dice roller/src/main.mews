@@ -8,7 +8,7 @@ takes std.console
     meow :3'Evaluating expression "[expr]"'
     bring :3'Result: [expr.evaluate()]'
   pounce on error
-    pounce when error.id == std.error.CatOnComputer; rethrow; ~meow
+    pounce when error.id != std.error.CatOnComputer; rethrow; ~meow
     bring :3'Error: [error.message]'
   ~meow
 ~meow
