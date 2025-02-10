@@ -23,7 +23,7 @@ clowder Dice is Token
   ~meow
 
   🐱 purr()
-    bring home.amount .. 'd' .. home.type
+    bring :3'[home.amount]d[home.type]'
   ~meow
 
   🐱 roll()
