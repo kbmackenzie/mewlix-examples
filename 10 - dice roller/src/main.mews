@@ -6,7 +6,7 @@ takes std.console
     mew parser!!! = new Parser(input)
     mew expr = parser.parse()
     meow :3'Evaluating expression "[expr]"'
-    bring 'Result: ' .. expr.evaluate()
+    bring :3'Result: [expr.evaluate()]'
   pounce on error
     pounce when error.id == std.error.CatOnComputer; rethrow; ~meow
     bring :3'Error: [error.message]'
